@@ -1,5 +1,5 @@
 export const NavLinks = {
-  HOME: 'Home',
+  HOME: '/',
   INTERNSHIP: 'Internship',
   ABOUT_US: 'About us',
   WORKSHOP: 'Workshop',

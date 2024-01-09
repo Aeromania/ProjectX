@@ -1,16 +1,16 @@
-import React, { Fragment, SetStateAction, useEffect, useState } from 'react';
-import { Menu, Transition } from '@headlessui/react';
+import React, { Fragment, SetStateAction, useEffect, useState } from "react";
+import { Menu, Transition } from "@headlessui/react";
 import {
   ChevronDownIcon,
   ChevronUpIcon,
   ChevronRightIcon
-} from '@heroicons/react/20/solid';
-import { Link } from 'react-router-dom';
-import { twMerge } from 'tailwind-merge';
-import useWindowDimensions from './hooks';
+} from "@heroicons/react/20/solid";
+import { Link } from "react-router-dom";
+import { twMerge } from "tailwind-merge";
+import useWindowDimensions from "./hooks";
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
+  return classes.filter(Boolean).join(" ");
 }
 
 type TDropDownProps = {
@@ -50,7 +50,7 @@ export const DropDown: React.FC<TDropDownProps> = ({
   }
 
   const checkIsActive = () => {
-    return isDropDownVisible ? 'scale-x-1' : 'scale-x-0';
+    return isDropDownVisible ? "scale-x-1" : "scale-x-0";
   };
 
   return (
@@ -63,7 +63,7 @@ export const DropDown: React.FC<TDropDownProps> = ({
           {title}
           <span
             className={twMerge(
-              'inset-x-0 -bottom-1 hidden h-0.5 scale-x-0 bg-sky-600 font-sans text-lg font-normal transition-all duration-300 group-hover:origin-center group-hover:scale-x-100 group-hover:transform md:absolute md:inline',
+              "inset-x-0 -bottom-1 hidden h-0.5 scale-x-0 bg-sky-600 font-sans text-lg font-normal transition-all duration-300 group-hover:origin-center group-hover:scale-x-100 group-hover:transform md:absolute md:inline",
               checkIsActive()
             )}
           />
@@ -84,30 +84,34 @@ export const DropDown: React.FC<TDropDownProps> = ({
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items
-          className="absolute left-24 top-0 z-10 w-40 origin-top-right rounded-md bg-neutral-500 text-black focus:outline-none md:-left-4 md:mt-12 md:bg-white md:shadow-sm md:shadow-sky-600"
+          className="absolute left-24 top-0 z-10 max-w-screen-sm origin-top-right rounded-md bg-neutral-500 text-black focus:outline-none md:-left-4 md:mt-12 md:w-40 md:bg-white md:shadow-sm md:shadow-sky-600"
           onBlur={() => setIsDropDownVisible(false)}
           onFocus={() => {
             setIsDropDownVisible(true);
           }}
         >
           <div className="py-1">
-            {routeName.map((routeName) => {
+            {routeName.map((route, index) => {
+              // const lastIndex = routeName.length - 1;
+              // const isLastIndex = lastIndex === index;
               return (
-                <Menu.Item key={routeName}>
-                  {({ active }) => (
-                    <Link
-                      to={routeName}
-                      onClick={() => setActiveLink(routeName)}
-                      className={classNames(
-                        active
-                          ? 'bg-sky-600 text-white'
-                          : 'text-white md:text-black',
-                        'block px-4 py-2 text-sm'
-                      )}
-                    >
-                      {routeName}
-                    </Link>
-                  )}
+                <Menu.Item key={index}>
+                  {({ active }) => {
+                    return (
+                      <Link
+                        to={route}
+                        onClick={() => setActiveLink(route)}
+                        className={classNames(
+                          active
+                            ? "bg-sky-600 text-white"
+                            : "text-white md:text-black",
+                          "block px-4 py-2 text-sm"
+                        )}
+                      >
+                        {route}
+                      </Link>
+                    );
+                  }}
                 </Menu.Item>
               );
             })}
