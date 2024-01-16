@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import "../styles/index.css";
 import { NavRoutes } from "./constants";
 import { NavLinks } from "./NavLinks";
-import { DropDown } from "./DropDown";
 // @ts-expect-error "Photos type not supported"
 import logo from "../assets/images/xlabs_logo_white.png";
 import { Link } from "react-router-dom";
@@ -14,7 +13,7 @@ import {
 import { twMerge } from "tailwind-merge";
 import { Divide as Hamburger } from "hamburger-react";
 import StaggeredDropDown from "./StaggeredDropDown";
-import MenuDropDown from "./MenuDropDown";
+import { motion, useScroll } from "framer-motion";
 
 export const Navbar: React.FC = (): React.JSX.Element => {
   const [activeRoute, setActiveRoute] = useState<string | null>(null);
@@ -22,6 +21,7 @@ export const Navbar: React.FC = (): React.JSX.Element => {
   const handleLinkClick = (routeName: string) => {
     setActiveRoute(routeName);
   };
+  const { scrollYProgress } = useScroll();
 
   const navMenuIcons = {
     Bars3Icon,
@@ -71,8 +71,8 @@ export const Navbar: React.FC = (): React.JSX.Element => {
           className={`${
             isNavMenuVisible
               ? "absolute top-32 w-full flex-col opacity-100 transition-all duration-300 ease-in-out"
-              : "absolute -z-50 flex-row opacity-0"
-          } flex items-center justify-between bg-neutral-700 md:z-0 md:flex md:w-full md:flex-row md:items-center md:justify-between md:bg-transparent md:opacity-100`}
+              : "absolute -top-[100%] -z-50 flex-col opacity-0"
+          } flex items-center justify-between bg-neutral-700 md:relative md:top-0 md:z-0 md:flex md:w-full md:flex-row md:items-center md:justify-between md:bg-transparent md:opacity-100`}
         >
           <StaggeredDropDown
             title={NavRoutes.WORKSHOP}
@@ -124,6 +124,20 @@ export const Navbar: React.FC = (): React.JSX.Element => {
           />
         </div>
       </div>
+      <motion.div
+        style={{
+          position: "absolute",
+          scaleX: scrollYProgress,
+          height: "4px",
+          bottom: "0px",
+          right: "0px",
+          left: "0px",
+          transformOrigin: "0%",
+          backgroundColor: "red",
+          zIndex: -1
+        }}
+        className="hidden md:inline-block"
+      />
     </nav>
   );
 };

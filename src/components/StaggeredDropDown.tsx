@@ -49,9 +49,9 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
       >
         <button
           onClick={() => setOpen((pv) => !pv)}
-          className="flex items-center gap-2 rounded-md bg-transparent text-white transition-colors"
+          className="group flex items-center gap-2 rounded-md bg-transparent text-white transition-colors"
         >
-          <span className="group font-sans text-base font-normal">
+          <span className="font-sans text-base font-normal">
             {title}
             <span
               className={twMerge(

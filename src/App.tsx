@@ -17,7 +17,7 @@ import CfdAnalysis from "./pages/CfdAnalysis";
 
 const App: React.FC = (): React.JSX.Element => {
   return (
-    <div className="min-h-screen">
+    <div>
       <Navbar />
       <Routes>
         <Route path={NavRoutes.HOME} element={<Home />} />
