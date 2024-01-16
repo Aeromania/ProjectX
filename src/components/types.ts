@@ -1,10 +1,10 @@
-import { NavLinks } from './constants';
+import { NavRoutes } from "./constants";
 
-export type TNavRouteProps = {
-  routeName: typeOfNavLinks;
+export type TNavLinksProps = {
+  routeName: typeOfNavRoutes;
   className?: string;
   isActive: boolean;
   onClick: () => void;
 };
 
-export type typeOfNavLinks = (typeof NavLinks)[keyof typeof NavLinks];
+export type typeOfNavRoutes = (typeof NavRoutes)[keyof typeof NavRoutes];

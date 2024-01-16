@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const Consultation = () => {
   return (
-    <div className="flex h-full items-center justify-center bg-black text-white">
+    <div className="flex h-dvh items-center justify-center bg-black text-white">
       Consultation
     </div>
   );

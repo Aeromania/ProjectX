@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "../styles/index.css";
-import { NavLinks } from "./constants";
-import { NavRoutes } from "./NavRoutes";
+import { NavRoutes } from "./constants";
+import { NavLinks } from "./NavLinks";
 import { DropDown } from "./DropDown";
-import logo from "../assets/images/xlabs_logo_black.png";
+// @ts-expect-error "Photos type not supported"
+import logo from "../assets/images/xlabs_logo_white.png";
 import { Link } from "react-router-dom";
 import {
   Bars3Icon,
@@ -11,103 +12,115 @@ import {
   XMarkIcon
 } from "@heroicons/react/20/solid";
 import { twMerge } from "tailwind-merge";
+import { Divide as Hamburger } from "hamburger-react";
+import StaggeredDropDown from "./StaggeredDropDown";
+import MenuDropDown from "./MenuDropDown";
 
 export const Navbar: React.FC = (): React.JSX.Element => {
-  const [activeLink, setActiveLink] = useState<string | null>(null);
-  const [isNavbarVisible, setIsNavbarVisible] = useState<boolean>(false);
+  const [activeRoute, setActiveRoute] = useState<string | null>(null);
+  const [isNavMenuVisible, setIsNavMenuVisible] = useState<boolean>(false);
   const handleLinkClick = (routeName: string) => {
-    setActiveLink(routeName);
+    setActiveRoute(routeName);
   };
 
-  const NavbarIcon = {
+  const navMenuIcons = {
     Bars3Icon,
     Bars3CenterLeftIcon,
     XMarkIcon
   } as const;
 
   useEffect(() => {
-    if (isNavbarVisible) {
-      setIsNavbarVisible(!isNavbarVisible);
+    if (isNavMenuVisible) {
+      setIsNavMenuVisible(!isNavMenuVisible);
     }
-  }, [activeLink]);
+  }, [activeRoute]);
 
   const Icon = useMemo(() => {
-    return isNavbarVisible ? NavbarIcon.XMarkIcon : NavbarIcon.Bars3Icon;
-  }, [isNavbarVisible]);
+    return isNavMenuVisible ? navMenuIcons.XMarkIcon : navMenuIcons.Bars3Icon;
+  }, [isNavMenuVisible]);
 
   const navbarDropDownVisibleStyles: string =
     "flex justify-center items-center flex-row w-5/6 py-0 w-full";
-  const navbarDropDownNotVisibleStyles: string = "hidden";
 
   return (
-    <nav className="absolute top-0 z-50 flex w-full items-center justify-center text-black transition-all duration-150 ease-in-out md:sticky md:h-24 md:border-b-2 md:border-gray-200 md:bg-white">
+    <nav className="relative top-0 z-50 flex w-full items-center justify-center text-black transition-all duration-300 ease-in-out md:sticky md:h-24 md:bg-black">
       <div
         className={twMerge(
           "relative flex w-full flex-col items-center bg-transparent transition-all duration-300 ease-in-out md:h-full md:w-[90%] md:flex-row md:justify-between lg:w-9/12",
-          !isNavbarVisible ? navbarDropDownVisibleStyles : ""
+          !isNavMenuVisible ? navbarDropDownVisibleStyles : ""
         )}
       >
-        <div className="flex w-full items-center justify-between bg-white px-6 md:hidden">
-          <Link className="inline md:hidden" to={NavLinks.HOME}>
+        <div className="flex w-full items-center justify-between bg-black px-6 md:hidden">
+          <Link className="inline md:hidden" to={NavRoutes.HOME}>
             <img
               className="inline h-32 w-32 md:hidden md:h-0 md:w-0"
               src={logo}
               alt="Logo"
             />
           </Link>
-          <Icon
-            className={twMerge("inline h-8 w-7")}
-            onClick={() => setIsNavbarVisible(!isNavbarVisible)}
+          <Hamburger
+            toggled={isNavMenuVisible}
+            toggle={setIsNavMenuVisible}
+            easing="ease-in-out"
+            size={28}
+            label="Show menu"
+            color="white"
           />
         </div>
         <div
           className={`${
-            isNavbarVisible
-              ? "block w-full opacity-100 transition-all duration-500 ease-in-out"
-              : "absolute opacity-0"
-          } flex flex-col items-center justify-between bg-neutral-500 md:flex md:w-full md:flex-row md:items-center md:justify-between md:bg-transparent md:opacity-100`}
+            isNavMenuVisible
+              ? "absolute top-32 w-full flex-col opacity-100 transition-all duration-300 ease-in-out"
+              : "absolute -z-50 flex-row opacity-0"
+          } flex items-center justify-between bg-neutral-700 md:z-0 md:flex md:w-full md:flex-row md:items-center md:justify-between md:bg-transparent md:opacity-100`}
         >
-          <DropDown
-            title={NavLinks.WORKSHOP}
-            setActiveLink={setActiveLink}
-            routeName={[NavLinks.HIGH_SCHOOL, NavLinks.UNIVERSITY]}
+          <StaggeredDropDown
+            title={NavRoutes.WORKSHOP}
+            setActiveRoute={setActiveRoute}
+            routeName={[NavRoutes.HIGH_SCHOOL, NavRoutes.UNIVERSITY]}
           />
-          <DropDown
-            title={NavLinks.INTERNSHIP}
-            setActiveLink={setActiveLink}
-            routeName={[NavLinks.INTERNSHIP, NavLinks.TRAINING]}
+          <StaggeredDropDown
+            title={NavRoutes.INTERNSHIP}
+            setActiveRoute={setActiveRoute}
+            routeName={[NavRoutes.INTERNSHIP, NavRoutes.TRAINING]}
           />
-          <DropDown
-            title={NavLinks.SERVICES}
-            setActiveLink={setActiveLink}
+          <StaggeredDropDown
+            title={NavRoutes.SERVICES}
+            setActiveRoute={setActiveRoute}
             routeName={[
-              NavLinks.CUSTOM_DRONES,
-              NavLinks.DESIGN,
-              NavLinks.PROJ_CONSULT,
-              NavLinks.CFD_ANALYSIS
+              NavRoutes.CUSTOM_DRONES,
+              NavRoutes.DESIGN,
+              NavRoutes.PROJ_CONSULT,
+              NavRoutes.CFD_ANALYSIS
             ]}
           />
-          <Link to={NavLinks.HOME}>
+          <Link
+            to={NavRoutes.HOME}
+            className="overflow-clip md:flex md:h-24 md:items-center md:justify-center"
+            onClick={() => {
+              setActiveRoute(NavRoutes.HOME);
+            }}
+          >
             <img
               className="hidden md:inline md:h-32 md:w-32"
               src={logo}
               alt="Logo"
             />
           </Link>
-          <NavRoutes
-            routeName={NavLinks.BLOGS}
-            isActive={activeLink === NavLinks.BLOGS}
-            onClick={() => handleLinkClick(NavLinks.BLOGS)}
+          <NavLinks
+            routeName={NavRoutes.BLOGS}
+            isActive={activeRoute === NavRoutes.BLOGS}
+            onClick={() => handleLinkClick(NavRoutes.BLOGS)}
           />
-          <NavRoutes
-            routeName={NavLinks.ABOUT_US}
-            isActive={activeLink === NavLinks.ABOUT_US}
-            onClick={() => handleLinkClick(NavLinks.ABOUT_US)}
+          <NavLinks
+            routeName={NavRoutes.ABOUT_US}
+            isActive={activeRoute === NavRoutes.ABOUT_US}
+            onClick={() => handleLinkClick(NavRoutes.ABOUT_US)}
           />
-          <NavRoutes
-            routeName={NavLinks.CONTACT_US}
-            isActive={activeLink === NavLinks.CONTACT_US}
-            onClick={() => handleLinkClick(NavLinks.CONTACT_US)}
+          <NavLinks
+            routeName={NavRoutes.CONTACT_US}
+            isActive={activeRoute === NavRoutes.CONTACT_US}
+            onClick={() => handleLinkClick(NavRoutes.CONTACT_US)}
           />
         </div>
       </div>
