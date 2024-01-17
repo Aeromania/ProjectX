@@ -43,7 +43,7 @@ export const Navbar: React.FC = (): React.JSX.Element => {
     "flex justify-center items-center flex-row w-5/6 py-0 w-full";
 
   return (
-    <nav className="relative top-0 z-50 flex w-full items-center justify-center text-black transition-all duration-300 ease-in-out md:sticky md:h-24 md:bg-black">
+    <nav className="sticky top-0 z-50 flex w-full items-center justify-center text-black shadow-md shadow-[#374151] transition-all duration-300 ease-in-out md:h-24 md:bg-black">
       <div
         className={twMerge(
           "relative flex w-full flex-col items-center bg-transparent transition-all duration-300 ease-in-out md:h-full md:w-[90%] md:flex-row md:justify-between lg:w-9/12",
@@ -70,9 +70,9 @@ export const Navbar: React.FC = (): React.JSX.Element => {
         <div
           className={`${
             isNavMenuVisible
-              ? "absolute top-32 w-full flex-col opacity-100 transition-all duration-300 ease-in-out"
-              : "absolute -top-[100%] -z-50 flex-col opacity-0"
-          } flex items-center justify-between bg-neutral-700 md:relative md:top-0 md:z-0 md:flex md:w-full md:flex-row md:items-center md:justify-between md:bg-transparent md:opacity-100`}
+              ? "absolute top-32 w-full flex-col border-t border-[#374151] py-2 opacity-100 transition-all duration-300 ease-in-out"
+              : "absolute -top-16 -z-50 w-full flex-col opacity-0 transition-all duration-300 ease-in-out"
+          } flex items-center justify-between bg-black md:relative md:top-0 md:z-0 md:flex md:w-full md:flex-row md:items-center md:justify-between md:bg-transparent md:opacity-100`}
         >
           <StaggeredDropDown
             title={NavRoutes.WORKSHOP}

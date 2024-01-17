@@ -9,6 +9,8 @@ import MissionIcon from "../assets/images/xlabs_missionIcon.png";
 import topPlane from "../assets/images/xlabs_mv_bgTop.png";
 // @ts-expect-error "type not supported"
 import bottomPlane from "../assets/images/xlabs_mv_bgBottom.png";
+// @ts-expect-error "type not supported"
+import teamPhoto from "../assets/images/xlabs_fullTeam.png";
 import { TeamCards } from "@/components/TeamCards";
 
 const AboutUs: React.FC = (): React.JSX.Element => {
@@ -41,23 +43,35 @@ const AboutUs: React.FC = (): React.JSX.Element => {
   ];
   return (
     <div className="flex flex-col items-center justify-center">
-      <section className="flex h-dvh w-full items-center justify-center bg-black bg-[url('../assets/images/xlabs_fullTeam.png')] bg-cover bg-center bg-no-repeat xl:bg-center">
-        <div className="mb-24 flex w-[95%] flex-col md:w-[90%] xl:w-[65%]">
+      <section className="relative flex h-dvh w-full justify-center bg-black sm:items-center md:bg-[url('../assets/images/xlabs_fullTeam.png')] md:bg-cover md:bg-center md:bg-no-repeat xl:bg-center">
+        <div className="relative mb-24 flex w-[95%] flex-col md:w-[90%] xl:w-[65%]">
+          <div className="relative mb-6 md:hidden">
+            <img src={teamPhoto} className="object-contain object-top" />
+            <h1
+              className={twMerge(
+                "absolute -bottom-4 py-6 text-4xl font-normal text-white sm:py-8 md:block md:text-6xl lg:font-semibold",
+                beforeStyles,
+                afterStyles
+              )}
+            >
+              ABOUT <span className="text-sky-400">US</span>
+            </h1>
+          </div>
           <h1
             className={twMerge(
-              "relative py-6 text-4xl font-normal text-white sm:py-8 md:text-6xl lg:font-semibold",
+              "relative hidden py-6 text-4xl font-normal text-white sm:py-8 md:block md:text-6xl lg:font-semibold",
               beforeStyles,
               afterStyles
             )}
           >
             ABOUT <span className="text-sky-400">US</span>
           </h1>
-          <h2 className="mb-2 text-base font-medium text-white sm:text-2xl sm:font-medium md:text-3xl md:font-semibold">
+          <h2 className="mb-2 text-lg font-medium text-white sm:text-2xl sm:font-medium md:text-3xl md:font-semibold">
             We specialize in{" "}
-            <TypingAnimation textColor={" text-sky-400"} items={typeItems} />
+            <TypingAnimation textColor={"text-sky-400"} items={typeItems} />
           </h2>
           <p
-            className="text-white sm:text-2xl"
+            className="text-xl text-white sm:text-2xl"
             style={{ textShadow: "2px 0px black" }}
           >
             ProjectX Labs, a dynamic engineering services company founded by
@@ -98,10 +112,10 @@ const AboutUs: React.FC = (): React.JSX.Element => {
         </div>
       </section>
       <section className="flex min-h-dvh w-full flex-col items-center bg-[#111827]">
-        <div className="team__header mb-4 mt-24  w-[80%] text-6xl text-white">
+        <div className="team__header mb-4 mt-16 w-[80%] text-6xl text-white md:mt-24">
           OUR TEAM
         </div>
-        <div className="team__section grid h-full w-full place-items-center gap-4 py-20 md:grid-cols-2 lg:p-20 xl:grid-cols-3 2xl:w-[80%]">
+        <div className="team__section grid h-full w-full place-items-center gap-4 md:grid-cols-2 md:py-20 lg:p-20 xl:grid-cols-3 2xl:w-[80%]">
           <TeamCards />
         </div>
       </section>

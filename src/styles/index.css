@@ -261,7 +261,7 @@
 
 .socials__ul .socials__list .socials__link:hover {
   color: #0077b5;
-  box-shadow: 0 0 5px #0077b5;
+  box-shadow: 0 0 10px #0077b5;
   text-shadow: 0 0 5px #0077b5;
 }
 
@@ -276,6 +276,9 @@
 @media (max-width: 768px) {
   .card {
     width: 100%;
+  }
+  .team__section .photo img {
+    filter: grayscale(0) contrast(1);
   }
 }
 

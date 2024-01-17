@@ -69,8 +69,11 @@ export const TeamCards = () => {
   return (
     <>
       {teamArray.map((member, index) => (
-        <div className="teamCards__container m-5 h-[510px] w-[320px] rounded-lg border border-[#374151] bg-[#1f2937]">
-          <div key={index} className="photo">
+        <div
+          key={index}
+          className="teamCards__container m-5 h-[510px] w-[320px] rounded-lg border border-[#374151] bg-[#1f2937]"
+        >
+          <div className="photo">
             <img src={member.photo} />
             <div className="glow-wrap">
               <i className="glow"></i>
