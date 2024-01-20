@@ -20,23 +20,10 @@ export const Navbar: React.FC = (): React.JSX.Element => {
   const navMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function closeNavMenu(event: MouseEvent) {
-      if (
-        navMenuRef.current &&
-        !navMenuRef.current.contains(event.target as Node)
-      ) {
-        setIsNavMenuVisible(!isNavMenuVisible);
-      }
-    }
-    document.addEventListener("mousedown", closeNavMenu);
-
-    return () => document.removeEventListener("mousedown", closeNavMenu);
-  }, []);
-
-  useEffect(() => {
     if (isNavMenuVisible) {
       setIsNavMenuVisible(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeRoute]);
 
   const navbarDropDownVisibleStyles: string =
