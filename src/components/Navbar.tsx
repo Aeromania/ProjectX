@@ -1,18 +1,13 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../styles/index.css";
 import { NavRoutes } from "./constants";
 import { NavLinks } from "./NavLinks";
 // @ts-expect-error "Photos type not supported"
 import logo from "../assets/images/xlabs_logo_white.png";
 import { Link } from "react-router-dom";
-import {
-  Bars3Icon,
-  Bars3CenterLeftIcon,
-  XMarkIcon
-} from "@heroicons/react/20/solid";
 import { twMerge } from "tailwind-merge";
 import { Divide as Hamburger } from "hamburger-react";
-import StaggeredDropDown from "./StaggeredDropDown";
+import StaggeredDropDown from "./DropDown/StaggeredDropDown";
 import { motion, useScroll } from "framer-motion";
 
 export const Navbar: React.FC = (): React.JSX.Element => {
@@ -22,38 +17,43 @@ export const Navbar: React.FC = (): React.JSX.Element => {
     setActiveRoute(routeName);
   };
   const { scrollYProgress } = useScroll();
+  const navMenuRef = useRef<HTMLDivElement>(null);
 
-  const navMenuIcons = {
-    Bars3Icon,
-    Bars3CenterLeftIcon,
-    XMarkIcon
-  } as const;
+  useEffect(() => {
+    function closeNavMenu(event: MouseEvent) {
+      if (
+        navMenuRef.current &&
+        !navMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsNavMenuVisible(!isNavMenuVisible);
+      }
+    }
+    document.addEventListener("mousedown", closeNavMenu);
+
+    return () => document.removeEventListener("mousedown", closeNavMenu);
+  }, []);
 
   useEffect(() => {
     if (isNavMenuVisible) {
-      setIsNavMenuVisible(!isNavMenuVisible);
+      setIsNavMenuVisible(false);
     }
   }, [activeRoute]);
-
-  const Icon = useMemo(() => {
-    return isNavMenuVisible ? navMenuIcons.XMarkIcon : navMenuIcons.Bars3Icon;
-  }, [isNavMenuVisible]);
 
   const navbarDropDownVisibleStyles: string =
     "flex justify-center items-center flex-row w-5/6 py-0 w-full";
 
   return (
-    <nav className="sticky top-0 z-50 flex w-full items-center justify-center text-black shadow-md shadow-[#374151] transition-all duration-300 ease-in-out md:h-24 md:bg-black">
+    <nav className="relative top-0 z-50 flex w-full items-center justify-center text-black shadow-md shadow-[#374151] transition-all duration-300 ease-in-out lg:sticky lg:h-24 lg:bg-black">
       <div
         className={twMerge(
-          "relative flex w-full flex-col items-center bg-transparent transition-all duration-300 ease-in-out md:h-full md:w-[90%] md:flex-row md:justify-between lg:w-9/12",
+          "relative flex w-full flex-col items-center bg-transparent transition-all duration-300 ease-in-out lg:h-full lg:w-[90%] lg:flex-row lg:justify-between xl:w-9/12",
           !isNavMenuVisible ? navbarDropDownVisibleStyles : ""
         )}
       >
-        <div className="flex w-full items-center justify-between bg-black px-6 md:hidden">
-          <Link className="inline md:hidden" to={NavRoutes.HOME}>
+        <div className="flex w-full items-center justify-between bg-black px-2 lg:hidden lg:px-6">
+          <Link className="inline lg:hidden" to={NavRoutes.HOME}>
             <img
-              className="inline h-32 w-32 md:hidden md:h-0 md:w-0"
+              className="inline h-32 w-32 lg:h-0 lg:w-0"
               src={logo}
               alt="Logo"
             />
@@ -70,9 +70,10 @@ export const Navbar: React.FC = (): React.JSX.Element => {
         <div
           className={`${
             isNavMenuVisible
-              ? "absolute top-32 w-full flex-col border-t border-[#374151] py-2 opacity-100 transition-all duration-300 ease-in-out"
+              ? "absolute top-32 w-full flex-col border-b border-t border-[#374151] py-2 opacity-100 transition-all duration-300 ease-in-out"
               : "absolute -top-16 -z-50 w-full flex-col opacity-0 transition-all duration-300 ease-in-out"
-          } flex items-center justify-between bg-black md:relative md:top-0 md:z-0 md:flex md:w-full md:flex-row md:items-center md:justify-between md:bg-transparent md:opacity-100`}
+          } flex items-start justify-center bg-black lg:relative lg:top-0 lg:z-0 lg:flex lg:w-full lg:flex-row lg:items-center lg:justify-between lg:bg-transparent lg:opacity-100`}
+          ref={navMenuRef}
         >
           <StaggeredDropDown
             title={NavRoutes.WORKSHOP}
@@ -80,7 +81,7 @@ export const Navbar: React.FC = (): React.JSX.Element => {
             routeName={[NavRoutes.HIGH_SCHOOL, NavRoutes.UNIVERSITY]}
           />
           <StaggeredDropDown
-            title={NavRoutes.INTERNSHIP}
+            title={"Internship"}
             setActiveRoute={setActiveRoute}
             routeName={[NavRoutes.INTERNSHIP, NavRoutes.TRAINING]}
           />
@@ -96,13 +97,13 @@ export const Navbar: React.FC = (): React.JSX.Element => {
           />
           <Link
             to={NavRoutes.HOME}
-            className="overflow-clip md:flex md:h-24 md:items-center md:justify-center"
+            className="overflow-clip lg:flex lg:h-24 lg:items-center lg:justify-center"
             onClick={() => {
               setActiveRoute(NavRoutes.HOME);
             }}
           >
             <img
-              className="hidden md:inline md:h-32 md:w-32"
+              className="hidden lg:inline lg:h-32 lg:w-32"
               src={logo}
               alt="Logo"
             />
@@ -136,7 +137,7 @@ export const Navbar: React.FC = (): React.JSX.Element => {
           backgroundColor: "red",
           zIndex: -1
         }}
-        className="hidden md:inline-block"
+        className="hidden lg:inline-block"
       />
     </nav>
   );

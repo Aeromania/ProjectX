@@ -19,6 +19,7 @@ const TypingAnimation: React.FC<{ items: string[]; textColor?: string }> = ({
     return () => {
       typed.destroy();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

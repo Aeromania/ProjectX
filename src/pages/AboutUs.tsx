@@ -11,21 +11,49 @@ import topPlane from "../assets/images/xlabs_mv_bgTop.png";
 import bottomPlane from "../assets/images/xlabs_mv_bgBottom.png";
 // @ts-expect-error "type not supported"
 import teamPhoto from "../assets/images/xlabs_fullTeam.png";
-import { TeamCards } from "@/components/TeamCards";
+// @ts-expect-error "type not supported"
+import ksheeraj from "../assets/images/xlabs_ksheeraj.jpeg";
+// @ts-expect-error "type not supported"
+import naijith from "../assets/images/xlabs_naijith.jpeg";
+// @ts-expect-error "type not supported"
+import pranav from "../assets/images/xlabs_pranav.jpeg";
+// @ts-expect-error "type not supported"
+import shreesha from "../assets/images/xlabs_shreesha.jpeg";
+// @ts-expect-error "type not supported"
+import ruturaj from "../assets/images/xlabs_ruturaj.jpeg";
+import { EmployeeInfoCard } from "@/components/employeeInfoCard.tsx";
+
+type infoCardsProps = {
+  id: number;
+  title: string;
+  icon: string | undefined;
+  description: string;
+};
+
+type employeeInfoProps = {
+  name: string;
+  photo: string | undefined;
+  position: string;
+  description: string;
+  linkedinUrl: string;
+};
 
 const AboutUs: React.FC = (): React.JSX.Element => {
-  const typeItems = [
+  // <-- title double underline styles -->
+  const beforeStyles = "";
+  // "before:absolute before:left-0 before:top-full before:h-[4px] before:w-[50px] before:bg-blue-600 before:content-['']";
+  const afterStyles = "";
+  // "after:absolute after:left-0 after:top-full after:mt-[8px] after:h-[4px] after:w-[25px] after:bg-blue-600 after:content-['']";
+
+  // <-- Data Arrays -->
+  const typingAnimationItems: string[] = [
     "Custom Drone Building",
     "Design and Fabrication",
     "Offering Tailored Solutions",
     "Structure and CFD Analysis"
   ];
 
-  const beforeStyles = "";
-  // "before:absolute before:left-0 before:top-full before:h-[4px] before:w-[50px] before:bg-blue-600 before:content-['']";
-  const afterStyles = "";
-  // "after:absolute after:left-0 after:top-full after:mt-[8px] after:h-[4px] after:w-[25px] after:bg-blue-600 after:content-['']";
-  const aboutUsCardsInfo = [
+  const infoCards: infoCardsProps[] = [
     {
       id: 1,
       title: "Our Vision",
@@ -41,6 +69,55 @@ const AboutUs: React.FC = (): React.JSX.Element => {
         "Our mission is to ignite the spark of creativity and innovation within the hearts of students across India. We are dedicated to fostering a dynamic learning environment that empowers the next generation of engineers. Our focus lies in providing students with the tools, knowledge, and hands-on experiences necessary to tackle real-world problems through the lens of hardware engineering."
     }
   ];
+
+  const employeeInfo: employeeInfoProps[] = [
+    {
+      name: "Naijith Rai",
+      photo: naijith,
+      position: "Founder",
+      description:
+        "Naijith Rai drives the technical and strategy of the ProjectX Labs platform and brand",
+      linkedinUrl:
+        "https://www.linkedin.com/in/naijith-rai-71202a1b2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+    },
+    {
+      name: "Ksheeraj Krishna K V",
+      photo: ksheeraj,
+      position: "Co-Founder",
+      description:
+        "Ksheeraj Krishna K V drives the technical and strategy of the ProjectX Labs platform and brand",
+      linkedinUrl:
+        "https://www.linkedin.com/in/ksheeraj-krishna-k-v-185b091b7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+    },
+    {
+      name: "Pranav P V",
+      photo: pranav,
+      position: "Co-Founder",
+      description:
+        "Pranav P V drives the technical and strategy of the ProjectX Labs platform and brand",
+      linkedinUrl:
+        "https://www.linkedin.com/in/pranav-pv-281a97214?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+    },
+    {
+      name: "Ruturaj Yellurkar",
+      photo: ruturaj,
+      position: "Co-Founder",
+      description:
+        "Ruturaj Yellurkar drives the technical and strategy of the ProjectX Labs platform and brand",
+      linkedinUrl:
+        "https://www.linkedin.com/in/ruturaj10?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+    },
+    {
+      name: "Shreesha Sridhar",
+      photo: shreesha,
+      position: "Chairman",
+      description:
+        "Shreesha Sridhar drives the technical and strategy of the ProjectX Labs platform and brand",
+      linkedinUrl:
+        "https://www.linkedin.com/in/shreesha-sridhar-3ab7b728b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+    }
+  ];
+
   return (
     <div className="flex flex-col items-center justify-center">
       <section className="relative flex h-dvh w-full justify-center bg-black sm:items-center md:bg-[url('../assets/images/xlabs_fullTeam.png')] md:bg-cover md:bg-center md:bg-no-repeat xl:bg-center">
@@ -66,9 +143,12 @@ const AboutUs: React.FC = (): React.JSX.Element => {
           >
             ABOUT <span className="text-sky-400">US</span>
           </h1>
-          <h2 className="mb-2 text-lg font-medium text-white sm:text-2xl sm:font-medium md:text-3xl md:font-semibold">
+          <h2 className="mb-2 text-base font-medium text-white sm:text-2xl sm:font-medium md:text-3xl md:font-semibold">
             We specialize in{" "}
-            <TypingAnimation textColor={"text-sky-400"} items={typeItems} />
+            <TypingAnimation
+              textColor={"text-sky-400"}
+              items={typingAnimationItems}
+            />
           </h2>
           <p
             className="text-xl text-white sm:text-2xl"
@@ -97,7 +177,7 @@ const AboutUs: React.FC = (): React.JSX.Element => {
           className="absolute -right-16 bottom-10 hidden h-52 md:w-64 lg:inline xl:w-80"
         />
         <div className="m-0 mx-6 flex flex-col items-center justify-center md:mx-0 md:flex-row lg:gap-6">
-          {aboutUsCardsInfo.map((info) => (
+          {infoCards.map((info) => (
             <div
               className="card my-8 md:mx-5 md:my-0 md:min-h-[600px] lg:mx-0 lg:min-h-[550px] xl:min-h-[580px]"
               key={info.id}
@@ -112,11 +192,19 @@ const AboutUs: React.FC = (): React.JSX.Element => {
         </div>
       </section>
       <section className="flex min-h-dvh w-full flex-col items-center bg-[#111827]">
-        <div className="team__header mb-4 mt-16 w-[80%] text-6xl text-white md:mt-24">
-          OUR TEAM
+        <div className="team__header mb-4 mt-16 w-[80%] text-center text-5xl text-white sm:text-6xl md:mt-24 md:text-left">
+          Team Leaders
         </div>
         <div className="team__section grid h-full w-full place-items-center gap-4 md:grid-cols-2 md:py-20 lg:p-20 xl:grid-cols-3 2xl:w-[80%]">
-          <TeamCards />
+          {employeeInfo.map((employee, index) => (
+            <EmployeeInfoCard
+              key={index}
+              name={employee.name}
+              photo={employee.photo}
+              position={employee.position}
+              linkedinUrl={employee.linkedinUrl}
+            />
+          ))}
         </div>
       </section>
     </div>

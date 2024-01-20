@@ -1,13 +1,8 @@
-import React, { Fragment, SetStateAction, useEffect, useState } from "react";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { Fragment, SetStateAction, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-  ChevronRightIcon
-} from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
-import useWindowDimensions from "./hooks";
 import { motion } from "framer-motion";
 import { FiChevronDown } from "react-icons/fi";
 
@@ -27,29 +22,7 @@ export const DropDown: React.FC<TDropDownProps> = ({
   setActiveRoute,
   title
 }) => {
-  const chevronIconDirection = {
-    ChevronDownIcon,
-    ChevronUpIcon,
-    ChevronRightIcon
-  } as const;
-
-  type typeOfChevronIconDirection =
-    (typeof chevronIconDirection)[keyof typeof chevronIconDirection];
   const [isDropDownVisible, setIsDropDownVisible] = useState<boolean>(false);
-
-  const { width } = useWindowDimensions();
-
-  const Icon: typeOfChevronIconDirection = getChevronIconDirection();
-
-  function getChevronIconDirection(): typeOfChevronIconDirection {
-    if (!isDropDownVisible) {
-      return chevronIconDirection.ChevronDownIcon;
-    } else if (width > 768) {
-      return chevronIconDirection.ChevronUpIcon;
-    } else {
-      return chevronIconDirection.ChevronRightIcon;
-    }
-  }
 
   const checkIsActive = () => {
     return isDropDownVisible ? "scale-x-1" : "scale-x-0";
@@ -126,41 +99,7 @@ export const DropDown: React.FC<TDropDownProps> = ({
   );
 };
 
-const wrapperVariants = {
-  open: {
-    scaleY: 1,
-    transition: {
-      when: "beforeChildren",
-      staggerChildren: 0.1
-    }
-  },
-  closed: {
-    scaleY: 0,
-    transition: {
-      when: "afterChildren",
-      staggerChildren: 0.1
-    }
-  }
-};
-
 const iconVariants = {
   open: { rotate: 180 },
   closed: { rotate: 0 }
-};
-
-const itemVariants = {
-  open: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      when: "beforeChildren"
-    }
-  },
-  closed: {
-    opacity: 0,
-    y: -15,
-    transition: {
-      when: "afterChildren"
-    }
-  }
 };
