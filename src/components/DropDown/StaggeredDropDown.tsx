@@ -26,6 +26,7 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
   const navigate = useNavigate();
   const [isIpad, setIsIpad] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     const closeDropdown = (event: MouseEvent) => {
@@ -40,17 +41,20 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
 
     document.addEventListener("mousedown", closeDropdown);
 
-    function isScreenIpadOrLower() {
-      width >= 1024 ? setIsIpad(false) : setIsIpad(true);
-    }
-
-    isScreenIpadOrLower();
-
     return () => {
       document.removeEventListener("mousedown", closeDropdown);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    function isScreenIpadOrLower() {
+      console.log("isScreenIpadOrLower called");
+      width >= 1024 ? setIsIpad(false) : setIsIpad(true);
+    }
+
+    isScreenIpadOrLower();
+  }, [width]);
 
   const wrapperVariants = {
     open: {
@@ -68,8 +72,6 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
       }
     }
   };
-
-  const { width } = useWindowDimensions();
 
   const iconVariants = {
     open: { rotate: 180 },
