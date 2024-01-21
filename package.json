@@ -27,7 +27,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
+    "react-quill": "^2.0.0",
     "react-router-dom": "^6.21.1",
+    "slate": "^0.101.5",
+    "slate-react": "^0.101.5",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",
     "typed.js": "^2.1.0"

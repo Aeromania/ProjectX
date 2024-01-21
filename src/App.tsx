@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import "./styles/index.css";
 import Home from "./pages/Home";
-import Blogs from "./pages/Blogs";
+import Blogs from "./pages/Blogs/Blogs";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import School from "./pages/School";
@@ -14,6 +14,8 @@ import Design from "./pages/Design";
 import Consultation from "./pages/Consultation";
 import { NavRoutes } from "./components/constants";
 import CfdAnalysis from "./pages/CfdAnalysis";
+import CreateBlogs from "./pages/Blogs/CreateBlogs";
+import EditBlogs from "./pages/Blogs/EditBlogs";
 
 const App: React.FC = (): React.JSX.Element => {
   return (
@@ -21,7 +23,11 @@ const App: React.FC = (): React.JSX.Element => {
       <Navbar />
       <Routes>
         <Route path={NavRoutes.HOME} element={<Home />} />
-        <Route path={NavRoutes.BLOGS} element={<Blogs />} />
+        <Route path={NavRoutes.BLOGS}>
+          <Route index element={<Blogs />} />
+          <Route path={NavRoutes.CreateBlogs} element={<CreateBlogs />} />
+          <Route path={NavRoutes.EditBlogs} element={<EditBlogs />} />
+        </Route>
         <Route path={NavRoutes.ABOUT_US} element={<AboutUs />} />
         <Route path={NavRoutes.CONTACT_US} element={<ContactUs />} />
         <Route path={NavRoutes.HIGH_SCHOOL} element={<School />} />

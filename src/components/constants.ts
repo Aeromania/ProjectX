@@ -14,5 +14,7 @@ export const NavRoutes = {
   DESIGN: "Design & Fabrication",
   PROJ_CONSULT: "Project Consultation",
   CFD_ANALYSIS: "Structure & CFD Analysis",
-  PRINTING_SERVICES: ""
+  PRINTING_SERVICES: "",
+  CreateBlogs: "CreateBlogs",
+  EditBlogs: "EditBlogs"
 } as const;
