@@ -277,7 +277,7 @@
 
 @media (max-width: 768px) {
   .card {
-    width: 100%;
+    width: 85%;
   }
   .team__section .photo img {
     filter: grayscale(0) contrast(1);
@@ -285,6 +285,9 @@
 }
 
 @media (max-width: 370px) {
+  .card {
+    width: 95%;
+  }
   .team__header {
     font-size: 2.25rem;
     line-height: 1;
