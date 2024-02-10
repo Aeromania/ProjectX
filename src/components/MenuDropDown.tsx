@@ -25,10 +25,10 @@ const MenuDropDown: React.FC<MenuDropDownProps> = ({
     <NavigationMenu.Root className="relative z-[1] flex w-full justify-center sm:w-auto">
       <NavigationMenu.List className="center m-0 flex list-none rounded-[6px] bg-transparent p-1">
         <NavigationMenu.Item>
-          <NavigationMenu.Trigger className="focus:shadow-violet7 group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-3 py-2 font-sans text-[15px] text-base font-normal leading-none text-black outline-none focus:shadow-[0_0_0_2px]">
+          <NavigationMenu.Trigger className="group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-3 py-2 font-sans text-[15px] text-base font-normal leading-none text-black outline-none focus:shadow-[0_0_0_2px] focus:shadow-violet7">
             {buttonTitle}{" "}
             <CaretDownIcon
-              className="text-violet10 duration-[250] relative top-[1px] transition-transform ease-in group-data-[state=open]:-rotate-180"
+              className="relative top-[1px] text-violet10 transition-transform duration-200 ease-in group-data-[state=open]:-rotate-180"
               aria-hidden
             />
           </NavigationMenu.Trigger>
@@ -50,7 +50,7 @@ const MenuDropDown: React.FC<MenuDropDownProps> = ({
         </NavigationMenu.Item>
 
         <NavigationMenu.Indicator className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden bg-transparent transition-[width,transform_250ms_ease]">
-          <div className="bg-violet11 relative top-[70%] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px]" />
+          <div className="relative top-[70%] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-violet11" />
         </NavigationMenu.Indicator>
       </NavigationMenu.List>
 
@@ -75,16 +75,16 @@ const ListItem: React.FC<ListItemProps> = React.forwardRef(
       <NavigationMenu.Link asChild>
         <Link
           className={classNames(
-            "focus:shadow-violet7 hover:bg-mauve3 block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors focus:shadow-[0_0_0_2px]",
+            "block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors hover:bg-mauve3 focus:shadow-[0_0_0_2px] focus:shadow-violet7",
             className
           )}
           {...props}
           ref={forwardedRef}
         >
-          <div className="text-violet12 mb-[5px] font-medium leading-[1.2]">
+          <div className="mb-[5px] font-medium leading-[1.2] text-violet12">
             {title}
           </div>
-          <p className="text-mauve11 leading-[1.4]">{children}</p>
+          <p className="leading-[1.4] text-mauve11">{children}</p>
         </Link>
       </NavigationMenu.Link>
     </li>
