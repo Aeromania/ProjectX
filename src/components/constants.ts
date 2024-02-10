@@ -1,5 +1,5 @@
 export const NavRoutes = {
-  HOME: "/",
+  HOME: "Home",
   INTERNSHIP: "Certificate Internship",
   ABOUT_US: "About us",
   WORKSHOP: "Workshop",

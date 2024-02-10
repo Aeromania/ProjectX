@@ -10,6 +10,7 @@ import React, {
 import { useNavigate } from "react-router-dom";
 import useWindowDimensions from "@/CustomHooks/hooks";
 import DropDownButton from "./DropDownButton";
+import { twMerge } from "tailwind-merge";
 
 type staggeredDropDownProps = {
   title: string;
@@ -49,7 +50,6 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
 
   useEffect(() => {
     function isScreenIpadOrLower() {
-      console.log("isScreenIpadOrLower called");
       width >= 1024 ? setIsIpad(false) : setIsIpad(true);
     }
 
@@ -83,7 +83,12 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
   };
 
   return (
-    <div className="flex items-center justify-center bg-transparent py-2 lg:py-0">
+    <div
+      className={twMerge(
+        "flex items-center justify-center bg-transparent lg:py-0",
+        open ? "py-0" : "py-2"
+      )}
+    >
       <motion.div
         animate={open ? "open" : "closed"}
         className="relative"
@@ -97,23 +102,6 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
           isIpad={false}
           className="ml-4"
         />
-        {/* <button
-          onClick={() => setOpen((pv) => !pv)}
-          className="group ml-4 flex items-center gap-2 rounded-md text-white transition-colors lg:ml-0"
-        >
-          <span className="font-sans text-base font-normal">
-            {title}
-            <span
-              className={twMerge(
-                "inset-x-0 -bottom-1 hidden h-0.5 scale-x-0 bg-sky-600 font-sans text-lg font-normal transition-all duration-300 group-hover:origin-center group-hover:scale-x-100 group-hover:transform lg:absolute lg:inline",
-                checkIsActive() ? "scale-x-1" : "scale-x-0"
-              )}
-            />
-          </span>
-          <motion.span variants={iconVariants}>
-            <FiChevronDown />
-          </motion.span>
-        </button> */}
 
         {!isIpad ? (
           <motion.ul

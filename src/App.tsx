@@ -23,6 +23,7 @@ const App: React.FC = (): React.JSX.Element => {
       <Navbar />
       <Routes>
         <Route path={NavRoutes.HOME} element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path={NavRoutes.BLOGS}>
           <Route index element={<Blogs />} />
           <Route path={NavRoutes.CreateBlogs} element={<CreateBlogs />} />
