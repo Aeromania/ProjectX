@@ -100,7 +100,7 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
           onClick={() => setOpen((pv) => !pv)}
           iconVariants={iconVariants}
           isIpad={false}
-          className="ml-4"
+          className="ml-4 lg:ml-0"
         />
 
         {!isIpad ? (
