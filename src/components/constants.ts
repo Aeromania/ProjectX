@@ -18,3 +18,11 @@ export const NavRoutes = {
   CreateBlogs: "CreateBlogs",
   EditBlogs: "EditBlogs"
 } as const;
+
+export const WorkshopNavRoutes = {
+  PRINTING_3D: "3D PRINTING",
+  MODEL_ROCKETRY: "MODEL ROCKETRY",
+  ROBOTICS: "ROBOTICS",
+  WATER_ROCKETRY: "WATER ROCKETRY",
+  GLIDER: "GLIDER"
+} as const;

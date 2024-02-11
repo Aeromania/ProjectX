@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 export const NavLinks: React.FC<TNavLinksProps> = ({
   routeName,
   isActive,
-  onClick
+  onClick,
+  className
 }): React.JSX.Element => {
   const renderRouteName = String(routeName);
   const checkIsActive = () => {
@@ -14,7 +15,10 @@ export const NavLinks: React.FC<TNavLinksProps> = ({
   };
   return (
     <Link
-      className={`group relative ml-4 cursor-pointer py-2 text-white transition duration-1000 ease-in-out lg:ml-0 lg:inline-block lg:py-0`}
+      className={twMerge(
+        "group relative ml-4 cursor-pointer py-2 text-white transition duration-1000 ease-in-out lg:ml-0 lg:inline-block lg:py-0",
+        className
+      )}
       to={routeName}
       onClick={onClick}
     >

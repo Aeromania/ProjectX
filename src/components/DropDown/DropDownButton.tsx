@@ -25,13 +25,16 @@ const DropDownButton: React.FC<DropDownButtonProps> = ({
   onClick,
   iconVariants,
   isIpad,
-  className = ""
+  className
 }): React.JSX.Element => {
   return (
     <>
       <button
         onClick={onClick}
-        className={`${className} group flex items-center gap-2 rounded-md bg-transparent text-white transition-colors lg:py-0`}
+        className={twMerge(
+          "group flex items-center gap-2 rounded-md bg-transparent text-white transition-colors lg:py-0 lg:text-white",
+          className
+        )}
       >
         <span className="font-sans text-base font-normal">
           {title}

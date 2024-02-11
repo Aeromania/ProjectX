@@ -14,6 +14,7 @@ import { twMerge } from "tailwind-merge";
 
 type staggeredDropDownProps = {
   title: string;
+  activeRoute: string | null;
   setActiveRoute: Dispatch<SetStateAction<string | null>>;
   routeName: string[];
 };
@@ -21,7 +22,8 @@ type staggeredDropDownProps = {
 const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
   title,
   routeName,
-  setActiveRoute
+  setActiveRoute,
+  activeRoute
 }): React.JSX.Element => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -67,8 +69,8 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
     closed: {
       scaleY: 0,
       transition: {
-        when: "afterChildren",
-        staggerChildren: 0.1
+        when: "beforeChildren",
+        staggerChildren: 0
       }
     }
   };
@@ -120,6 +122,7 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
                   setOpen(false);
                   navigate(route);
                 }}
+                activeRoute={activeRoute}
               />
             ))}
           </motion.ul>
@@ -140,7 +143,10 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
                 checkIsActive={checkIsActive}
                 iconVariants={iconVariants}
                 isIpad={isIpad}
-                className="ml-8 py-1"
+                className={twMerge(
+                  "ml-8 py-1",
+                  activeRoute == route ? "text-sky-600" : ""
+                )}
               />
             ))}
           </motion.div>
@@ -152,7 +158,15 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
   );
 };
 
-const Option = ({ text, onClick }: { text: string; onClick: () => void }) => {
+const Option = ({
+  text,
+  onClick,
+  activeRoute
+}: {
+  text: string;
+  onClick: () => void;
+  activeRoute: string | null;
+}) => {
   const itemVariants = {
     open: {
       opacity: 1,
@@ -173,7 +187,10 @@ const Option = ({ text, onClick }: { text: string; onClick: () => void }) => {
     <motion.li
       variants={itemVariants}
       onClick={onClick}
-      className="flex w-full cursor-pointer items-center gap-2 whitespace-nowrap text-sm font-normal transition-colors hover:bg-sky-600 hover:text-white md:text-white"
+      className={twMerge(
+        "flex w-full cursor-pointer items-center gap-2 whitespace-nowrap text-sm font-normal transition-colors hover:bg-sky-600 hover:text-white md:text-white",
+        activeRoute == text ? "bg-sky-600" : ""
+      )}
     >
       <span className="px-4 py-2">{text}</span>
     </motion.li>

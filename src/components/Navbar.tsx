@@ -86,11 +86,13 @@ export const Navbar: React.FC = (): React.JSX.Element => {
             title={NavRoutes.WORKSHOP}
             setActiveRoute={setActiveRoute}
             routeName={[NavRoutes.HIGH_SCHOOL, NavRoutes.UNIVERSITY]}
+            activeRoute={activeRoute}
           />
           <StaggeredDropDown
             title={"Internship"}
             setActiveRoute={setActiveRoute}
             routeName={[NavRoutes.INTERNSHIP, NavRoutes.TRAINING]}
+            activeRoute={activeRoute}
           />
           <StaggeredDropDown
             title={NavRoutes.SERVICES}
@@ -101,6 +103,7 @@ export const Navbar: React.FC = (): React.JSX.Element => {
               NavRoutes.PROJ_CONSULT,
               NavRoutes.CFD_ANALYSIS
             ]}
+            activeRoute={activeRoute}
           />
           <Link
             to={NavRoutes.HOME}
@@ -119,6 +122,7 @@ export const Navbar: React.FC = (): React.JSX.Element => {
             routeName={NavRoutes.HOME}
             isActive={activeRoute === NavRoutes.HOME}
             onClick={() => handleLinkClick(NavRoutes.HOME)}
+            className="lg:hidden"
           />
           <NavLinks
             routeName={NavRoutes.BLOGS}

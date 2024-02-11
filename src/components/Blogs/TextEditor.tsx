@@ -3,7 +3,7 @@ import { CustomInput } from "./CustomInput";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-const TextEditor = () => {
+const TextEditor: React.FC = (): React.JSX.Element => {
   // <-- useState variables -->
   const [title, setTitle] = useState<string>("");
   const [summary, setSummary] = useState<string>("");
@@ -83,6 +83,7 @@ const TextEditor = () => {
         type="file"
         accept="image/jpg image/jpeg image/png"
         onChange={(ev) => setThumbnail(ev.target.files?.[0] || null)}
+        name="thumbnail"
       />
       <ReactQuill
         className="mt-6 w-full text-white"

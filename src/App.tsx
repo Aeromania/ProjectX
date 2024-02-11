@@ -5,17 +5,22 @@ import Home from "./pages/Home";
 import Blogs from "./pages/Blogs/Blogs";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
-import School from "./pages/School";
+import School from "./pages/School/School";
 import University from "./pages/University";
 import Intership from "./pages/Intership";
 import Training from "./pages/Training";
 import CustomDrones from "./pages/CustomDrones";
 import Design from "./pages/Design";
 import Consultation from "./pages/Consultation";
-import { NavRoutes } from "./components/constants";
+import { NavRoutes, WorkshopNavRoutes } from "./components/constants";
 import CfdAnalysis from "./pages/CfdAnalysis";
 import CreateBlogs from "./pages/Blogs/CreateBlogs";
 import EditBlogs from "./pages/Blogs/EditBlogs";
+import Printing3d from "./pages/School/Printing3d";
+import ModelRocketry from "./pages/School/ModelRocketry";
+import Robotics from "./pages/School/Robotics";
+import WaterRocketry from "./pages/School/WaterRocketry";
+import Glider from "./pages/School/Glider";
 
 const App: React.FC = (): React.JSX.Element => {
   return (
@@ -31,7 +36,22 @@ const App: React.FC = (): React.JSX.Element => {
         </Route>
         <Route path={NavRoutes.ABOUT_US} element={<AboutUs />} />
         <Route path={NavRoutes.CONTACT_US} element={<ContactUs />} />
-        <Route path={NavRoutes.HIGH_SCHOOL} element={<School />} />
+        <Route path={NavRoutes.HIGH_SCHOOL} element={<School />}>
+          <Route
+            path={WorkshopNavRoutes.PRINTING_3D}
+            element={<Printing3d />}
+          />
+          <Route
+            path={WorkshopNavRoutes.MODEL_ROCKETRY}
+            element={<ModelRocketry />}
+          />
+          <Route path={WorkshopNavRoutes.ROBOTICS} element={<Robotics />} />
+          <Route
+            path={WorkshopNavRoutes.WATER_ROCKETRY}
+            element={<WaterRocketry />}
+          />
+          <Route path={WorkshopNavRoutes.GLIDER} element={<Glider />} />
+        </Route>
         <Route path={NavRoutes.UNIVERSITY} element={<University />} />
         <Route path={NavRoutes.INTERNSHIP} element={<Intership />} />
         <Route path={NavRoutes.TRAINING} element={<Training />} />
