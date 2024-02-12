@@ -3,7 +3,9 @@ import { CustomInput } from "./CustomInput";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-const TextEditor: React.FC = (): React.JSX.Element => {
+const TextEditor: React.FC<{ buttonTitle: string }> = ({
+  buttonTitle
+}): React.JSX.Element => {
   // <-- useState variables -->
   const [title, setTitle] = useState<string>("");
   const [summary, setSummary] = useState<string>("");
@@ -95,7 +97,7 @@ const TextEditor: React.FC = (): React.JSX.Element => {
       />
       <input
         type="submit"
-        value="Create Post"
+        value={buttonTitle}
         className="mt-4 w-full cursor-pointer rounded-md bg-slate-300 py-4 font-medium text-slate-700 transition-colors duration-300 ease-in-out hover:bg-slate-400 active:bg-slate-500"
       />
     </form>

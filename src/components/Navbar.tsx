@@ -56,7 +56,7 @@ export const Navbar: React.FC = (): React.JSX.Element => {
       >
         <div className="flex w-full items-center justify-between bg-black px-2 lg:hidden lg:px-6">
           <Link
-            className="inline lg:hidden"
+            className="inline bg-red-500 lg:hidden"
             to={NavRoutes.HOME}
             onClick={() => setActiveRoute(NavRoutes.HOME)}
           >
@@ -79,7 +79,7 @@ export const Navbar: React.FC = (): React.JSX.Element => {
           className={`${
             isNavMenuVisible
               ? "absolute top-32 w-full flex-col border-b border-t border-[#374151] py-2 opacity-100 transition-all duration-300 ease-in-out"
-              : "absolute -top-16 -z-50 w-full flex-col opacity-0 transition-all duration-300 ease-in-out"
+              : "absolute -top-44 -z-50 w-full flex-col opacity-100 transition-all duration-300 ease-in-out"
           } flex items-start justify-center bg-black lg:relative lg:top-0 lg:z-0 lg:flex lg:w-full lg:flex-row lg:items-center lg:justify-between lg:bg-transparent lg:py-0 lg:opacity-100`}
         >
           <StaggeredDropDown

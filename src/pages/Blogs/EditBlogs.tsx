@@ -13,7 +13,7 @@ const EditBlogs: React.FC = (): React.JSX.Element => {
         <FaArrowLeft className="mr-2" />
         Go back to blogs
       </Link>
-      <TextEditor />
+      <TextEditor buttonTitle="Save Post" />
     </div>
   );
 };

@@ -1,11 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import EncryptButton from "@/components/LockedButton";
 import { WorkshopNavbar } from "@/components/WorkshopNavbar";
 import { Outlet } from "react-router-dom";
+import { NavRoutes } from "@/components/constants";
 
 const School: React.FC = (): React.JSX.Element => {
+  const navigate = useNavigate();
   return (
     <section className="flex min-h-dvh w-full flex-col bg-black text-white">
-      <div className="mt-12 flex w-full items-center justify-center lg:mt-32">
+      <div className="flex w-full items-center justify-center pt-12 lg:pt-32">
         <div className="flex w-full flex-col items-center lg:flex-row lg:justify-between">
           <div className="mb-6 flex flex-1 items-center justify-center lg:mb-0 lg:flex-col">
             <h1 className="text-center text-3xl leading-none sm:text-5xl lg:mr-0 lg:text-[5rem] xl:text-8xl 2xl:text-9xl">
@@ -24,8 +27,9 @@ const School: React.FC = (): React.JSX.Element => {
       </div>
       <div className="relative mt-10 flex w-full items-center justify-center">
         <EncryptButton
-          className="rounded-none tracking-widest hover:border-red-500 hover:text-red-500 lg:absolute lg:left-[50%]"
-          onClick={() => {}}
+          className="rounded-none tracking-widest hover:rounded-md hover:border-red-500 hover:text-red-500 lg:absolute lg:left-[50%]"
+          onClick={() => navigate("/" + NavRoutes.CONTACT_US)}
+          title="Contact Us"
         />
       </div>
       <WorkshopNavbar />

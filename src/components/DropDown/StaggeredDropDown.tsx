@@ -189,7 +189,7 @@ const Option = ({
       onClick={onClick}
       className={twMerge(
         "flex w-full cursor-pointer items-center gap-2 whitespace-nowrap text-sm font-normal transition-colors hover:bg-sky-600 hover:text-white md:text-white",
-        activeRoute == text ? "bg-sky-600" : ""
+        activeRoute == text ? "md:text-sky-600" : ""
       )}
     >
       <span className="px-4 py-2">{text}</span>

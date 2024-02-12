@@ -100,7 +100,7 @@ export const modelRocketryInfoArray: TCarouselInfoArrayProps[] = [
     id: 4,
     imageUrl: ModelRocketry_image4,
     title: "Building Rocket Motors",
-    body: "Delve into the mechanics of rocket propulsion. Engage in hands-on activities to construct and assemble your own rocket motors."
+    body: "Delve into the mechanics of rocket propulsion. Engage in hands-on activities to construct and assemble your own new rocket motors."
   },
   {
     id: 5,
