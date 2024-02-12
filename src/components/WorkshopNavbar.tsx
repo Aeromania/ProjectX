@@ -7,7 +7,7 @@ export const WorkshopNavbar: React.FC = (): React.JSX.Element => {
     WorkshopNavRoutes.PRINTING_3D
   );
   return (
-    <nav className="mt-16 flex items-center justify-center py-6 shadow-md shadow-[#374151]">
+    <nav className="mt-16 hidden items-center justify-center py-6 shadow-md shadow-[#374151] lg:flex">
       <div className="flex w-[95%] items-center justify-between">
         <WorkshopNavlinks
           isActive={isActive == WorkshopNavRoutes.PRINTING_3D}

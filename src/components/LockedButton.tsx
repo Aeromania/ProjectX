@@ -3,18 +3,27 @@ import { FaRegEnvelope } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 
-const TARGET_TEXT = "Contact us";
+type EncryptButtonProps = {
+  className?: string;
+  onClick: () => void;
+  title?: string;
+  showIcon?: boolean;
+};
+
 const CYCLES_PER_LETTER = 2;
 const SHUFFLE_TIME = 50;
 
 // const CHARS = "!@#$%^&*():{};|,.<>/?";
 const CHARS = "TCATNOC^&*():{};|,.<>/?SU";
 
-const EncryptButton: React.FC<{ className?: string; onClick: () => void }> = ({
+const EncryptButton: React.FC<EncryptButtonProps> = ({
   className,
-  onClick
+  onClick,
+  title = "Contact Us",
+  showIcon = true
 }): React.JSX.Element => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const TARGET_TEXT = title;
 
   const [text, setText] = useState(TARGET_TEXT);
 
@@ -67,7 +76,7 @@ const EncryptButton: React.FC<{ className?: string; onClick: () => void }> = ({
       onClick={onClick}
     >
       <div className="relative z-10 flex items-center justify-center gap-2">
-        <FaRegEnvelope />
+        {showIcon && <FaRegEnvelope />}
         <span>{text}</span>
       </div>
       <motion.span

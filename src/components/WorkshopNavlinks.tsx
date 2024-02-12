@@ -19,7 +19,7 @@ export const WorkshopNavlinks: React.FC<WorkshopNavbarProps> = ({
       <Link
         to={routeName}
         className={twMerge(
-          "text-2xl text-white transition-colors duration-200 ease-in-out hover:text-red-500 xl:text-3xl",
+          "text-2xl text-white transition-colors duration-200 ease-in-out hover:text-red-500 active:scale-90 xl:text-3xl",
           isActive ? "text-red-500" : "",
           className
         )}

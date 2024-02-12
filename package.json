@@ -30,8 +30,10 @@
     "react-icons": "^5.0.1",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.21.1",
+    "sass": "^1.70.0",
     "slate": "^0.101.5",
     "slate-react": "^0.101.5",
+    "swiper": "^11.0.6",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7",
     "typed.js": "^2.1.0"
