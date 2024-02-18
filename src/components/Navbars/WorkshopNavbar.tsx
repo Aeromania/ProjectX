@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { WorkshopNavlinks } from "./WorkshopNavlinks";
-import { WorkshopNavRoutes } from "./constants";
+import { WorkshopNavRoutes } from "../constants";
 
 export const WorkshopNavbar: React.FC = (): React.JSX.Element => {
   const [isActive, setIsActive] = useState<string>(

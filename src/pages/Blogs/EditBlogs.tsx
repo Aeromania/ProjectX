@@ -11,7 +11,7 @@ const EditBlogs: React.FC = (): React.JSX.Element => {
         className="mx-4 mt-6 flex w-fit items-center justify-center text-muted-foreground"
       >
         <FaArrowLeft className="mr-2" />
-        Go back to blogs
+        Cancel edit
       </Link>
       <TextEditor buttonTitle="Save Post" />
     </div>

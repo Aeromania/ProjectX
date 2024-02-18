@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import EncryptButton from "@/components/LockedButton";
-import { WorkshopNavbar } from "@/components/WorkshopNavbar";
+import { WorkshopNavbar } from "@/components/Navbars/WorkshopNavbar";
 import { Outlet } from "react-router-dom";
 import { NavRoutes } from "@/components/constants";
 
@@ -27,7 +27,7 @@ const School: React.FC = (): React.JSX.Element => {
       </div>
       <div className="relative mt-10 flex w-full items-center justify-center">
         <EncryptButton
-          className="rounded-none tracking-widest hover:rounded-md hover:border-red-500 hover:text-red-500 lg:absolute lg:left-[50%]"
+          className="rounded-none tracking-widest hover:border-red-500 hover:text-red-500 lg:absolute lg:left-[50%]"
           onClick={() => navigate("/" + NavRoutes.CONTACT_US)}
           title="Contact Us"
         />

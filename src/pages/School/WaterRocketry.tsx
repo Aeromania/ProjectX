@@ -4,7 +4,7 @@ import WaterRocketryLanding from "../../assets/images/xlabs_waterRocketryLanding
 // @ts-expect-error "type not supported"
 import WaterRocketryLandingFull from "../../assets/images/xlabs_waterRocketryLandingFull.png";
 import { useState, useEffect } from "react";
-import { Carousel } from "@/components/Carousel";
+import { Carousel } from "@/components/Carousel/Carousel";
 import { waterRocketryInfoArray } from "./CarouselData";
 
 const WaterRocketry: React.FC = (): React.JSX.Element => {

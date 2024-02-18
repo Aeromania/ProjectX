@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../styles/index.css";
-import { NavRoutes } from "./constants";
+import "../../styles/index.css";
+import { NavRoutes } from "../constants";
 import { NavLinks } from "./NavLinks";
 // @ts-expect-error "Photos type not supported"
-import logo from "../assets/images/xlabs_logo_white.png";
+import logo from "../../assets/images/xlabs_logo_white.png";
 import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 import { Divide as Hamburger } from "hamburger-react";
-import StaggeredDropDown from "./DropDown/StaggeredDropDown";
+import StaggeredDropDown from "../DropDown/StaggeredDropDown";
 import { motion, useScroll } from "framer-motion";
 
 export const Navbar: React.FC = (): React.JSX.Element => {
@@ -56,7 +56,7 @@ export const Navbar: React.FC = (): React.JSX.Element => {
       >
         <div className="flex w-full items-center justify-between bg-black px-2 lg:hidden lg:px-6">
           <Link
-            className="inline bg-red-500 lg:hidden"
+            className="inline lg:hidden"
             to={NavRoutes.HOME}
             onClick={() => setActiveRoute(NavRoutes.HOME)}
           >

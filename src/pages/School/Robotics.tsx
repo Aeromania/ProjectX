@@ -4,7 +4,7 @@ import RoboticsLanding from "../../assets/images/xlabs_roboticsLanding.png";
 // @ts-expect-error "type not supported"
 import RoboticsLandingFull from "../../assets/images/xlabs_roboticsLandingFull.png";
 import { useState, useEffect } from "react";
-import { Carousel } from "@/components/Carousel";
+import { Carousel } from "@/components/Carousel/Carousel";
 import { roboticsInfoArray } from "./CarouselData";
 
 const Robotics: React.FC = (): React.JSX.Element => {

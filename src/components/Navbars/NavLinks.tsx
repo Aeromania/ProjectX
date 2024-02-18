@@ -1,5 +1,5 @@
 import React from "react";
-import { TNavLinksProps } from "./types";
+import { TNavLinksProps } from "../types";
 import { twMerge } from "tailwind-merge";
 import { Link } from "react-router-dom";
 
