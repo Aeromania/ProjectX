@@ -1,18 +1,18 @@
 import useWindowDimensions from "@/CustomHooks/hooks";
 // @ts-expect-error "type not supported"
-import Printing3D from "../../assets/images/xlabs_3dprinting.png";
+import AmateurRocket from "../../../assets/images/xlabs_amateurRocketry.png";
 // @ts-expect-error "type not supported"
-import Printing3dFull from "../../assets/images/xlabs_mob_printing3d.png";
+import AmateurRocketryFull from "../../../assets/images/xlabs_amateurRocketryFull.png";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
-import { printing3dInfoArray } from "./CarouselData";
+import { printing3dInfoArray } from "../School/SchoolCarouselData";
 
-const Printing3d: React.FC = (): React.JSX.Element => {
+const AmateurRocketry: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
   const [landingImage, setLandingImage] = useState();
 
   useEffect(() => {
-    const result = width < 1024 ? Printing3dFull : Printing3D;
+    const result = width < 1024 ? AmateurRocketryFull : AmateurRocket;
     setLandingImage(result);
   }, [width]);
 
@@ -22,11 +22,11 @@ const Printing3d: React.FC = (): React.JSX.Element => {
         <div className="w-[90%] lg:ml-16 lg:w-[50%]">
           <img
             src={landingImage}
-            alt="3D Printer"
+            alt="Amateur Rocketry"
             className="mt-8 w-full rounded-sm lg:absolute lg:right-10 lg:top-[5%] lg:h-[90%] lg:w-[65%] lg:rounded-none"
           />
-          <h1 className="relative mb-6 text-center text-4xl font-semibold lg:text-start lg:text-7xl lg:font-bold">
-            3D PRINTING
+          <h1 className="relative mb-6 mt-4 text-center text-4xl font-semibold lg:mt-0 lg:text-start lg:text-7xl lg:font-bold">
+            AMATEUR ROCKETRY
           </h1>
           <p className="relative text-start text-xl lg:text-start lg:text-2xl xl:text-3xl">
             <span
@@ -34,12 +34,14 @@ const Printing3d: React.FC = (): React.JSX.Element => {
                 "absolute inset-x-0 -top-1 left-0 hidden h-0.5 scale-x-100 bg-[#373737] font-sans text-lg font-normal transition-all duration-300 lg:inline-block"
               }
             />
-            Welcome to our captivating 3D Printing Workshop, an immersive 4-hour
-            experience that not only introduces you to the fascinating realm of
-            3D printing but also equips you with the essential skills in
-            Computer-Aided Design (CAD). In this workshop, we seamlessly blend
-            the art of design with the science of printing, empowering you to
-            bring your digital visions to life.
+            Amateur rocketry has long been a captivating hobby for enthusiasts
+            of all ages, offering a hands-on approach to understanding the
+            principles of space exploration and propulsion. This workshop aims
+            to provide participants with a comprehensive introduction to
+            rockets, space exploration, and the fundamentals of building and
+            testing rocket motors. Through a blend of theoretical knowledge and
+            practical experimentation, attendees will gain valuable insights
+            into the exciting world of amateur rocketry.
           </p>
         </div>
       </div>
@@ -48,7 +50,7 @@ const Printing3d: React.FC = (): React.JSX.Element => {
           Workshop Overview
         </h1>
         <h3 className="my-4 mb-10 text-center font-sans text-xl sm:text-3xl lg:my-10 lg:mb-10">
-          Duration: <span className="text-red-500">4 Hours</span>
+          Duration: <span className="text-red-500">2 Days</span>
         </h3>
         <Carousel infoArray={printing3dInfoArray} />
       </div>
@@ -56,4 +58,4 @@ const Printing3d: React.FC = (): React.JSX.Element => {
   );
 };
 
-export default Printing3d;
+export default AmateurRocketry;

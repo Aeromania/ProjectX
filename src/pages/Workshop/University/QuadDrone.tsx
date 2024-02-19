@@ -1,19 +1,18 @@
 import useWindowDimensions from "@/CustomHooks/hooks";
 // @ts-expect-error "type not supported"
-import ModelRocketryLanding from "../../assets/images/xlabs_modelRocketryLanding.png";
+import QuadDroneLanding from "../../../assets/images/xlabs_quadDrone.png";
 // @ts-expect-error "type not supported"
-import ModelRocketryLandingFull from "../../assets/images/xlabs_modelRocketryLandingFull.png";
+import QuadDroneLandingFull from "../../../assets/images/xlabs_quadDroneFull.png";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
-import { modelRocketryInfoArray } from "./CarouselData";
+import { printing3dInfoArray } from "../School/SchoolCarouselData";
 
-const ModelRocketry: React.FC = (): React.JSX.Element => {
+const QuadDrone: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
   const [landingImage, setLandingImage] = useState();
 
   useEffect(() => {
-    const result =
-      width < 1024 ? ModelRocketryLandingFull : ModelRocketryLanding;
+    const result = width < 1024 ? QuadDroneLandingFull : QuadDroneLanding;
     setLandingImage(result);
   }, [width]);
 
@@ -23,11 +22,11 @@ const ModelRocketry: React.FC = (): React.JSX.Element => {
         <div className="w-[90%] lg:ml-16 lg:w-[50%]">
           <img
             src={landingImage}
-            alt="3D Printer"
-            className="mt-8 max-h-[600px] w-full rounded-md lg:absolute lg:right-10 lg:top-[5%] lg:h-[90%] lg:max-h-fit lg:w-[65%] lg:rounded-none"
+            alt="Drone (Quad)"
+            className="mt-8 w-full rounded-sm lg:absolute lg:right-10 lg:top-[5%] lg:h-[90%] lg:w-[65%] lg:rounded-none"
           />
-          <h1 className="relative mb-6 text-center text-4xl font-semibold lg:text-start lg:text-7xl lg:font-bold">
-            MODEL ROCKETRY
+          <h1 className="relative mb-6 mt-4 text-center text-4xl font-semibold lg:mt-0 lg:text-start lg:text-7xl lg:font-bold">
+            DRONE (QUAD)
           </h1>
           <p className="relative text-start text-xl lg:text-start lg:text-2xl xl:text-3xl">
             <span
@@ -35,10 +34,14 @@ const ModelRocketry: React.FC = (): React.JSX.Element => {
                 "absolute inset-x-0 -top-1 left-0 hidden h-0.5 scale-x-100 bg-[#373737] font-sans text-lg font-normal transition-all duration-300 lg:inline-block"
               }
             />
-            Welcome to our Model Rocketry Workshop{"-"} an educational adventure
-            designed to introduce school students to the fascinating world of
-            rockets, aerodynamics, and more! Join us for an engaging experience
-            where learning meets hands-on exploration.
+            Welcome to our Drone Workshop. we'll delve into the exciting world
+            of Unmanned Aerial Vehicles (UAVs), also known as drones. From
+            understanding the fundamental components to hands-on assembly,
+            soldering, and flight operations, this workshop offers a
+            comprehensive overview for enthusiasts and beginners
+            alike.Throughout the workshop, you'll learn how to solder
+            components, assemble a UAV from scratch, configure it using Mission
+            Planner software, and take to the skies with confidence
           </p>
         </div>
       </div>
@@ -47,12 +50,12 @@ const ModelRocketry: React.FC = (): React.JSX.Element => {
           Workshop Overview
         </h1>
         <h3 className="my-4 mb-10 text-center font-sans text-xl sm:text-3xl lg:my-10 lg:mb-10">
-          Duration: <span className="text-red-500">4 Hours</span>
+          Duration: <span className="text-red-500">3 Days</span>
         </h3>
-        <Carousel infoArray={modelRocketryInfoArray} />
+        <Carousel infoArray={printing3dInfoArray} />
       </div>
     </section>
   );
 };
 
-export default ModelRocketry;
+export default QuadDrone;

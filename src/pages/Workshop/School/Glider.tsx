@@ -1,11 +1,11 @@
 import useWindowDimensions from "@/CustomHooks/hooks";
 // @ts-expect-error "type not supported"
-import GliderLanding from "../../assets/images/xlabs_gliderLanding.png";
+import GliderLanding from "../../../assets/images/xlabs_gliderLanding.png";
 // @ts-expect-error "type not supported"
-import GliderLandingFull from "../../assets/images/xlabs_gliderLandingFull.jpeg";
+import GliderLandingFull from "../../../assets/images/xlabs_gliderLandingFull.jpeg";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
-import { gliderInfoArray } from "./CarouselData";
+import { gliderInfoArray } from "./SchoolCarouselData";
 
 const Glider: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
@@ -25,7 +25,7 @@ const Glider: React.FC = (): React.JSX.Element => {
             alt="3D Printer"
             className="mt-8 max-h-[600px] w-full rounded-md lg:absolute lg:left-10 lg:top-[5%] lg:h-[90%] lg:max-h-fit lg:w-[65%] lg:rounded-none"
           />
-          <h1 className="relative mb-6 text-center text-4xl font-semibold lg:text-start lg:text-7xl lg:font-bold">
+          <h1 className="relative mb-6 mt-4 text-center text-4xl font-semibold lg:mt-0 lg:text-start lg:text-7xl lg:font-bold">
             GLIDER
           </h1>
           <p className="relative text-start text-xl lg:text-start lg:text-2xl xl:text-3xl">

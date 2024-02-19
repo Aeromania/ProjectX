@@ -1,14 +1,14 @@
-import School from "@/pages/School/School";
+import School from "@/pages/Workshop/School/School";
 import { WorkshopNavRoutes } from "../components/constants";
-import Glider from "../pages/School/Glider";
-import ModelRocketry from "../pages/School/ModelRocketry";
-import Printing3d from "../pages/School/Printing3d";
-import Robotics from "../pages/School/Robotics";
-import WaterRocketry from "../pages/School/WaterRocketry";
+import Glider from "../pages/Workshop/School/Glider";
+import ModelRocketry from "../pages/Workshop/School/ModelRocketry";
+import Printing3d from "../pages/Workshop/School/Printing3d";
+import Robotics from "../pages/Workshop/School/Robotics";
+import WaterRocketry from "../pages/Workshop/School/WaterRocketry";
 import { Route, Routes } from "react-router-dom";
 import NotFound from "@/pages/PageNotFound/NotFound";
 
-const WorkshopRoutes = () => {
+const WorkshopSchoolRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<School />}>
@@ -30,4 +30,4 @@ const WorkshopRoutes = () => {
   );
 };
 
-export default WorkshopRoutes;
+export default WorkshopSchoolRoutes;

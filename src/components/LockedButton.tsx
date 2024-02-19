@@ -8,6 +8,8 @@ type EncryptButtonProps = {
   onClick: () => void;
   title?: string;
   showIcon?: boolean;
+  animationHidden?: boolean;
+  customAnimationColor?: string;
 };
 
 const CYCLES_PER_LETTER = 2;
@@ -20,7 +22,9 @@ const EncryptButton: React.FC<EncryptButtonProps> = ({
   className,
   onClick,
   title = "Contact Us",
-  showIcon = true
+  showIcon = true,
+  animationHidden = false,
+  customAnimationColor
 }): React.JSX.Element => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const TARGET_TEXT = title;
@@ -92,7 +96,11 @@ const EncryptButton: React.FC<EncryptButtonProps> = ({
           duration: 1,
           ease: "linear"
         }}
-        className="absolute inset-0 z-0 scale-125 bg-gradient-to-t from-indigo-400/0 from-40% via-sky-400/100 to-indigo-400/0 to-60% opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className={twMerge(
+          "absolute inset-0 z-0 scale-125 bg-gradient-to-t from-indigo-400/0 from-40% via-sky-400/100 to-indigo-400/0 to-60% opacity-0 transition-opacity duration-300 group-hover:opacity-100",
+          animationHidden ? "hidden" : "",
+          customAnimationColor
+        )}
       />
     </motion.button>
   );

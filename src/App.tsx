@@ -4,7 +4,6 @@ import "./styles/index.css";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
-import University from "./pages/University";
 import Intership from "./pages/Intership";
 import Training from "./pages/Training";
 import CustomDrones from "./pages/CustomDrones";
@@ -12,8 +11,10 @@ import Design from "./pages/Design";
 import Consultation from "./pages/Consultation";
 import { NavRoutes } from "./components/constants";
 import CfdAnalysis from "./pages/CfdAnalysis";
-import WorkshopRoutes from "./routes/WorkshopRoutes";
+import WorkshopSchoolRoutes from "./routes/WorkshopSchoolRoutes";
 import BlogsRoute from "./routes/BlogsRoute";
+import WorkshopUniversityRoutes from "./routes/WorkshopUniversityRoutes";
+import NotFound from "./pages/PageNotFound/NotFound";
 
 const App: React.FC = (): React.JSX.Element => {
   return (
@@ -27,15 +28,19 @@ const App: React.FC = (): React.JSX.Element => {
         <Route path={NavRoutes.CONTACT_US} element={<ContactUs />} />
         <Route
           path={NavRoutes.HIGH_SCHOOL + "/*"}
-          element={<WorkshopRoutes />}
+          element={<WorkshopSchoolRoutes />}
         />
-        <Route path={NavRoutes.UNIVERSITY} element={<University />} />
+        <Route
+          path={NavRoutes.UNIVERSITY + "/*"}
+          element={<WorkshopUniversityRoutes />}
+        />
         <Route path={NavRoutes.INTERNSHIP} element={<Intership />} />
         <Route path={NavRoutes.TRAINING} element={<Training />} />
         <Route path={NavRoutes.CUSTOM_DRONES} element={<CustomDrones />} />
         <Route path={NavRoutes.DESIGN} element={<Design />} />
         <Route path={NavRoutes.PROJ_CONSULT} element={<Consultation />} />
         <Route path={NavRoutes.CFD_ANALYSIS} element={<CfdAnalysis />} />
+        <Route path={"*"} element={<NotFound />} />
       </Routes>
     </div>
   );

@@ -4,7 +4,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
-import { TCarouselInfoArrayProps } from "@/pages/School/CarouselData";
+import { TCarouselInfoArrayProps } from "@/pages/Workshop/School/SchoolCarouselData";
 import "./carousel.css";
 import { useState } from "react";
 

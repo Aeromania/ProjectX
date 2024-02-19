@@ -21,6 +21,7 @@ const NotFound: React.FC = (): React.JSX.Element => {
             showIcon={false}
             onClick={() => navigate(-1)}
             className="text-lg hover:border-purple-800 hover:text-[#ffcb39] hover:shadow-md hover:shadow-slate-900 lg:px-20 lg:py-3 lg:text-xl xl:px-20"
+            customAnimationColor="via-violet-400/100"
           />
         </div>
       </main>

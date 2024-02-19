@@ -1,11 +1,11 @@
 import useWindowDimensions from "@/CustomHooks/hooks";
 // @ts-expect-error "type not supported"
-import WaterRocketryLanding from "../../assets/images/xlabs_waterRocketryLanding.png";
+import WaterRocketryLanding from "../../../assets/images/xlabs_waterRocketryLanding.png";
 // @ts-expect-error "type not supported"
-import WaterRocketryLandingFull from "../../assets/images/xlabs_waterRocketryLandingFull.png";
+import WaterRocketryLandingFull from "../../../assets/images/xlabs_waterRocketryLandingFull.png";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
-import { waterRocketryInfoArray } from "./CarouselData";
+import { waterRocketryInfoArray } from "./SchoolCarouselData";
 
 const WaterRocketry: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
@@ -26,7 +26,7 @@ const WaterRocketry: React.FC = (): React.JSX.Element => {
             alt="3D Printer"
             className="mt-8 max-h-[600px] w-full rounded-md lg:absolute lg:left-10 lg:top-[5%] lg:h-[90%] lg:max-h-fit lg:w-[65%] lg:rounded-none"
           />
-          <h1 className="relative mb-6 text-center text-4xl font-semibold lg:text-start lg:text-7xl lg:font-bold">
+          <h1 className="relative mb-6 mt-4 text-center text-4xl font-semibold lg:mt-0 lg:text-start lg:text-7xl lg:font-bold">
             WATER ROCKETRY
           </h1>
           <p className="relative text-start text-xl lg:text-start lg:text-2xl xl:text-3xl">
