@@ -5,7 +5,7 @@ import QuadDroneLanding from "../../../assets/images/xlabs_quadDrone.png";
 import QuadDroneLandingFull from "../../../assets/images/xlabs_quadDroneFull.png";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
-import { printing3dInfoArray } from "../School/SchoolCarouselData";
+import { quadDroneInfoArray } from "./UniversityCarouselData";
 
 const QuadDrone: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
@@ -52,7 +52,7 @@ const QuadDrone: React.FC = (): React.JSX.Element => {
         <h3 className="my-4 mb-10 text-center font-sans text-xl sm:text-3xl lg:my-10 lg:mb-10">
           Duration: <span className="text-red-500">3 Days</span>
         </h3>
-        <Carousel infoArray={printing3dInfoArray} />
+        <Carousel infoArray={quadDroneInfoArray} />
       </div>
     </section>
   );

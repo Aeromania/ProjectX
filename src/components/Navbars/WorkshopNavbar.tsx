@@ -13,7 +13,7 @@ export const WorkshopNavbar: React.FC<WorkshopNavbarProps> = ({
 }): React.JSX.Element => {
   const [isActive, setIsActive] = useState<string>(initialRoute);
   return (
-    <nav className="sticky top-[95px] z-50 mt-16 hidden items-center justify-center bg-[#161617] py-6 shadow-md shadow-[#374151] lg:flex">
+    <nav className="sticky top-[95px] z-20 mt-16 hidden items-center justify-center bg-[#161617] py-6 shadow-md shadow-[#374151] lg:flex">
       <div className="flex w-[95%] items-center justify-between">
         {NavRoutes.map((routeName, index) => (
           <WorkshopNavlinks

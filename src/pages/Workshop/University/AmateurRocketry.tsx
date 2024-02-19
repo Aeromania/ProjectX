@@ -5,7 +5,7 @@ import AmateurRocket from "../../../assets/images/xlabs_amateurRocketry.png";
 import AmateurRocketryFull from "../../../assets/images/xlabs_amateurRocketryFull.png";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
-import { printing3dInfoArray } from "../School/SchoolCarouselData";
+import { amateurRocketryInfoArray } from "./UniversityCarouselData";
 
 const AmateurRocketry: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
@@ -52,7 +52,7 @@ const AmateurRocketry: React.FC = (): React.JSX.Element => {
         <h3 className="my-4 mb-10 text-center font-sans text-xl sm:text-3xl lg:my-10 lg:mb-10">
           Duration: <span className="text-red-500">2 Days</span>
         </h3>
-        <Carousel infoArray={printing3dInfoArray} />
+        <Carousel infoArray={amateurRocketryInfoArray} />
       </div>
     </section>
   );
