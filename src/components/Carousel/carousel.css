@@ -38,6 +38,15 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .swiper-button-prev:after,
+  .swiper-rtl .swiper-button-next:after,
+  .swiper-button-next:after,
+  .swiper-rtl .swiper-button-prev:after {
+    font-size: 24px;
+  }
+}
+
 @media (max-width: 560px) {
   .swiper-slide {
     height: 300px !important;
@@ -46,6 +55,6 @@
   .swiper-rtl .swiper-button-next:after,
   .swiper-button-next:after,
   .swiper-rtl .swiper-button-prev:after {
-    font-size: 30px;
+    font-size: 18px;
   }
 }

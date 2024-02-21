@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import EncryptButton from "@/components/LockedButton";
+import EncryptButton from "@/components/EncryptButton";
 import { WorkshopNavbar } from "@/components/Navbars/WorkshopNavbar";
 import { Outlet } from "react-router-dom";
 import { NavRoutes } from "@/components/constants";
@@ -33,11 +33,13 @@ const School: React.FC = (): React.JSX.Element => {
           title="Contact Us"
         />
       </div>
-      <WorkshopNavbar
-        initialRoute={WorkshopForSchoolRoute[0]}
-        NavRoutes={WorkshopForSchoolRoute}
-      />
-      <Outlet />
+      <div className="w-full pt-16">
+        <WorkshopNavbar
+          initialRoute={WorkshopForSchoolRoute[0]}
+          NavRoutes={WorkshopForSchoolRoute}
+        />
+        <Outlet />
+      </div>
     </section>
   );
 };

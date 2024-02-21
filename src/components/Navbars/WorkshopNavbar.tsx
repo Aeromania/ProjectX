@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { WorkshopNavlinks } from "./WorkshopNavlinks";
 import { typeOfWorkshopNavRoutes } from "../types";
+import { twMerge } from "tailwind-merge";
+import { FaArrowRightLong } from "react-icons/fa6";
+import Hamburger from "hamburger-react";
 
 type WorkshopNavbarProps = {
   initialRoute: typeOfWorkshopNavRoutes;
@@ -12,18 +15,56 @@ export const WorkshopNavbar: React.FC<WorkshopNavbarProps> = ({
   initialRoute
 }): React.JSX.Element => {
   const [isActive, setIsActive] = useState<string>(initialRoute);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [isActive]);
+
   return (
-    <nav className="sticky top-[95px] z-20 mt-16 hidden items-center justify-center bg-[#161617] py-6 shadow-md shadow-[#374151] lg:flex">
-      <div className="flex w-[95%] items-center justify-between">
-        {NavRoutes.map((routeName, index) => (
-          <WorkshopNavlinks
-            isActive={isActive == routeName}
-            routeName={routeName}
-            onClick={() => setIsActive(routeName)}
-            key={index}
-          />
-        ))}
+    <>
+      <div className="flex w-full items-center justify-center lg:hidden">
+        <button
+          className="relative flex w-[60%] items-center justify-center border border-input py-2 font-mono font-medium uppercase text-slate-300 transition-all duration-200 ease-in-out active:scale-95"
+          onClick={() => {
+            setIsMenuOpen(true);
+          }}
+        >
+          <FaArrowRightLong className="mr-2 text-xl" color="#cbd5e1" />
+          <span className="tracking-widest">Access Menu</span>
+        </button>
       </div>
-    </nav>
+      <nav
+        className={twMerge(
+          "fixed top-0 -z-10 h-full w-full items-center justify-center bg-[#161617] py-6 opacity-0 shadow-md shadow-[#374151] transition-opacity duration-200 ease-in-out lg:sticky lg:top-[95px] lg:z-20 lg:flex lg:h-fit lg:translate-x-0 lg:opacity-100",
+          isMenuOpen ? "z-50 opacity-100" : ""
+        )}
+      >
+        <div className="flex h-full w-full flex-col items-start justify-center gap-16 px-10 lg:h-fit lg:w-[95%] lg:flex-row lg:items-center lg:justify-between lg:gap-0 lg:px-0">
+          <div className="flex w-full items-center justify-end border-b border-red-500 lg:hidden">
+            <Hamburger
+              toggle={setIsMenuOpen}
+              toggled={isMenuOpen}
+              easing="ease-in-out"
+              size={28}
+              label="Show menu"
+              color="white"
+            />
+          </div>
+          {NavRoutes.map((routeName, index) => (
+            <WorkshopNavlinks
+              isActive={isActive == routeName}
+              routeName={routeName}
+              onClick={() => {
+                setIsActive(routeName);
+                setIsMenuOpen(false);
+              }}
+              key={index}
+            />
+          ))}
+          <div className="w-full border border-red-500 lg:hidden" />
+        </div>
+      </nav>
+    </>
   );
 };
