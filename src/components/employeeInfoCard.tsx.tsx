@@ -17,7 +17,9 @@ export const EmployeeInfoCard: React.FC<EmployeeInfoCardProps> = ({
     <>
       <div className="teamCards__container my-5 h-[510px] w-[320px] rounded-lg border border-[#374151] bg-[#1f2937]">
         <div className="photo">
-          <img src={photo} />
+          <div className="teamImg__container">
+            <img src={photo} />
+          </div>
           <div className="glow-wrap">
             <i className="glow"></i>
           </div>
