@@ -24,9 +24,9 @@ import aircraftDesign_image3 from "../../../assets/images/xlabs_aircraftDesign-3
 // @ts-expect-error "types not supported for images"
 import aircraftDesign_image4 from "../../../assets/images/xlabs_aircraftDesign-4.png";
 // @ts-expect-error "types not supported for images"
-import aircraftDesign_image5 from "../../../assets/images/xlabs_aircraftDesign-4.png";
+import aircraftDesign_image5 from "../../../assets/images/xlabs_aircraftDesign-5.jpeg";
 // @ts-expect-error "types not supported for images"
-import quadDrone_image1 from "../../../assets/images/xlabs_quadDrone-1.png";
+import quadDrone_image1 from "../../../assets/images/xlabs_quadDrone-1.jpeg";
 // @ts-expect-error "types not supported for images"
 import quadDrone_image2 from "../../../assets/images/xlabs_quadDrone-2.png";
 // @ts-expect-error "types not supported for images"

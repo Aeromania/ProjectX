@@ -15,6 +15,8 @@ import WorkshopSchoolRoutes from "./routes/WorkshopSchoolRoutes";
 import BlogsRoute from "./routes/BlogsRoute";
 import WorkshopUniversityRoutes from "./routes/WorkshopUniversityRoutes";
 import NotFound from "./pages/PageNotFound/NotFound";
+import Footer from "./components/Footer";
+import { ScrollToTopButton } from "./components/ScrollToTopButton";
 
 const App: React.FC = (): React.JSX.Element => {
   return (
@@ -42,6 +44,8 @@ const App: React.FC = (): React.JSX.Element => {
         <Route path={NavRoutes.CFD_ANALYSIS} element={<CfdAnalysis />} />
         <Route path={"*"} element={<NotFound />} />
       </Routes>
+      <Footer />
+      <ScrollToTopButton />
     </div>
   );
 };

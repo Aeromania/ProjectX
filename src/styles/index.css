@@ -311,4 +311,10 @@
     height: fit-content;
     width: 95%;
   }
+  .footer__items {
+    place-items: start !important;
+  }
+  .footer__links {
+    font-size: 14px;
+  }
 }
