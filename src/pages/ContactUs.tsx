@@ -1,21 +1,9 @@
 import { FormEvent } from "react";
-
 const ContactUs: React.FC = (): React.JSX.Element => {
   const sendContactData = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // try {
-    //   const response = await axios.post(
-    //     `${process.env.URL}/${process.env.CONTACT_US_ENDPOINT}`
-    //   );
-    //   if (response.status === STATUS_CODES.OK) {
-    //     console.log("Message delivered successfully");
-    //   }
-    // } catch (error) {
-    //   console.log("Error sending message:", error);
-    // }
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
-  //bg-[#fafafe]
   return (
     <div className="flex min-h-dvh items-center justify-center bg-black text-white">
       <div className="flex items-center">
@@ -45,7 +33,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
               <label className="block p-2 text-sky-500">Message</label>
               <textarea
                 rows={6}
-                className="w-full resize-none rounded-lg border border-input bg-black p-2 text-white caret-sky-500 outline-none placeholder:text-sm"
+                className="w-full resize-none rounded-lg border border-sky-500 bg-black p-2 text-white caret-sky-500 outline-none placeholder:text-sm"
                 aria-label="message"
                 placeholder="write your message here..."
               ></textarea>
@@ -74,5 +62,6 @@ const ContactUs: React.FC = (): React.JSX.Element => {
     </div>
   );
 };
+//bg-[#fafafe]
 
 export default ContactUs;
