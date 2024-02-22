@@ -55,10 +55,18 @@ export const Carousel: React.FC<CarouselProps> = ({
                 <h1
                   className="mb-4 mt-2 text-center font-semibold md:text-2xl"
                   style={{ fontFamily: "sans-serif" }}
+                  data-aos-offset="0"
+                  data-aos-once="false"
+                  data-aos="zoom-in"
                 >
                   {carousel.title}
                 </h1>
-                <p className="w-[95%] text-center font-sans md:w-[75%] md:text-start md:text-xl xl:w-[60%]">
+                <p
+                  className="w-[95%] text-center font-sans md:w-[75%] md:text-start md:text-xl xl:w-[60%]"
+                  data-aos-offset="0"
+                  data-aos-once="false"
+                  data-aos="zoom-out"
+                >
                   {carousel.body}
                 </p>
               </>

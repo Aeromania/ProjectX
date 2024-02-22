@@ -28,6 +28,7 @@ type infoCardsProps = {
   title: string;
   icon: string | undefined;
   description: string;
+  animation: string;
 };
 
 type employeeInfoProps = {
@@ -59,14 +60,16 @@ const AboutUs: React.FC = (): React.JSX.Element => {
       title: "Our Vision",
       icon: VisionIcon,
       description:
-        " We envision a future where every student in India is not only proficient in engineering theory but is also adept at applying their skills to solve practical challenges. we aspire to be the catalyst for this transformation. Our vision is to introduce students to the thrilling and fun aspects of engineering through activities such as rockets, UAVs, and additive manufacturing. "
+        " We envision a future where every student in India is not only proficient in engineering theory but is also adept at applying their skills to solve practical challenges. we aspire to be the catalyst for this transformation. Our vision is to introduce students to the thrilling and fun aspects of engineering through activities such as rockets, UAVs, and additive manufacturing. ",
+      animation: "zoom-in-right"
     },
     {
       id: 2,
       title: "Our Mission",
       icon: MissionIcon,
       description:
-        "Our mission is to ignite the spark of creativity and innovation within the hearts of students across India. We are dedicated to fostering a dynamic learning environment that empowers the next generation of engineers. Our focus lies in providing students with the tools, knowledge, and hands-on experiences necessary to tackle real-world problems through the lens of hardware engineering."
+        "Our mission is to ignite the spark of creativity and innovation within the hearts of students across India. We are dedicated to fostering a dynamic learning environment that empowers the next generation of engineers. Our focus lies in providing students with the tools, knowledge, and hands-on experiences necessary to tackle real-world problems through the lens of hardware engineering.",
+      animation: "zoom-in-left"
     }
   ];
 
@@ -121,7 +124,11 @@ const AboutUs: React.FC = (): React.JSX.Element => {
   return (
     <div className="flex flex-col items-center justify-center">
       <section className="relative flex h-dvh w-full justify-center bg-black sm:items-center md:bg-[url('../assets/images/xlabs_fullTeam.png')] md:bg-cover md:bg-center md:bg-no-repeat xl:bg-center">
-        <div className="relative mb-24 flex w-[95%] flex-col md:w-[90%] xl:w-[65%]">
+        <div
+          className="relative mb-24 flex w-[95%] flex-col md:w-[90%] xl:w-[65%]"
+          data-aos="fade-down"
+          data-aos-once={true}
+        >
           <div className="relative mb-6 md:hidden">
             <img src={teamPhoto} className="object-contain object-top" />
             <h1
@@ -140,10 +147,16 @@ const AboutUs: React.FC = (): React.JSX.Element => {
               beforeStyles,
               afterStyles
             )}
+            data-aos="fade-left"
+            data-aos-once={true}
           >
             ABOUT <span className="text-sky-400">US</span>
           </h1>
-          <h2 className="mb-2 text-base font-medium text-white sm:text-2xl sm:font-medium md:text-3xl md:font-semibold">
+          <h2
+            className="mb-2 text-base font-medium text-white sm:text-2xl sm:font-medium md:text-3xl md:font-semibold"
+            data-aos="fade-right"
+            data-aos-once={true}
+          >
             We specialize in{" "}
             <TypingAnimation
               textColor={"text-sky-400"}
@@ -153,6 +166,8 @@ const AboutUs: React.FC = (): React.JSX.Element => {
           <p
             className="text-xl text-white sm:text-2xl"
             style={{ textShadow: "2px 0px black" }}
+            data-aos="fade-left"
+            data-aos-once={true}
           >
             ProjectX Labs, a dynamic engineering services company founded by
             Aerospace graduates. Our mission is to inspire the next generation
@@ -171,16 +186,22 @@ const AboutUs: React.FC = (): React.JSX.Element => {
         <img
           src={topPlane}
           className="-left-32 top-10 hidden h-52 md:w-64 lg:absolute lg:inline lg:w-72 xl:w-80"
+          data-aos="fade-right"
+          data-aos-once={true}
         />
         <img
           src={bottomPlane}
           className="absolute -right-16 bottom-10 hidden h-52 md:w-64 lg:inline xl:w-80"
+          data-aos="fade-left"
+          data-aos-once={true}
         />
         <div className="m-0 mx-6 flex flex-col items-center justify-center md:mx-0 md:flex-row lg:gap-6">
           {infoCards.map((info) => (
             <div
               className="card my-8 md:mx-5 md:my-0 md:min-h-[600px] lg:mx-0 lg:min-h-[550px] xl:min-h-[580px]"
               key={info.id}
+              data-aos={info.animation}
+              data-aos-once={true}
             >
               <div className="box">
                 <img src={info.icon} className="h-24 w-32" />
@@ -192,7 +213,11 @@ const AboutUs: React.FC = (): React.JSX.Element => {
         </div>
       </section>
       <section className="flex min-h-dvh w-full flex-col items-center bg-[#111827]">
-        <div className="team__header mb-4 mt-16 w-[80%] text-center text-5xl text-white sm:text-6xl md:mt-24 md:text-left">
+        <div
+          className="team__header mb-4 mt-16 w-[80%] text-center text-5xl text-white sm:text-6xl md:mt-24 md:text-left"
+          data-aos="fade-down-right"
+          data-aos-once={true}
+        >
           Team Leaders
         </div>
         <div className="team__section grid h-full w-full place-items-center gap-4 md:grid-cols-2 md:py-20 lg:p-20 xl:grid-cols-3 2xl:w-[80%]">

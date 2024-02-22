@@ -8,11 +8,13 @@ import Hamburger from "hamburger-react";
 type WorkshopNavbarProps = {
   initialRoute: typeOfWorkshopNavRoutes;
   NavRoutes: typeOfWorkshopNavRoutes[];
+  className?: string;
 };
 
 export const WorkshopNavbar: React.FC<WorkshopNavbarProps> = ({
   NavRoutes,
-  initialRoute
+  initialRoute,
+  className
 }): React.JSX.Element => {
   const [isActive, setIsActive] = useState<string>(initialRoute);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -39,6 +41,8 @@ export const WorkshopNavbar: React.FC<WorkshopNavbarProps> = ({
           "fixed top-0 -z-10 h-full w-full items-center justify-center bg-[#161617] py-6 opacity-0 shadow-md shadow-[#374151] transition-all duration-300 ease-in-out lg:sticky lg:top-[95px] lg:z-20 lg:flex lg:h-fit lg:translate-x-0 lg:opacity-100",
           isMenuOpen ? "z-50 opacity-100" : ""
         )}
+        data-aos="fade-up"
+        data-aos-once={true}
       >
         <div className="flex h-full w-full flex-col items-start justify-center gap-16 px-10 lg:h-fit lg:w-[95%] lg:flex-row lg:items-center lg:justify-between lg:gap-0 lg:px-0">
           <div className="flex w-full items-center justify-end border-b border-red-500 lg:hidden">
@@ -60,6 +64,7 @@ export const WorkshopNavbar: React.FC<WorkshopNavbarProps> = ({
                 setIsMenuOpen(false);
               }}
               key={index}
+              className={className}
             />
           ))}
           <div className="w-full border border-red-500 lg:hidden" />

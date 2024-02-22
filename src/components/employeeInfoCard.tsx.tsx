@@ -15,7 +15,11 @@ export const EmployeeInfoCard: React.FC<EmployeeInfoCardProps> = ({
 }): React.JSX.Element => {
   return (
     <>
-      <div className="teamCards__container my-5 h-[510px] w-[320px] rounded-lg border border-[#374151] bg-[#1f2937]">
+      <div
+        className="teamCards__container my-5 h-[510px] w-[320px] rounded-lg border border-[#374151] bg-[#1f2937]"
+        data-aos="zoom-in"
+        data-aos-once={true}
+      >
         <div className="photo">
           <div className="teamImg__container">
             <img src={photo} />

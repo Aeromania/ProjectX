@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbars/Navbar";
 import "./styles/index.css";
@@ -17,8 +18,23 @@ import WorkshopUniversityRoutes from "./routes/WorkshopUniversityRoutes";
 import NotFound from "./pages/PageNotFound/NotFound";
 import Footer from "./components/Footer";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import useWindowDimensions from "./CustomHooks/hooks";
 
 const App: React.FC = (): React.JSX.Element => {
+  const { width } = useWindowDimensions();
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      delay: 200,
+      disable() {
+        return width <= 1024 ? true : false;
+      }
+    });
+    AOS.refresh();
+  }, [width]);
+
   return (
     <div>
       <Navbar />
