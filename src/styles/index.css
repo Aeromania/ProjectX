@@ -75,6 +75,20 @@
   }
 }
 
+/* Scrollbar Styles */
+
+html::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: #000;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #0ea5e9;
+}
+
 .card {
   width: calc(34% - 20px);
   background: none;

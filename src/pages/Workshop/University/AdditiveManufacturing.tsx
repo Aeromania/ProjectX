@@ -65,7 +65,7 @@ const AdditiveManufacturing: React.FC = (): React.JSX.Element => {
           data-aos="fade-left"
           data-aos-once={true}
         >
-          Duration: <span className="text-red-500">4 Days</span>
+          Duration: <span className="text-sky-500">4 Days</span>
         </h3>
         <Carousel infoArray={additiveManufacturingInfoArray} />
       </div>

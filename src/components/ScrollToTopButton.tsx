@@ -21,7 +21,7 @@ export const ScrollToTopButton = () => {
   return (
     <div
       className={twMerge(
-        "pointer-events-none fixed bottom-3 right-8 z-50 flex size-12 cursor-pointer items-center justify-center rounded-lg bg-red-500 text-center text-3xl opacity-0 outline-1 outline-transparent transition-all duration-300 ease-in-out hover:scale-105 active:scale-95",
+        "pointer-events-none fixed bottom-3 right-8 z-50 flex size-12 cursor-pointer items-center justify-center rounded-lg bg-sky-500 text-center text-3xl opacity-0 outline-1 outline-transparent transition-all duration-300 ease-in-out hover:scale-105 active:scale-95",
         isVisible ? "pointer-events-auto bottom-8 opacity-100" : ""
       )}
       onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}

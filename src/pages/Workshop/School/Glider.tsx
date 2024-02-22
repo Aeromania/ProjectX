@@ -62,7 +62,7 @@ const Glider: React.FC = (): React.JSX.Element => {
           data-aos="fade-left"
           data-aos-once={true}
         >
-          Duration: <span className="text-red-500">3 Hours</span>
+          Duration: <span className="text-sky-500">3 Hours</span>
         </h3>
         <Carousel infoArray={gliderInfoArray} />
       </div>

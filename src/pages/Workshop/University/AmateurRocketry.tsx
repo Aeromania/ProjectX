@@ -65,7 +65,7 @@ const AmateurRocketry: React.FC = (): React.JSX.Element => {
           data-aos="fade-left"
           data-aos-once={true}
         >
-          Duration: <span className="text-red-500">2 Days</span>
+          Duration: <span className="text-sky-500">2 Days</span>
         </h3>
         <Carousel infoArray={amateurRocketryInfoArray} />
       </div>

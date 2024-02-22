@@ -45,7 +45,7 @@ export const WorkshopNavbar: React.FC<WorkshopNavbarProps> = ({
         data-aos-once={true}
       >
         <div className="flex h-full w-full flex-col items-start justify-center gap-16 px-10 lg:h-fit lg:w-[95%] lg:flex-row lg:items-center lg:justify-between lg:gap-0 lg:px-0">
-          <div className="flex w-full items-center justify-end border-b border-red-500 lg:hidden">
+          <div className="flex w-full items-center justify-end border-b border-sky-500 lg:hidden">
             <Hamburger
               toggle={setIsMenuOpen}
               toggled={isMenuOpen}
@@ -67,7 +67,7 @@ export const WorkshopNavbar: React.FC<WorkshopNavbarProps> = ({
               className={className}
             />
           ))}
-          <div className="w-full border border-red-500 lg:hidden" />
+          <div className="w-full border border-sky-500 lg:hidden" />
         </div>
       </nav>
     </>

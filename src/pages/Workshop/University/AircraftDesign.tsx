@@ -65,7 +65,7 @@ const AircraftDesign: React.FC = (): React.JSX.Element => {
           data-aos="fade-left"
           data-aos-once={true}
         >
-          Duration: <span className="text-red-500">2 Weeks</span>
+          Duration: <span className="text-sky-500">2 Weeks</span>
         </h3>
         <Carousel infoArray={aircraftDesignInfoArray} />
       </div>

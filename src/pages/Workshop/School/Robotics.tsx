@@ -63,7 +63,7 @@ const Robotics: React.FC = (): React.JSX.Element => {
           data-aos="fade-left"
           data-aos-once={true}
         >
-          Duration: <span className="text-red-500">4 Hours</span>
+          Duration: <span className="text-sky-500">4 Hours</span>
         </h3>
         <Carousel infoArray={roboticsInfoArray} />
       </div>
