@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "../../styles/index.css";
 import { NavRoutes } from "../constants";
 import { NavLinks } from "./NavLinks";
-// @ts-expect-error "Photos type not supported"
 import logo from "../../assets/images/xlabs_logo_white.png";
 import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
@@ -145,12 +144,12 @@ export const Navbar: React.FC = (): React.JSX.Element => {
         style={{
           position: "absolute",
           scaleX: scrollYProgress,
-          height: "4px",
+          height: "2px",
           bottom: "0px",
           right: "0px",
           left: "0px",
           transformOrigin: "0%",
-          backgroundColor: "red",
+          backgroundColor: "rgb(14 165 233)",
           zIndex: -1
         }}
         className="hidden lg:inline-block"
