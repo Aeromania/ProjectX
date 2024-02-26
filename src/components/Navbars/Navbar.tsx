@@ -39,9 +39,6 @@ export const Navbar: React.FC = (): React.JSX.Element => {
     return () => document.removeEventListener("mousedown", closeNavMenu);
   }, []);
 
-  const navbarDropDownVisibleStyles: string =
-    "flex justify-center items-center flex-row w-5/6 py-0 w-full";
-
   return (
     <nav
       className="relative top-0 z-50 flex w-full items-center justify-center text-black shadow-md shadow-[#374151] transition-all duration-300 ease-in-out lg:sticky lg:h-24 lg:bg-black"
@@ -50,10 +47,12 @@ export const Navbar: React.FC = (): React.JSX.Element => {
       <div
         className={twMerge(
           "relative flex w-full flex-col items-center bg-transparent transition-all duration-300 ease-in-out lg:h-full lg:w-[90%] lg:flex-row lg:justify-between xl:w-9/12",
-          !isNavMenuVisible ? navbarDropDownVisibleStyles : ""
+          !isNavMenuVisible
+            ? "flex flex-row items-center justify-center py-0"
+            : ""
         )}
       >
-        <div className="flex w-full items-center justify-between bg-black px-2 lg:hidden lg:px-6">
+        <div className="z-10 flex w-full items-center justify-between bg-black px-2 lg:hidden lg:px-6">
           <Link
             className="inline lg:hidden"
             to={NavRoutes.HOME}
@@ -77,9 +76,9 @@ export const Navbar: React.FC = (): React.JSX.Element => {
         <div
           className={`${
             isNavMenuVisible
-              ? "absolute top-32 w-full flex-col border-b border-t border-[#374151] py-2 opacity-100 transition-all duration-300 ease-in-out"
+              ? "absolute top-32 w-full flex-col border-b border-t border-[#374151] py-2 opacity-100 ease-in-out"
               : "absolute -top-44 -z-50 w-full flex-col opacity-100 transition-all duration-300 ease-in-out"
-          } flex items-start justify-center bg-black lg:relative lg:top-0 lg:z-0 lg:flex lg:w-full lg:flex-row lg:items-center lg:justify-between lg:bg-transparent lg:py-0 lg:opacity-100`}
+          } flex items-start justify-center bg-black transition-all duration-300 ease-in-out lg:relative lg:top-0 lg:z-0 lg:flex lg:w-full lg:flex-row lg:items-center lg:justify-between lg:bg-transparent lg:py-0 lg:opacity-100`}
         >
           <StaggeredDropDown
             title={NavRoutes.WORKSHOP}
