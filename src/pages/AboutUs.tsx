@@ -188,7 +188,7 @@ const AboutUs: React.FC = (): React.JSX.Element => {
         <div className="m-0 mx-6 flex h-full flex-col items-center justify-center md:mx-0 md:flex-row lg:gap-6">
           {infoCards.map((info) => (
             <div
-              className="card my-8 min-h-[60%] md:mx-5 md:my-0 lg:mx-0"
+              className="card my-8 min-h-[70%] md:mx-5 md:my-0 lg:mx-0"
               key={info.id}
               data-aos={info.animation}
               data-aos-once={true}

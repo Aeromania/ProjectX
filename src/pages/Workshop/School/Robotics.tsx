@@ -15,7 +15,7 @@ const Robotics: React.FC = (): React.JSX.Element => {
   }, [width]);
 
   return (
-    <section className="w-full">
+    <section className="w-full overflow-x-hidden">
       <div className="relative flex w-full flex-col items-center py-10 sm:min-h-dvh sm:justify-center lg:items-start lg:py-0">
         <div className="w-[90%] lg:ml-16 lg:w-[50%]">
           <img

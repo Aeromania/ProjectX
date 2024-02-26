@@ -6,8 +6,8 @@
 .swiper-slide {
   background-position: center;
   background-size: cover;
-  width: 800px;
-  height: 500px;
+  width: 700px;
+  height: 370px;
 }
 
 .swiper-slide img {
@@ -28,7 +28,7 @@
 .swiper-rtl .swiper-button-next:after,
 .swiper-button-next:after,
 .swiper-rtl .swiper-button-prev:after {
-  color: red;
+  color: #0ea5e9;
   font-weight: 900;
 }
 
