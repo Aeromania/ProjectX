@@ -1,7 +1,5 @@
 import useWindowDimensions from "@/CustomHooks/hooks";
-// @ts-expect-error "type not supported"
 import QuadDroneLanding from "../../../assets/images/xlabs_quadDrone.png";
-// @ts-expect-error "type not supported"
 import QuadDroneLandingFull from "../../../assets/images/xlabs_quadDroneFull.png";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
@@ -9,7 +7,7 @@ import { quadDroneInfoArray } from "./UniversityCarouselData";
 
 const QuadDrone: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
-  const [landingImage, setLandingImage] = useState();
+  const [landingImage, setLandingImage] = useState<string | undefined>();
 
   useEffect(() => {
     const result = width < 1024 ? QuadDroneLandingFull : QuadDroneLanding;

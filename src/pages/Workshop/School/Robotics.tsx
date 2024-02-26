@@ -1,7 +1,5 @@
 import useWindowDimensions from "@/CustomHooks/hooks";
-// @ts-expect-error "type not supported"
 import RoboticsLanding from "../../../assets/images/xlabs_roboticsLanding.png";
-// @ts-expect-error "type not supported"
 import RoboticsLandingFull from "../../../assets/images/xlabs_roboticsLandingFull.png";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
@@ -9,7 +7,7 @@ import { roboticsInfoArray } from "./SchoolCarouselData";
 
 const Robotics: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
-  const [landingImage, setLandingImage] = useState();
+  const [landingImage, setLandingImage] = useState<string | undefined>();
 
   useEffect(() => {
     const result = width < 1024 ? RoboticsLandingFull : RoboticsLanding;

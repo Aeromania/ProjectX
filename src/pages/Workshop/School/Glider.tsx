@@ -1,7 +1,5 @@
 import useWindowDimensions from "@/CustomHooks/hooks";
-// @ts-expect-error "type not supported"
 import GliderLanding from "../../../assets/images/xlabs_gliderLanding.png";
-// @ts-expect-error "type not supported"
 import GliderLandingFull from "../../../assets/images/xlabs_gliderLandingFull.jpeg";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
@@ -9,7 +7,7 @@ import { gliderInfoArray } from "./SchoolCarouselData";
 
 const Glider: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
-  const [landingImage, setLandingImage] = useState();
+  const [landingImage, setLandingImage] = useState<string | undefined>();
 
   useEffect(() => {
     const result = width < 1024 ? GliderLandingFull : GliderLanding;

@@ -1,7 +1,5 @@
 import useWindowDimensions from "@/CustomHooks/hooks";
-// @ts-expect-error "type not supported"
 import AmateurRocket from "../../../assets/images/xlabs_amateurRocketry.png";
-// @ts-expect-error "type not supported"
 import AmateurRocketryFull from "../../../assets/images/xlabs_amateurRocketryFull.png";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
@@ -9,7 +7,7 @@ import { amateurRocketryInfoArray } from "./UniversityCarouselData";
 
 const AmateurRocketry: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
-  const [landingImage, setLandingImage] = useState();
+  const [landingImage, setLandingImage] = useState<string | undefined>();
 
   useEffect(() => {
     const result = width < 1024 ? AmateurRocketryFull : AmateurRocket;

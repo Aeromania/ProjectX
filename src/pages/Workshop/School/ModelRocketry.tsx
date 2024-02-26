@@ -1,7 +1,5 @@
 import useWindowDimensions from "@/CustomHooks/hooks";
-// @ts-expect-error "type not supported"
 import ModelRocketryLanding from "../../../assets/images/xlabs_modelRocketryLanding.png";
-// @ts-expect-error "type not supported"
 import ModelRocketryLandingFull from "../../../assets/images/xlabs_modelRocketryLandingFull.png";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
@@ -9,7 +7,7 @@ import { modelRocketryInfoArray } from "./SchoolCarouselData";
 
 const ModelRocketry: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
-  const [landingImage, setLandingImage] = useState();
+  const [landingImage, setLandingImage] = useState<string | undefined>();
 
   useEffect(() => {
     const result =

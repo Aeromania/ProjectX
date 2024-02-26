@@ -1,39 +1,21 @@
 import { TCarouselInfoArrayProps } from "../School/SchoolCarouselData";
-// @ts-expect-error "types not supported for images"
 import AdditiveManufacturing_image1 from "../../../assets/images/xlabs_additiveManufacturing-1.jpeg";
-// @ts-expect-error "types not supported for images"
 import AdditiveManufacturing_image2 from "../../../assets/images/xlabs_additiveManufacturing-2.jpeg";
-// @ts-expect-error "types not supported for images"
 import AdditiveManufacturing_image3 from "../../../assets/images/xlabs_additiveManufacturing-3.jpeg";
-// @ts-expect-error "types not supported for images"
 import AdditiveManufacturing_image4 from "../../../assets/images/xlabs_additiveManufacturing-4.jpeg";
-// @ts-expect-error "types not supported for images"
 import AmateurRocketry_image1 from "../../../assets/images/xlabs_modelRocketry-1.jpeg";
-// @ts-expect-error "types not supported for images"
 import AmateurRocketry_image2 from "../../../assets/images/xlabs_amateurRocketry-2.png";
-// @ts-expect-error "types not supported for images"
 import AmateurRocketry_image3 from "../../../assets/images/xlabs_amateurRocketry-3.png";
-// @ts-expect-error "types not supported for images"
 import AmateurRocketry_image4 from "../../../assets/images/xlabs_amateurRocketry-4.png";
-// @ts-expect-error "types not supported for images"
 import aircraftDesign_image1 from "../../../assets/images/xlabs_aircraftDesign-1.png";
-// @ts-expect-error "types not supported for images"
 import aircraftDesign_image2 from "../../../assets/images/xlabs_aircraftDesign-2.png";
-// @ts-expect-error "types not supported for images"
 import aircraftDesign_image3 from "../../../assets/images/xlabs_aircraftDesign-3.png";
-// @ts-expect-error "types not supported for images"
 import aircraftDesign_image4 from "../../../assets/images/xlabs_aircraftDesign-4.png";
-// @ts-expect-error "types not supported for images"
 import aircraftDesign_image5 from "../../../assets/images/xlabs_aircraftDesign-5.jpeg";
-// @ts-expect-error "types not supported for images"
 import quadDrone_image1 from "../../../assets/images/xlabs_quadDrone-1.jpeg";
-// @ts-expect-error "types not supported for images"
 import quadDrone_image2 from "../../../assets/images/xlabs_quadDrone-2.png";
-// @ts-expect-error "types not supported for images"
 import quadDrone_image3 from "../../../assets/images/xlabs_quadDrone-3.png";
-// @ts-expect-error "types not supported for images"
 import quadDrone_image4 from "../../../assets/images/xlabs_quadDrone-4.png";
-// @ts-expect-error "types not supported for images"
 import quadDrone_image5 from "../../../assets/images/xlabs_quadDrone-5.png";
 
 export const additiveManufacturingInfoArray: TCarouselInfoArrayProps[] = [

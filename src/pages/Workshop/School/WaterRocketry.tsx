@@ -1,7 +1,5 @@
 import useWindowDimensions from "@/CustomHooks/hooks";
-// @ts-expect-error "type not supported"
 import WaterRocketryLanding from "../../../assets/images/xlabs_waterRocketryLanding.png";
-// @ts-expect-error "type not supported"
 import WaterRocketryLandingFull from "../../../assets/images/xlabs_waterRocketryLandingFull.png";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
@@ -9,7 +7,7 @@ import { waterRocketryInfoArray } from "./SchoolCarouselData";
 
 const WaterRocketry: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
-  const [landingImage, setLandingImage] = useState();
+  const [landingImage, setLandingImage] = useState<string | undefined>();
 
   useEffect(() => {
     const result =

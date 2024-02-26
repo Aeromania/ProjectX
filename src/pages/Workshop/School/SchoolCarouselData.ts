@@ -1,40 +1,21 @@
-/* @ts-expect-error "not type for images" */
 import Printing3d_image1 from "../../../assets/images/xlabs_3dprinting-1.jpeg";
-/* @ts-expect-error "not type for images" */
 import Printing3d_image2 from "../../../assets/images/xlabs_3dprinting-2.jpeg";
-/* @ts-expect-error "not type for images" */
 import Printing3d_image3 from "../../../assets/images/xlabs_3dprinting-3.jpeg";
-/* @ts-expect-error "not type for images" */
 import Printing3d_image4 from "../../../assets/images/xlabs_3dprinting-4.jpeg";
-/* @ts-expect-error "not type for images" */
 import Printing3d_image5 from "../../../assets/images/xlabs_3dprinting-5.jpeg";
-/* @ts-expect-error "not type for images" */
 import ModelRocketry_image1 from "../../../assets/images/xlabs_modelRocketry-1.jpeg";
-/* @ts-expect-error "not type for images" */
 import ModelRocketry_image2 from "../../../assets/images/xlabs_modelRocketry-2.jpeg";
-/* @ts-expect-error "not type for images" */
 import ModelRocketry_image3 from "../../../assets/images/xlabs_modelRocketry-3.jpeg";
-/* @ts-expect-error "not type for images" */
 import ModelRocketry_image4 from "../../../assets/images/xlabs_modelRocketry-4.jpeg";
-/* @ts-expect-error "not type for images" */
 import ModelRocketry_image5 from "../../../assets/images/xlabs_modelRocketry-5.jpeg";
-/* @ts-expect-error "not type for images" */
 import Robotics_image1 from "../../../assets/images/xlabs_robotics-1.jpeg";
-/* @ts-expect-error "not type for images" */
 import Robotics_image2 from "../../../assets/images/xlabs_robotics-2.jpeg";
-/* @ts-expect-error "not type for images" */
 import Robotics_image3 from "../../../assets/images/xlabs_robotics-3.jpeg";
-/* @ts-expect-error "not type for images" */
 import WaterRocketry_image1 from "../../../assets/images/xlabs_waterRocketry-1.png";
-/* @ts-expect-error "not type for images" */
 import WaterRocketry_image2 from "../../../assets/images/xlabs_waterRocketry-2.png";
-/* @ts-expect-error "not type for images" */
 import WaterRocketry_image3 from "../../../assets/images/xlabs_waterRocketry-3.png";
-/* @ts-expect-error "not type for images" */
 import Glider_image1 from "../../../assets/images/xlabs_glider-1.jpeg";
-/* @ts-expect-error "not type for images" */
 import Glider_image2 from "../../../assets/images/xlabs_glider-2.jpeg";
-/* @ts-expect-error "not type for images" */
 import Glider_image3 from "../../../assets/images/xlabs_glider-3.jpeg";
 
 export type TCarouselInfoArrayProps = {

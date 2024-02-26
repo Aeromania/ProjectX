@@ -1,7 +1,5 @@
 import useWindowDimensions from "@/CustomHooks/hooks";
-// @ts-expect-error "type not supported"
 import RC_PlaneLanding from "../../../assets/images/xlabs_aircraftDesign.png";
-// @ts-expect-error "type not supported"
 import RC_PlaneLandingFull from "../../../assets/images/xlabs_aircraftDesignFull.png";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
@@ -9,7 +7,7 @@ import { printing3dInfoArray } from "../School/SchoolCarouselData";
 
 const RcPlane: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
-  const [landingImage, setLandingImage] = useState();
+  const [landingImage, setLandingImage] = useState<string | undefined>();
 
   useEffect(() => {
     const result = width < 1024 ? RC_PlaneLandingFull : RC_PlaneLanding;

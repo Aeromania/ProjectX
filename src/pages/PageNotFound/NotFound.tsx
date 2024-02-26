@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-// @ts-expect-error "no type for image";
 import astronaut from "../../assets/images/astronaut.svg";
 import "./styles/main.scss";
 import EncryptButton from "@/components/EncryptButton";

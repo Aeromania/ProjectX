@@ -1,7 +1,5 @@
 import useWindowDimensions from "@/CustomHooks/hooks";
-// @ts-expect-error "type not supported"
 import Printing3D from "../../../assets/images/xlabs_3dprinting.png";
-// @ts-expect-error "type not supported"
 import Printing3dFull from "../../../assets/images/xlabs_mob_printing3d.png";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
@@ -9,7 +7,7 @@ import { printing3dInfoArray } from "./SchoolCarouselData";
 
 const Printing3d: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
-  const [landingImage, setLandingImage] = useState();
+  const [landingImage, setLandingImage] = useState<string | undefined>();
 
   useEffect(() => {
     const result = width < 1024 ? Printing3dFull : Printing3D;

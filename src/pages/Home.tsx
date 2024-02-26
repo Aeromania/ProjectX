@@ -1,6 +1,4 @@
-// @ts-expect-error "video does not have types"
 import Intro from "../assets/videos/xlabs_intro.mp4";
-// @ts-expect-error "image does not have types"
 import Thumbnail from "../assets/images/xlabs_thumbnail.png";
 
 const Home: React.FC = (): React.JSX.Element => {
