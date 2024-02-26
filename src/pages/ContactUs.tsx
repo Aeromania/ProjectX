@@ -102,7 +102,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
                   id="link-checkbox"
                   type="checkbox"
                   value=""
-                  className="peer relative h-4 w-4 cursor-pointer appearance-none rounded border-gray-300 bg-gray-100 checked:bg-green-500"
+                  className="peer relative h-4 w-4 cursor-pointer appearance-none rounded border-gray-300 bg-gray-100 checked:bg-sky-500"
                   onChange={(e) => setIsConditionAccepted(e.target.checked)}
                   checked={isConditionAccepted}
                 />
@@ -110,7 +110,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
                   I agree with the{" "}
                   <a
                     href="#"
-                    className="text-blue-600 hover:underline dark:text-blue-500"
+                    className="text-sky-500 hover:underline dark:text-blue-500"
                   >
                     terms and conditions
                   </a>
