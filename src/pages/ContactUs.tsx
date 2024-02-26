@@ -1,4 +1,9 @@
 import { FormEvent } from "react";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa6";
+import { FaYoutube } from "react-icons/fa";
+
 const ContactUs: React.FC = (): React.JSX.Element => {
   const sendContactData = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -9,29 +14,31 @@ const ContactUs: React.FC = (): React.JSX.Element => {
       <div className="flex items-center lg:w-[90%] xl:w-[90%] 2xl:w-[80%]">
         {/* Left card */}
         <div
-          className="flex items-center justify-center rounded-s-lg bg-sky-500 pb-3 pl-3 pt-3 lg:h-[400px] lg:w-[350px] xl:w-[400px]"
+          className="flex items-center justify-center rounded-s-lg bg-sky-500 lg:h-[400px] lg:w-[100px] xl:w-[150px]"
           data-aos="fade-right"
         >
-          <div className="flex h-full w-full flex-col items-center gap-6 divide-y-2 divide-sky-500 bg-black p-2">
-            <h1 className="text-3xl font-semibold text-white">Get in touch</h1>
-            <ul className="flex flex-1 flex-col justify-center" role="list">
-              <div className="mt-2 flex flex-1 flex-col justify-center">
-                <label className="mb-1">Address:</label>
-                <li>
-                  472/6 Ground floor, Nagarbhavi, 3rd Cross Rd, 2nd Stage,
-                  Kottigepalya, Bengaluru, Karnataka 560091
-                </li>
-              </div>
-              <div className="flex flex-1 flex-col justify-center">
-                <label className="mb-1">Email:</label>
-                <li>projectxlabs@gmail.com</li>
-              </div>
-              <div className="flex flex-1 flex-col justify-center">
-                <label className="mb-1">Number:</label>
-                <li>+91 1234567890</li>
-                <li>+91 7894561230</li>
-              </div>
-            </ul>
+          <div className="flex h-[80%] w-full flex-col items-center justify-between gap-6 divide-y-2 divide-sky-500 bg-sky-500 p-2">
+            <a
+              href="https://www.linkedin.com/company/projectx-labs/"
+              target="_blank"
+            >
+              <FaLinkedinIn />
+            </a>
+            <a
+              href="https://x.com/ProjectX_Labs?t=VK7f8vvb6OT6FO4C-ZLjKw&s=08"
+              target="_blank"
+            >
+              <FaXTwitter />
+            </a>
+            <a
+              href="https://www.instagram.com/projectx_labs?igsh=MTRqOTV5ZzJxdjFvOQ=="
+              target="_blank"
+            >
+              <FaInstagram />
+            </a>
+            <a href="https://www.youtube.com/@ProjectX_Labs" target="_blank">
+              <FaYoutube />
+            </a>
           </div>
         </div>
         {/* Center card */}
