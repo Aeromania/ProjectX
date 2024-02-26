@@ -11,7 +11,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
   };
   return (
     <div className="flex min-h-dvh items-center justify-center bg-black text-white">
-      <div className="flex items-center lg:w-[90%] xl:w-[90%] 2xl:w-[80%]">
+      <div className="flex items-center justify-center py-20 lg:w-[90%] xl:w-[90%] 2xl:w-[80%]">
         {/* Left card */}
         <div
           className="flex items-center justify-center rounded-s-lg bg-sky-500 lg:h-[400px] lg:w-[100px] xl:w-[150px]"
@@ -21,22 +21,29 @@ const ContactUs: React.FC = (): React.JSX.Element => {
             <a
               href="https://www.linkedin.com/company/projectx-labs/"
               target="_blank"
+              className="rounded-full bg-sky-800 p-2 transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95"
             >
               <FaLinkedinIn />
             </a>
             <a
               href="https://x.com/ProjectX_Labs?t=VK7f8vvb6OT6FO4C-ZLjKw&s=08"
               target="_blank"
+              className="rounded-full bg-sky-800 p-2 transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95"
             >
               <FaXTwitter />
             </a>
             <a
               href="https://www.instagram.com/projectx_labs?igsh=MTRqOTV5ZzJxdjFvOQ=="
               target="_blank"
+              className="rounded-full bg-sky-800 p-2 transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95"
             >
               <FaInstagram />
             </a>
-            <a href="https://www.youtube.com/@ProjectX_Labs" target="_blank">
+            <a
+              href="https://www.youtube.com/@ProjectX_Labs"
+              target="_blank"
+              className="rounded-full bg-sky-800 p-2 transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95"
+            >
               <FaYoutube />
             </a>
           </div>
@@ -84,7 +91,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
         </div>
         {/* Maps card */}
         <div
-          className="rounded-e-lg bg-sky-500 pb-3 pr-3 pt-3 lg:h-[400px] lg:w-[500px] xl:w-[600px]"
+          className="rounded-e-lg bg-sky-500 pb-3 pr-3 pt-3 lg:h-[400px] lg:w-[500px]"
           data-aos="fade-left"
         >
           <iframe
