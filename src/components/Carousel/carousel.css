@@ -6,8 +6,8 @@
 .swiper-slide {
   background-position: center;
   background-size: cover;
-  width: 700px;
-  height: 370px;
+  width: 500px;
+  height: 300px;
 }
 
 .swiper-slide img {
@@ -30,11 +30,13 @@
 .swiper-rtl .swiper-button-prev:after {
   color: #0ea5e9;
   font-weight: 900;
+  align-self: center;
 }
 
 @media (max-width: 900px) {
   .swiper-slide {
     width: 100% !important;
+    height: 400px;
   }
 }
 

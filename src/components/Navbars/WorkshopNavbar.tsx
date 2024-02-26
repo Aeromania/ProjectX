@@ -38,7 +38,7 @@ export const WorkshopNavbar: React.FC<WorkshopNavbarProps> = ({
       </div>
       <nav
         className={twMerge(
-          "fixed top-0 -z-10 h-full w-full items-center justify-center bg-black py-6 opacity-0 shadow-md shadow-[#374151] transition-all duration-300 ease-in-out lg:sticky lg:top-[96px] lg:z-20 lg:flex lg:h-fit lg:w-full lg:translate-x-0 lg:opacity-100",
+          "fixed top-0 -z-10 h-full w-full items-center justify-center bg-black py-6 opacity-0 shadow-md shadow-[#374151] transition-all duration-300 ease-in-out lg:relative lg:z-20 lg:flex lg:h-fit lg:w-full lg:translate-x-0 lg:opacity-100",
           isMenuOpen ? "z-50 opacity-100" : ""
         )}
         data-aos="fade-up"
