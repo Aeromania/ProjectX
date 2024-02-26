@@ -185,10 +185,10 @@ const AboutUs: React.FC = (): React.JSX.Element => {
           data-aos="fade-left"
           data-aos-once={true}
         />
-        <div className="m-0 mx-6 flex flex-col items-center justify-center md:mx-0 md:flex-row lg:gap-6">
+        <div className="m-0 mx-6 flex h-full flex-col items-center justify-center md:mx-0 md:flex-row lg:gap-6">
           {infoCards.map((info) => (
             <div
-              className="card my-8 md:mx-5 md:my-0 md:min-h-[70%] lg:mx-0 lg:min-h-[70%] xl:min-h-[580px]"
+              className="card my-8 min-h-[60%] md:mx-5 md:my-0 lg:mx-0"
               key={info.id}
               data-aos={info.animation}
               data-aos-once={true}
