@@ -26,14 +26,14 @@ const EncryptButton: React.FC<EncryptButtonProps> = ({
   animationHidden = false,
   customAnimationColor
 }): React.JSX.Element => {
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef(null);
   const TARGET_TEXT = title;
 
   const [text, setText] = useState(TARGET_TEXT);
 
   const scramble = () => {
     let pos = 0;
-
+    // @ts-expect-error "types not available"
     intervalRef.current = setInterval(() => {
       const scrambled = TARGET_TEXT.split("")
         .map((char, index) => {
