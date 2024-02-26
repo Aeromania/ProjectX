@@ -89,24 +89,6 @@ html::-webkit-scrollbar-thumb {
   background: #0ea5e9;
 }
 
-.card {
-  width: calc(34% - 20px);
-  background: none;
-  color: #0d7586;
-  border: 1px solid #ffffff26;
-  text-align: center;
-  border-radius: 10px;
-  padding: 50px 25px;
-  cursor: pointer;
-  z-index: 1;
-  transition: all 0.1s ease;
-  position: relative;
-}
-
-.card:hover {
-  color: black !important;
-}
-
 .card::before {
   content: "";
   right: 0;
@@ -125,39 +107,6 @@ html::-webkit-scrollbar-thumb {
   right: unset;
   left: 0;
   width: 100%;
-}
-
-.card .box {
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.card:hover .box {
-  transform: scale(1.05);
-}
-
-.card .text {
-  font-size: 25px;
-  font-weight: 500;
-  margin: 10px 0 2rem 0;
-  color: #ffffff;
-  transition: 200ms ease;
-}
-
-.card:hover .text {
-  color: black;
-}
-
-.card .box img {
-  transition: all 0.3s ease;
-}
-
-.card:hover img {
-  filter: brightness(0);
 }
 
 /* Team section */

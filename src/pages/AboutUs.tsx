@@ -188,15 +188,23 @@ const AboutUs: React.FC = (): React.JSX.Element => {
         <div className="m-0 mx-6 flex h-full flex-col items-center justify-center md:mx-0 md:flex-row lg:gap-6">
           {infoCards.map((info) => (
             <div
-              className="card my-8 min-h-[70%] md:mx-5 md:my-0 lg:mx-0"
+              className="card group relative z-10 my-8 cursor-pointer rounded-[10px] border border-[#ffffff26] bg-none px-6 py-[50px] text-center text-[#0d7586] transition-all duration-100 ease-in hover:text-black md:mx-5 md:my-0 lg:mx-0 xl:h-[70%]"
+              style={{ width: "calc(34% - 20px)" }}
               key={info.id}
-              data-aos={info.animation}
-              data-aos-once={true}
+              // data-aos={info.animation}
+              // data-aos-once={true}
             >
-              <div className="box">
-                <img src={info.icon} className="h-24 w-32" />
-                <div className="text">{info.title}</div>
-                <p className="lg:text-base xl:text-lg">{info.description}</p>
+              <div className="flex w-full flex-col items-center justify-center transition-all duration-300 ease-in group-hover:scale-105">
+                <img
+                  src={info.icon}
+                  className="h-24 w-32 transition-all duration-300 ease-in group-hover:brightness-0"
+                />
+                <div className="mb-8 mt-[10px] text-2xl font-medium text-[#ffffff] transition-all duration-200 ease-in group-hover:text-black">
+                  {info.title}
+                </div>
+                <p className="lg:line-clamp-6 lg:text-ellipsis lg:text-base xl:text-lg ">
+                  {info.description}
+                </p>
               </div>
             </div>
           ))}
