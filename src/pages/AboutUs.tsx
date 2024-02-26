@@ -1,25 +1,15 @@
 import TypingAnimation from "@/components/TypingAnimation";
 import React from "react";
 import { twMerge } from "tailwind-merge";
-// @ts-expect-error "type not supported"
 import VisionIcon from "../assets/images/xlabs_visionIcon.png";
-// @ts-expect-error "type not supported"
 import MissionIcon from "../assets/images/xlabs_missionIcon.png";
-// @ts-expect-error "type not supported"
 import topPlane from "../assets/images/xlabs_mv_bgTop.png";
-// @ts-expect-error "type not supported"
 import bottomPlane from "../assets/images/xlabs_mv_bgBottom.png";
-// @ts-expect-error "type not supported"
 import teamPhoto from "../assets/images/xlabs_fullTeam.png";
-// @ts-expect-error "type not supported"
 import ksheeraj from "../assets/images/xlabs_ksheeraj.jpeg";
-// @ts-expect-error "type not supported"
 import naijith from "../assets/images/xlabs_naijith.jpeg";
-// @ts-expect-error "type not supported"
 import pranav from "../assets/images/xlabs_pranav.jpeg";
-// @ts-expect-error "type not supported"
 import shreesha from "../assets/images/xlabs_shreesha.jpeg";
-// @ts-expect-error "type not supported"
 import ruturaj from "../assets/images/xlabs_ruturaj.jpeg";
 import { EmployeeInfoCard } from "@/components/employeeInfoCard.tsx";
 
@@ -198,7 +188,7 @@ const AboutUs: React.FC = (): React.JSX.Element => {
         <div className="m-0 mx-6 flex flex-col items-center justify-center md:mx-0 md:flex-row lg:gap-6">
           {infoCards.map((info) => (
             <div
-              className="card my-8 md:mx-5 md:my-0 md:min-h-[600px] lg:mx-0 lg:min-h-[550px] xl:min-h-[580px]"
+              className="card my-8 md:mx-5 md:my-0 md:min-h-[600px] lg:mx-0 lg:min-h-[80%] xl:min-h-[580px]"
               key={info.id}
               data-aos={info.animation}
               data-aos-once={true}
@@ -212,7 +202,7 @@ const AboutUs: React.FC = (): React.JSX.Element => {
           ))}
         </div>
       </section>
-      <section className="flex min-h-dvh w-full flex-col items-center bg-[#111827]">
+      <section className="flex min-h-dvh w-full flex-col items-center bg-black">
         <div
           className="team__header mb-4 mt-16 w-[80%] text-center text-5xl text-white sm:text-6xl md:mt-24 md:text-left"
           data-aos="fade-down-right"

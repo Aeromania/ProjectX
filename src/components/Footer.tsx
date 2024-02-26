@@ -1,5 +1,4 @@
 import { Typography } from "@material-tailwind/react";
-// @ts-expect-error "images don't support types"
 import Logo from "../assets/images/xlabs_logo_white.png";
 import "../styles/index.css";
 import { useNavigate, Link } from "react-router-dom";
@@ -89,7 +88,7 @@ const Footer = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
   return (
-    <footer className="relative w-full bg-[#131a22]">
+    <footer className="relative w-full bg-[#020817]">
       <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-12">
           <Typography
@@ -136,7 +135,7 @@ const Footer = () => {
                           })
                         }
                       >
-                        <span className="inline-block hover:scale-105">
+                        <span className="inline-block transition-transform active:scale-95 sm:hover:scale-105">
                           {link.label}
                         </span>
                       </Link>

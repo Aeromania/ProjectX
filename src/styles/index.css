@@ -172,7 +172,7 @@ html::-webkit-scrollbar-thumb {
 
 .team__section .photo .teamImg__container {
   width: 288px;
-  height: 288px;
+  height: 250px;
   overflow: hidden;
 }
 
@@ -183,11 +183,13 @@ html::-webkit-scrollbar-thumb {
   display: block;
   transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
   border-radius: 8px;
+  height: 100%;
+  width: 100%;
 }
 
 .team__section .teamCards__container:hover img {
   filter: grayscale(0) contrast(1);
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .team__section .photo .glow-wrap {
