@@ -168,7 +168,7 @@ const AboutUs: React.FC = (): React.JSX.Element => {
         </div>
       </section>
       <section
-        className="relative flex w-full items-center justify-center overflow-x-clip py-20 md:h-[130dvh] md:py-0 xl:h-dvh"
+        className="relative flex w-full items-center justify-center overflow-x-clip py-20 md:h-[130dvh] md:py-0 xl:h-[120dvh] 2xl:h-dvh"
         style={{
           background: "linear-gradient(180deg, #011330 100%, #091d3ed9)"
         }}
