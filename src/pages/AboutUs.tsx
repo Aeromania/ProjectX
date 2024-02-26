@@ -168,7 +168,7 @@ const AboutUs: React.FC = (): React.JSX.Element => {
         </div>
       </section>
       <section
-        className="relative flex w-full items-center justify-center overflow-x-clip md:h-dvh"
+        className="relative flex w-full items-center justify-center overflow-x-clip py-20 md:h-dvh md:py-0"
         style={{
           background: "linear-gradient(180deg, #011330 100%, #091d3ed9)"
         }}
@@ -185,16 +185,16 @@ const AboutUs: React.FC = (): React.JSX.Element => {
           data-aos="fade-left"
           data-aos-once={true}
         />
-        <div className="m-0 mx-6 flex h-full flex-col items-center justify-center md:mx-0 md:flex-row lg:gap-6">
+        <div className="m-0 mx-6 flex h-full flex-col items-center justify-center md:mx-0 md:flex-row md:gap-6">
           {infoCards.map((info) => (
             <div
-              className="card group relative z-10 my-8 cursor-pointer rounded-[10px] border border-[#ffffff26] bg-none px-6 py-[50px] text-center text-[#0d7586] transition-all duration-100 ease-in hover:text-black md:mx-5 md:my-0 lg:mx-0 xl:h-[70%]"
+              className="card group relative z-10 my-8 h-[80%] cursor-pointer overflow-y-hidden rounded-[10px] border border-[#ffffff26] bg-none px-6 py-[50px] text-center text-[#0d7586] transition-all duration-100 ease-in hover:text-black md:mx-5 md:my-0 lg:mx-0 xl:h-[70%]"
               style={{ width: "calc(34% - 20px)" }}
               key={info.id}
-              // data-aos={info.animation}
-              // data-aos-once={true}
+              data-aos={info.animation}
+              data-aos-once={true}
             >
-              <div className="flex w-full flex-col items-center justify-center transition-all duration-300 ease-in group-hover:scale-105">
+              <div className="flex w-full  flex-col items-center justify-center transition-all duration-300 ease-in group-hover:scale-105">
                 <img
                   src={info.icon}
                   className="h-24 w-32 transition-all duration-300 ease-in group-hover:brightness-0"
@@ -202,9 +202,7 @@ const AboutUs: React.FC = (): React.JSX.Element => {
                 <div className="mb-8 mt-[10px] text-2xl font-medium text-[#ffffff] transition-all duration-200 ease-in group-hover:text-black">
                   {info.title}
                 </div>
-                <p className="lg:line-clamp-6 lg:text-ellipsis lg:text-base xl:text-lg ">
-                  {info.description}
-                </p>
+                <p className="lg:text-base xl:text-lg ">{info.description}</p>
               </div>
             </div>
           ))}

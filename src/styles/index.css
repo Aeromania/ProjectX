@@ -252,13 +252,16 @@ html::-webkit-scrollbar-thumb {
 
 @media (max-width: 1023px) {
   .card {
-    width: calc(50% - 10px);
+    width: calc(50% - 10px) !important;
   }
 }
 
 @media (max-width: 768px) {
   .card {
-    width: 100%;
+    width: 80% !important;
+  }
+  .card::before {
+    display: none !important;
   }
   .team__section .photo img {
     filter: grayscale(0) contrast(1);
@@ -269,6 +272,10 @@ html::-webkit-scrollbar-thumb {
 }
 
 @media (max-width: 370px) {
+  .card {
+    width: 100% !important;
+  }
+
   .team__header {
     font-size: 2.25rem;
     line-height: 1;
