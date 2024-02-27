@@ -83,7 +83,7 @@ const TextEditor: React.FC<{ buttonTitle: string }> = ({
       />
       <CustomInput
         type="file"
-        accept="image/jpg image/jpeg image/png"
+        accept="image/jpg image/jpeg image/png image/webp"
         onChange={(ev) => setThumbnail(ev.target.files?.[0] || null)}
         name="thumbnail"
       />
