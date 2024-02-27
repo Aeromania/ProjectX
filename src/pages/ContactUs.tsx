@@ -1,18 +1,68 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
+import axios from "axios";
+import { STATUS_CODES } from "@/components/constants";
+import { AlertWithContent } from "@/components/AlertWithContent";
 
 const ContactUs: React.FC = (): React.JSX.Element => {
-  const sendContactData = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  };
+  const [formName, setFormName] = useState<string>("");
+  const [formEmail, setFormEmail] = useState<string>("");
+  const [formMessage, setFormMessage] = useState<string>("");
+  const [formSubject, setFormSubject] = useState<string>("");
   const [isConditionAccepted, setIsConditionAccepted] =
     useState<boolean>(false);
+  const [inbuiltEmailCheckCleared, setInbuiltEmailCheckCleared] =
+    useState<boolean>(false);
+  const [showAlert, setShowAlert] = useState<string | undefined>();
+
   const MAX_CHAR_LENGTH = 3000;
-  const [charLength, setCharLength] = useState<number>(0);
+  const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w\w+)+$/;
+
+  const emailRef = useRef<HTMLInputElement | null>(null);
+
+  const sendContactData = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const body = {
+      name: formName,
+      email: formEmail,
+      message: formMessage,
+      subject: formSubject
+    };
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_URL}${
+          import.meta.env.VITE_CONTACT_US_ENDPOINT
+        }`,
+        body
+      );
+      if (response.status == STATUS_CODES.OK) {
+        setShowAlert("Message delivered successfully");
+      }
+    } catch (error) {
+      console.log(error);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const knownError = error as any;
+      if (knownError.response.status === STATUS_CODES.TOO_MANY_REQUESTS) {
+        setShowAlert(knownError.response.data.msg);
+      } else {
+        // server error
+        setShowAlert(
+          "There was an error sending your message. Please try again later."
+        );
+      }
+    } finally {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      setFormName("");
+      setFormEmail("");
+      setFormMessage("");
+      setFormSubject("");
+      setIsConditionAccepted(false);
+    }
+  };
+
   return (
     <div className="flex min-h-dvh items-center justify-center bg-black text-white">
       <div className="flex w-[95%] flex-col items-center justify-center gap-16 py-20 lg:w-[90%] lg:flex-row lg:gap-0 2xl:w-[80%]">
@@ -66,6 +116,8 @@ const ContactUs: React.FC = (): React.JSX.Element => {
                 placeholder="Name*"
                 required
                 maxLength={50}
+                onChange={(e) => setFormName(e.target.value)}
+                value={formName}
               />
               <input
                 type="email"
@@ -73,6 +125,32 @@ const ContactUs: React.FC = (): React.JSX.Element => {
                 className="w-full border-b border-sky-700 bg-transparent p-2 text-white caret-sky-500 outline-none placeholder:text-sky-500"
                 placeholder="Email*"
                 maxLength={100}
+                onChange={(e) => {
+                  setFormEmail(e.target.value);
+                  const validated = e.target.validity.valid;
+                  validated ? setInbuiltEmailCheckCleared(true) : null;
+                  if (validated || inbuiltEmailCheckCleared) {
+                    const isCustomValidationPassed = emailRegex.test(
+                      e.target.value
+                    );
+                    isCustomValidationPassed
+                      ? e.target?.setCustomValidity("")
+                      : e.target?.setCustomValidity(
+                          "Please add a '.' and at least two characters after the '.'"
+                        );
+                    e.target?.reportValidity();
+                  }
+                }}
+                ref={emailRef}
+                value={formEmail}
+              />
+              <input
+                type="text"
+                className="w-full border-b border-sky-700 bg-transparent p-2 text-white caret-sky-500 outline-none placeholder:text-sky-500"
+                placeholder="Subject"
+                maxLength={300}
+                onChange={(e) => setFormSubject(e.target.value)}
+                value={formSubject}
               />
               <div className="block w-full">
                 <label className="block p-2 text-sky-500">
@@ -83,14 +161,15 @@ const ContactUs: React.FC = (): React.JSX.Element => {
                   required
                   maxLength={MAX_CHAR_LENGTH}
                   onChange={(e) => {
-                    setCharLength(e.target.textLength);
+                    setFormMessage(e.target.value);
                   }}
+                  value={formMessage}
                   className="w-full resize-none rounded-lg border border-sky-500 bg-black p-2 text-white caret-sky-500 outline-none placeholder:text-sm"
                   aria-label="message"
                   placeholder="write your message here..."
                 ></textarea>
                 <span className="mr-2 block text-end text-xs text-[#9CA3AF]">
-                  {`${charLength}/${MAX_CHAR_LENGTH}`}
+                  {`${formMessage?.length}/${MAX_CHAR_LENGTH}`}
                 </span>
               </div>
               <div>
@@ -153,6 +232,9 @@ const ContactUs: React.FC = (): React.JSX.Element => {
           ></iframe>
         </div>
       </div>
+      {showAlert && (
+        <AlertWithContent open={showAlert} setOpen={setShowAlert} />
+      )}
     </div>
   );
 };
