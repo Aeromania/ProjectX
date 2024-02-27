@@ -5,7 +5,7 @@ import { FaInstagram } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
 import axios from "axios";
 import { AXIOS_ERROR_CODE, STATUS_CODES } from "@/components/constants";
-import { AlertWithContent } from "@/components/AlertWithContent";
+import { Toast } from "@/components/Toast";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { twMerge } from "tailwind-merge";
 import { AnimatedLoader } from "@/components/Loader/AnimatedLoader";
@@ -266,7 +266,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
           ></iframe>
         </div>
       </div>
-      <AlertWithContent open={showAlert} setOpen={setShowAlert} />
+      <Toast open={showAlert} setOpen={setShowAlert} />
       {isLoading && <AnimatedLoader />}
     </div>
   );
