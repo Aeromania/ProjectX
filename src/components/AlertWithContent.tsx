@@ -1,37 +1,48 @@
 import React, { SetStateAction, useEffect } from "react";
 import { IoMdClose } from "react-icons/io";
+import { twMerge } from "tailwind-merge";
 
 type AlertWithContentProps = {
   open: string | undefined;
   setOpen: React.Dispatch<SetStateAction<string | undefined>>;
+  className?: string;
 };
 
 export const AlertWithContent: React.FC<AlertWithContentProps> = ({
   open,
-  setOpen
+  setOpen,
+  className
 }): React.JSX.Element => {
   useEffect(() => {
-    setTimeout(() => {
-      setOpen(undefined);
-    }, 4000);
+    const dismissAlert = () => {
+      setTimeout(() => {
+        setOpen(undefined);
+      }, 3000);
+    };
+    if (open) {
+      dismissAlert();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [open]);
 
   return (
     <>
-      {open && (
-        <div className="absolute bottom-5 left-1/2 flex w-1/2 -translate-x-1/2 items-center justify-center rounded-lg bg-green-600 px-4 py-3 text-white transition-all duration-300 ease-in-out">
-          <div className="relative flex w-full items-center justify-center">
-            <h1 className="text-center text-lg">{open}</h1>
-            <IoMdClose
-              size={30}
-              color="gray"
-              onClick={() => setOpen(undefined)}
-              className="absolute right-2 cursor-pointer"
-            />
-          </div>
+      <div
+        className={twMerge(
+          "fixed bottom-5 -z-50 flex items-center justify-center rounded-xl bg-sky-500 py-3 pl-8 pr-3 text-white transition-all duration-500 ease-in-out",
+          open ? "left-1/2 z-30 -translate-x-1/2" : "right-[150%]",
+          className
+        )}
+      >
+        <div className="relative flex w-full items-center justify-center">
+          <h1 className="text-center text-lg">{open}</h1>
+          <IoMdClose
+            size={30}
+            onClick={() => setOpen(undefined)}
+            className="ml-6 cursor-pointer text-slate-600 transition-all duration-200 ease-in-out hover:scale-105 active:scale-95"
+          />
         </div>
-      )}
+      </div>
     </>
   );
 };

@@ -49,3 +49,7 @@ export const STATUS_CODES = {
   SERVICE_UNAVAILABLE: 503,
   GATEWAY_TIMEOUT: 504
 } as const;
+
+export const AXIOS_ERROR_CODE = {
+  NETWORK_ERROR: "ERR_NETWORK"
+} as const;

@@ -1,7 +1,8 @@
-const { blackA, mauve, violet, indigo, purple } = require("@radix-ui/colors");
+import { blackA, mauve, violet, indigo, purple } from "@radix-ui/colors";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -80,5 +81,5 @@ module.exports = {
       }
     }
   },
-  plugins: [require("tailwindcss-animate")]
+  plugins: [tailwindcssAnimate]
 };

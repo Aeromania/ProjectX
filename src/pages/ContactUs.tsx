@@ -4,8 +4,11 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
 import axios from "axios";
-import { STATUS_CODES } from "@/components/constants";
+import { AXIOS_ERROR_CODE, STATUS_CODES } from "@/components/constants";
 import { AlertWithContent } from "@/components/AlertWithContent";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
+import { twMerge } from "tailwind-merge";
+import { AnimatedLoader } from "@/components/Loader/AnimatedLoader";
 
 const ContactUs: React.FC = (): React.JSX.Element => {
   const [formName, setFormName] = useState<string>("");
@@ -17,6 +20,10 @@ const ContactUs: React.FC = (): React.JSX.Element => {
   const [inbuiltEmailCheckCleared, setInbuiltEmailCheckCleared] =
     useState<boolean>(false);
   const [showAlert, setShowAlert] = useState<string | undefined>();
+  const [showErrorMessage, setShowErrorMessage] = useState<string>("hidden");
+  const [errorTimeout, setErrorTimeout] =
+    useState<ReturnType<typeof setTimeout>>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const MAX_CHAR_LENGTH = 3000;
   const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w\w+)+$/;
@@ -25,6 +32,19 @@ const ContactUs: React.FC = (): React.JSX.Element => {
 
   const sendContactData = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (errorTimeout) {
+      clearTimeout(errorTimeout);
+      setShowErrorMessage("hidden");
+    }
+    if (!isConditionAccepted) {
+      setShowErrorMessage("flex");
+      setErrorTimeout(
+        setTimeout(() => {
+          setShowErrorMessage("hidden");
+        }, 2500)
+      );
+      return;
+    }
     const body = {
       name: formName,
       email: formEmail,
@@ -32,6 +52,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
       subject: formSubject
     };
     try {
+      setIsLoading(true);
       const response = await axios.post(
         `${import.meta.env.VITE_URL}${
           import.meta.env.VITE_CONTACT_US_ENDPOINT
@@ -45,12 +66,16 @@ const ContactUs: React.FC = (): React.JSX.Element => {
       console.log(error);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const knownError = error as any;
-      if (knownError.response.status === STATUS_CODES.TOO_MANY_REQUESTS) {
+      if (knownError.code == AXIOS_ERROR_CODE.NETWORK_ERROR) {
+        setShowAlert("Server down. Please try again later!");
+      } else if (
+        knownError.response?.status === STATUS_CODES.TOO_MANY_REQUESTS
+      ) {
         setShowAlert(knownError.response.data.msg);
       } else {
         // server error
         setShowAlert(
-          "There was an error sending your message. Please try again later."
+          "There was an error sending your message. Please try again later!"
         );
       }
     } finally {
@@ -60,6 +85,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
       setFormMessage("");
       setFormSubject("");
       setIsConditionAccepted(false);
+      setIsLoading(false);
     }
   };
 
@@ -69,35 +95,35 @@ const ContactUs: React.FC = (): React.JSX.Element => {
         <div className="flex w-full flex-col items-center justify-center lg:w-fit lg:flex-row">
           {/* Left card */}
           <div
-            className="flex h-[100px] w-full items-center justify-center rounded-t-lg bg-sky-500 px-6 sm:w-[400px] lg:h-[400px] lg:w-fit lg:rounded-l-lg lg:rounded-t-none"
+            className="flex h-[100px] w-full items-center justify-center rounded-t-lg border-t border-sky-500 bg-black px-6 shadow-lg shadow-sky-500 sm:w-[400px] lg:h-[400px] lg:w-fit lg:rounded-l-lg lg:rounded-tr-none lg:border-t-0 lg:shadow-sm lg:shadow-sky-500"
             data-aos="fade-right"
           >
-            <div className="flex h-full w-full flex-row items-center justify-between gap-6 divide-y-2 divide-sky-500 bg-sky-500 p-2 lg:h-[80%] lg:flex-col">
+            <div className="flex h-full w-full flex-row items-center justify-between gap-6 bg-black p-2 lg:h-[80%] lg:flex-col">
               <a
                 href="https://www.linkedin.com/company/projectx-labs/"
                 target="_blank"
-                className="rounded-full bg-sky-800 p-2 transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95"
+                className="rounded-full bg-black p-2 shadow-sm shadow-white transition-all duration-300 ease-in-out hover:scale-110 hover:text-sky-500 hover:shadow-sky-500 active:scale-95"
               >
                 <FaLinkedinIn />
               </a>
               <a
                 href="https://x.com/ProjectX_Labs?t=VK7f8vvb6OT6FO4C-ZLjKw&s=08"
                 target="_blank"
-                className="rounded-full bg-sky-800 p-2 transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95"
+                className="rounded-full bg-black p-2 shadow-sm shadow-white transition-all duration-300 ease-in-out hover:scale-110 active:scale-95"
               >
                 <FaXTwitter />
               </a>
               <a
                 href="https://www.instagram.com/projectx_labs?igsh=MTRqOTV5ZzJxdjFvOQ=="
                 target="_blank"
-                className="rounded-full bg-sky-800 p-2 transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95"
+                className="rounded-full bg-black p-2 shadow-sm shadow-white transition-all duration-300 ease-in-out hover:scale-110 hover:text-pink-500 hover:shadow-pink-500 active:scale-95"
               >
                 <FaInstagram />
               </a>
               <a
                 href="https://www.youtube.com/@ProjectX_Labs"
                 target="_blank"
-                className="rounded-full bg-sky-800 p-2 transition-transform duration-300 ease-in-out hover:scale-110 active:scale-95"
+                className="rounded-full bg-black p-2 shadow-sm shadow-white transition-all duration-300 ease-in-out hover:scale-110 hover:text-red-500 hover:shadow-red-500 active:scale-95"
               >
                 <FaYoutube />
               </a>
@@ -112,8 +138,8 @@ const ContactUs: React.FC = (): React.JSX.Element => {
             <form className="flex flex-col gap-4" onSubmit={sendContactData}>
               <input
                 type="text"
-                className="w-full border-b border-sky-700 bg-transparent p-2 text-white caret-sky-500 outline-none placeholder:text-sky-500"
-                placeholder="Name*"
+                className="w-full border-b border-sky-700 bg-transparent p-2 text-white caret-sky-500 outline-none placeholder:text-white"
+                placeholder="Name"
                 required
                 maxLength={50}
                 onChange={(e) => setFormName(e.target.value)}
@@ -122,8 +148,8 @@ const ContactUs: React.FC = (): React.JSX.Element => {
               <input
                 type="email"
                 required
-                className="w-full border-b border-sky-700 bg-transparent p-2 text-white caret-sky-500 outline-none placeholder:text-sky-500"
-                placeholder="Email*"
+                className="w-full border-b border-sky-700 bg-transparent p-2 text-white caret-sky-500 outline-none placeholder:text-white"
+                placeholder="Email"
                 maxLength={100}
                 onChange={(e) => {
                   setFormEmail(e.target.value);
@@ -146,16 +172,16 @@ const ContactUs: React.FC = (): React.JSX.Element => {
               />
               <input
                 type="text"
-                className="w-full border-b border-sky-700 bg-transparent p-2 text-white caret-sky-500 outline-none placeholder:text-sky-500"
+                className="w-full border-b border-sky-700 bg-transparent p-2 text-white caret-sky-500 outline-none placeholder:text-white"
                 placeholder="Subject"
                 maxLength={300}
                 onChange={(e) => setFormSubject(e.target.value)}
                 value={formSubject}
               />
-              <div className="block w-full">
-                <label className="block p-2 text-sky-500">
-                  <span className="cursor-text">Message*</span>
-                </label>
+              <div className="mt-2 block w-full">
+                {/* <label className="block p-1 text-white">
+                  <span className="cursor-text">Message</span>
+                </label> */}
                 <textarea
                   rows={5}
                   required
@@ -186,7 +212,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
                     onChange={(e) => setIsConditionAccepted(e.target.checked)}
                     checked={isConditionAccepted}
                   />
-                  <label className="ms-2 cursor-text text-sm text-[#9CA3AF]">
+                  <label className="ms-2 cursor-text text-sm text-gray-200">
                     I agree with the{" "}
                     <a
                       href="#"
@@ -194,7 +220,6 @@ const ContactUs: React.FC = (): React.JSX.Element => {
                     >
                       terms and conditions
                     </a>
-                    .
                   </label>
                   <svg
                     className="pointer-events-none absolute hidden h-4 w-4 peer-checked:block"
@@ -209,18 +234,27 @@ const ContactUs: React.FC = (): React.JSX.Element => {
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </div>
+                <p
+                  className={twMerge(
+                    "mt-1 items-center gap-1 text-xs text-red-500",
+                    showErrorMessage
+                  )}
+                >
+                  <AiOutlineExclamationCircle size={15} color="red" />
+                  Please accept the terms and conditions.
+                </p>
               </div>
               <input
                 type="submit"
-                className="cursor-pointer rounded-md bg-sky-500 py-2 text-white transition-all duration-200 ease-in-out hover:bg-sky-600 active:scale-95 disabled:cursor-not-allowed disabled:bg-sky-800 disabled:hover:bg-sky-800 disabled:active:scale-100"
-                disabled={!isConditionAccepted}
+                className="cursor-pointer rounded-md bg-sky-500 py-2 text-white transition-all duration-200 ease-in-out hover:bg-sky-600 active:scale-95 aria-disabled:cursor-not-allowed aria-disabled:bg-sky-800 aria-disabled:hover:bg-sky-800 aria-disabled:active:scale-100"
+                aria-disabled={!isConditionAccepted}
               />
             </form>
           </div>
         </div>
         {/* Maps card */}
         <div
-          className="h-[400px] w-full bg-cover bg-center sm:rounded-lg sm:bg-[url(../assets/images/xlabs_map-loader.gif)] sm:pb-3 sm:pl-3 sm:pr-3 sm:pt-3 lg:w-[60%] lg:rounded-e-lg lg:pl-0 xl:w-[500px]"
+          className="h-[400px] w-full bg-cover bg-center sm:rounded-lg sm:bg-[url(../assets/images/xlabs_map-loader.gif)] sm:pb-3 sm:pl-3 sm:pr-3 sm:pt-3 lg:w-[60%] lg:rounded-l-none lg:rounded-r-lg lg:pl-0 xl:w-[500px]"
           data-aos="fade-left"
         >
           <iframe
@@ -232,9 +266,8 @@ const ContactUs: React.FC = (): React.JSX.Element => {
           ></iframe>
         </div>
       </div>
-      {showAlert && (
-        <AlertWithContent open={showAlert} setOpen={setShowAlert} />
-      )}
+      <AlertWithContent open={showAlert} setOpen={setShowAlert} />
+      {isLoading && <AnimatedLoader />}
     </div>
   );
 };
