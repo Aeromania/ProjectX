@@ -61,6 +61,12 @@ const ContactUs: React.FC = (): React.JSX.Element => {
       );
       if (response.status == STATUS_CODES.OK) {
         setShowAlert("Message delivered successfully");
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        setFormName("");
+        setFormEmail("");
+        setFormMessage("");
+        setFormSubject("");
+        setIsConditionAccepted(false);
       }
     } catch (error) {
       console.log(error);
@@ -79,12 +85,6 @@ const ContactUs: React.FC = (): React.JSX.Element => {
         );
       }
     } finally {
-      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-      setFormName("");
-      setFormEmail("");
-      setFormMessage("");
-      setFormSubject("");
-      setIsConditionAccepted(false);
       setIsLoading(false);
     }
   };
