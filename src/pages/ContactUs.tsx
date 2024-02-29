@@ -1,9 +1,7 @@
 import { FormEvent, useRef, useState } from "react";
 import { FaLinkedinIn } from "react-icons/fa6";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa6";
-import { FaYoutube } from "react-icons/fa";
-import axios from "axios";
+import { FaXTwitter, FaInstagram, FaYoutube } from "react-icons/fa6";
+import axios, { AxiosError } from "axios";
 import { AXIOS_ERROR_CODE, STATUS_CODES } from "@/components/constants";
 import { Toast } from "@/components/Toast";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
@@ -15,13 +13,13 @@ const ContactUs: React.FC = (): React.JSX.Element => {
   const [formEmail, setFormEmail] = useState<string>("");
   const [formMessage, setFormMessage] = useState<string>("");
   const [formSubject, setFormSubject] = useState<string>("");
-  const [isConditionAccepted, setIsConditionAccepted] =
-    useState<boolean>(false);
-  const [inbuiltEmailCheckCleared, setInbuiltEmailCheckCleared] =
+  const [isTermsAccepted, setIsTermsAccepted] = useState<boolean>(false);
+  const [isDefaultEmailCheckCleared, setIsDefaultEmailCheckCleared] =
     useState<boolean>(false);
   const [showAlert, setShowAlert] = useState<string | undefined>();
-  const [showErrorMessage, setShowErrorMessage] = useState<string>("hidden");
-  const [errorTimeout, setErrorTimeout] =
+  const [errorMessageDisplayStyle, setErrorMessageDisplayStyle] =
+    useState<string>("hidden");
+  const [errorMessageTimeout, setErrorMessageTimeout] =
     useState<ReturnType<typeof setTimeout>>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -30,17 +28,19 @@ const ContactUs: React.FC = (): React.JSX.Element => {
 
   const emailRef = useRef<HTMLInputElement | null>(null);
 
-  const sendContactData = async (event: FormEvent<HTMLFormElement>) => {
+  const processContactFormSubmission = async (
+    event: FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
-    if (errorTimeout) {
-      clearTimeout(errorTimeout);
-      setShowErrorMessage("hidden");
+    if (errorMessageTimeout) {
+      clearTimeout(errorMessageTimeout);
+      setErrorMessageDisplayStyle("hidden");
     }
-    if (!isConditionAccepted) {
-      setShowErrorMessage("flex");
-      setErrorTimeout(
+    if (!isTermsAccepted) {
+      setErrorMessageDisplayStyle("flex");
+      setErrorMessageTimeout(
         setTimeout(() => {
-          setShowErrorMessage("hidden");
+          setErrorMessageDisplayStyle("hidden");
         }, 2500)
       );
       return;
@@ -60,29 +60,29 @@ const ContactUs: React.FC = (): React.JSX.Element => {
         body
       );
       if (response.status == STATUS_CODES.OK) {
-        setShowAlert("Message delivered successfully");
+        setShowAlert("Your message was sent successfully");
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         setFormName("");
         setFormEmail("");
         setFormMessage("");
         setFormSubject("");
-        setIsConditionAccepted(false);
+        setIsTermsAccepted(false);
       }
     } catch (error) {
       console.log(error);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const knownError = error as any;
-      if (knownError.code == AXIOS_ERROR_CODE.NETWORK_ERROR) {
-        setShowAlert("Server down. Please try again later!");
-      } else if (
-        knownError.response?.status === STATUS_CODES.TOO_MANY_REQUESTS
-      ) {
-        setShowAlert(knownError.response.data.msg);
+      const knownError = error as Error | AxiosError;
+      if (axios.isAxiosError(knownError)) {
+        if (knownError.code === AXIOS_ERROR_CODE.NETWORK_ERROR) {
+          setShowAlert("Server down. Please try again later!");
+        } else if (
+          knownError.response?.status === STATUS_CODES.TOO_MANY_REQUESTS
+        ) {
+          setShowAlert(knownError.response.data.msg);
+        } else {
+          setShowAlert("Server Error. Please try again later!");
+        }
       } else {
-        // server error
-        setShowAlert(
-          "There was an error sending your message. Please try again later!"
-        );
+        setShowAlert("Failed to send request. Please try again later!");
       }
     } finally {
       setIsLoading(false);
@@ -135,7 +135,10 @@ const ContactUs: React.FC = (): React.JSX.Element => {
             data-aos="fade-up"
           >
             <h1 className="text-3xl font-semibold text-sky-500">Contact us</h1>
-            <form className="flex flex-col gap-4" onSubmit={sendContactData}>
+            <form
+              className="flex flex-col gap-4"
+              onSubmit={processContactFormSubmission}
+            >
               <input
                 type="text"
                 className="w-full border-b border-sky-700 bg-transparent p-2 text-white caret-sky-500 outline-none placeholder:text-white"
@@ -154,8 +157,8 @@ const ContactUs: React.FC = (): React.JSX.Element => {
                 onChange={(e) => {
                   setFormEmail(e.target.value);
                   const validated = e.target.validity.valid;
-                  validated ? setInbuiltEmailCheckCleared(true) : null;
-                  if (validated || inbuiltEmailCheckCleared) {
+                  validated ? setIsDefaultEmailCheckCleared(true) : null;
+                  if (validated || isDefaultEmailCheckCleared) {
                     const isCustomValidationPassed = emailRegex.test(
                       e.target.value
                     );
@@ -209,8 +212,8 @@ const ContactUs: React.FC = (): React.JSX.Element => {
                     type="checkbox"
                     value=""
                     className="peer relative h-4 w-4 cursor-pointer appearance-none rounded border-gray-300 bg-gray-100 checked:bg-sky-500"
-                    onChange={(e) => setIsConditionAccepted(e.target.checked)}
-                    checked={isConditionAccepted}
+                    onChange={(e) => setIsTermsAccepted(e.target.checked)}
+                    checked={isTermsAccepted}
                   />
                   <label className="ms-2 cursor-text text-sm text-gray-200">
                     I agree with the{" "}
@@ -237,7 +240,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
                 <p
                   className={twMerge(
                     "mt-1 items-center gap-1 text-xs text-red-500",
-                    showErrorMessage
+                    errorMessageDisplayStyle
                   )}
                 >
                   <AiOutlineExclamationCircle size={15} color="red" />
@@ -247,7 +250,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
               <input
                 type="submit"
                 className="cursor-pointer rounded-md bg-sky-500 py-2 text-white transition-all duration-200 ease-in-out hover:bg-sky-600 active:scale-95 aria-disabled:cursor-not-allowed aria-disabled:bg-sky-800 aria-disabled:hover:bg-sky-800 aria-disabled:active:scale-100"
-                aria-disabled={!isConditionAccepted}
+                aria-disabled={!isTermsAccepted}
               />
             </form>
           </div>
