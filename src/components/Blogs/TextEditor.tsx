@@ -12,6 +12,7 @@ const TextEditor: React.FC<{ buttonTitle: string }> = ({
   // <-- useState variables -->
   const [title, setTitle] = useState<string>("");
   const [summary, setSummary] = useState<string>("");
+  const [averageReadTime, setAverageReadTime] = useState<string>("");
   const [thumbnail, setThumbnail] = useState<File | null>(null);
   const [content, setContent] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -65,19 +66,27 @@ const TextEditor: React.FC<{ buttonTitle: string }> = ({
     e.preventDefault();
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     setIsLoading(true);
-    const blogData = new FormData();
+    const blogData: FormData = new FormData();
+    const jwtToken =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiYWRtaW5Eb2N1bWVudElkIjoicXFNV0YwRU1NOHM3QldVU051ZUoiLCJpYXQiOjE1MTYyMzkwMjJ9.53YhTNA5VZeJqjZJ45HdtLVwQ52DulSqZXjZAq65ZQc";
     blogData.set("title", title);
     blogData.set("summary", summary);
     if (thumbnail) {
       blogData.set("thumbnail", thumbnail);
     }
-    blogData.set("Content", content);
+    blogData.set("content", content);
+    blogData.set("averageReadTime", averageReadTime);
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_URL}${
           import.meta.env.VITE_BLOGS_CREATE_ENDPOINT
         }`,
-        blogData
+        blogData,
+        {
+          headers: {
+            Authorization: "Bearer " + jwtToken
+          }
+        }
       );
       setToastMessage("Your blog has been saved successfully!");
       console.log("Response", response);
@@ -109,6 +118,13 @@ const TextEditor: React.FC<{ buttonTitle: string }> = ({
           placeholder={"Summary"}
           onChange={(ev) => setSummary(ev.target.value)}
           value={summary}
+          required
+        />
+        <CustomInput
+          type="number"
+          placeholder="Average Read Time"
+          onChange={(ev) => setAverageReadTime(ev.target.value)}
+          value={averageReadTime}
           required
         />
         <CustomInput

@@ -29,13 +29,13 @@ export const Toast: React.FC<ToastProps> = ({
     <>
       <div
         className={twMerge(
-          "fixed bottom-5 -z-50 flex items-center justify-center rounded-xl border-t border-sky-500 bg-black py-3 pl-8 pr-3 text-white shadow-sm shadow-sky-500 transition-all duration-500 ease-in-out",
+          "fixed bottom-5 -z-50 flex w-[80%] items-center justify-center rounded-xl border-t border-sky-500 bg-black py-3 pl-8 pr-3 text-white shadow-sm shadow-sky-500 transition-all duration-500 ease-in-out lg:w-fit",
           open ? "left-1/2 z-30 -translate-x-1/2" : "right-[150%]",
           className
         )}
       >
         <div className="relative flex w-full items-center justify-center">
-          <h1 className="text-center text-lg">{open}</h1>
+          <h1 className="text-center lg:text-lg">{open}</h1>
           <IoMdClose
             size={20}
             onClick={() => setOpen(undefined)}
