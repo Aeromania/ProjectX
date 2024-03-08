@@ -8,15 +8,15 @@ import AmateurRocketry_image2 from "../../../assets/images/xlabs_amateurRocketry
 import AmateurRocketry_image3 from "../../../assets/images/xlabs_amateurRocketry-3.png";
 import AmateurRocketry_image4 from "../../../assets/images/xlabs_amateurRocketry-4.png";
 import aircraftDesign_image1 from "../../../assets/images/xlabs_aircraftDesign-1.png";
-import aircraftDesign_image2 from "../../../assets/images/xlabs_aircraftDesign-2.png";
+import aircraftDesign_image2 from "../../../assets/images/xlabs_aircraftDesign-2.jpeg";
 import aircraftDesign_image3 from "../../../assets/images/xlabs_aircraftDesign-3.png";
 import aircraftDesign_image4 from "../../../assets/images/xlabs_aircraftDesign-4.png";
 import aircraftDesign_image5 from "../../../assets/images/xlabs_aircraftDesign-5.jpeg";
 import quadDrone_image1 from "../../../assets/images/xlabs_quadDrone-1.jpeg";
-import quadDrone_image2 from "../../../assets/images/xlabs_quadDrone-2.png";
+import quadDrone_image2 from "../../../assets/images/xlabs_quadDrone-2.jpeg";
 import quadDrone_image3 from "../../../assets/images/xlabs_quadDrone-3.png";
 import quadDrone_image4 from "../../../assets/images/xlabs_quadDrone-4.png";
-import quadDrone_image5 from "../../../assets/images/xlabs_quadDrone-5.png";
+import quadDrone_image5 from "../../../assets/images/xlabs_quadDrone-5.jpeg";
 
 export const additiveManufacturingInfoArray: TCarouselInfoArrayProps[] = [
   {
@@ -135,5 +135,38 @@ export const quadDroneInfoArray: TCarouselInfoArrayProps[] = [
     imageUrl: quadDrone_image5,
     title: "Fly",
     body: "Participate in a hands-on flying session with the assembled and configured drones. Learn piloting basics including takeoff, landing, maneuvering, and safety protocols. Apply knowledge of UAV systems and Mission Planner in real-world flying scenarios."
+  }
+];
+
+export const RCPlaneInfoArray: TCarouselInfoArrayProps[] = [
+  {
+    id: 1,
+    imageUrl: AmateurRocketry_image1,
+    title: "Introduction to Aircraft",
+    body: "Participants will begin by gaining an understanding of the basic principles of flight, including lift, thrust, drag, and weight. They will learn about the different components of an aircraft and how they work together to achieve controlled flight."
+  },
+  {
+    id: 2,
+    imageUrl: AmateurRocketry_image2,
+    title: "Cutting the Foam Sheets",
+    body: "Using specialized foam cutting tools, participants will learn how to cut foam sheets into the required shapes and sizes to build the fuselage, wings, tail, and other components of the aircraft. They will learn about different foam types and their suitability for various parts of the plane."
+  },
+  {
+    id: 3,
+    imageUrl: AmateurRocketry_image3,
+    title: "Assembling the Structure",
+    body: "Guided by experienced instructors, participants will assemble the foam components to build the basic structure of the aircraft. They will learn about different joining techniques, such as gluing and taping, to ensure a strong and stable airframe."
+  },
+  {
+    id: 4,
+    imageUrl: AmateurRocketry_image4,
+    title: "Adding Electronics to the Plane",
+    body: "Participants will be introduced to the essential electronic components needed to make their R/C plane fly, including motors, servos, ESCs (Electronic Speed Controllers), batteries, and radio receivers. They will learn how to install and configure these components to control the aircraft's movements."
+  },
+  {
+    id: 5,
+    imageUrl: AmateurRocketry_image1,
+    title: "Flight Training",
+    body: "Under the guidance of experienced instructors, participants will have the opportunity to fly their newly built R/C planes. They will learn the basics of R/C piloting, including takeoff, landing, and maneuvering techniques. Safety protocols and guidelines will be emphasized throughout the flight training process."
   }
 ];

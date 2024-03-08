@@ -16,9 +16,7 @@ export const NavRoutes = {
   CFD_ANALYSIS: "Structure & CFD Analysis",
   PRINTING_SERVICES: "",
   CreateBlogs: "CreateBlogs",
-  EditBlogs: "EditBlogs",
-  SERVICE_PRINTING_3D: "3D PRINTING",
-  STRUCTURAL_ANALYSIS: "Structural Analysis"
+  EditBlogs: "EditBlogs"
 } as const;
 
 export const WorkshopNavRoutes = {
@@ -32,6 +30,15 @@ export const WorkshopNavRoutes = {
   AIRCRAFT_DESIGN: "AIRCRAFT DESIGN",
   QUAD_DRONE: "DRONE (QUAD)",
   RC_PLANE: "R C PLANE"
+} as const;
+
+export const ServicesNavRoutes = {
+  CUSTOM_DRONE: "Custom Drone",
+  PRINTING_3D: "3D Printing",
+  DESIGN_FABRICATION: "Design And Fabrication",
+  STRUCTURAL_ANALYSIS: "Structural Analysis",
+  CFD_ANALYSIS: "CFD Analysis",
+  PROJECT_CONSULTATION: "Project Consultation"
 } as const;
 
 export const STATUS_CODES = {

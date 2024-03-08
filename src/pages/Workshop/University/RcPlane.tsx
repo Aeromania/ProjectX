@@ -3,7 +3,7 @@ import RC_PlaneLanding from "../../../assets/images/xlabs_aircraftDesign.png";
 import RC_PlaneLandingFull from "../../../assets/images/xlabs_aircraftDesignFull.png";
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
-import { printing3dInfoArray } from "../School/SchoolCarouselData";
+import { RCPlaneInfoArray } from "./UniversityCarouselData";
 
 const RcPlane: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
@@ -65,7 +65,7 @@ const RcPlane: React.FC = (): React.JSX.Element => {
         >
           Duration: <span className="text-sky-500">3 Days</span>
         </h3>
-        <Carousel infoArray={printing3dInfoArray} />
+        <Carousel infoArray={RCPlaneInfoArray} />
       </div>
     </section>
   );

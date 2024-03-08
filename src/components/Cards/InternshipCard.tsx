@@ -5,16 +5,23 @@ type AnimatedServiceCardProps = {
   title: string;
   content: string;
   image: string;
+  leftButtonOnClick: () => void;
+  rightButtonOnClick: () => void;
 };
 
 const AnimatedServiceCard: React.FC<AnimatedServiceCardProps> = ({
   content,
   image,
-  title
+  title,
+  leftButtonOnClick,
+  rightButtonOnClick
 }) => {
   return (
     <Animated3dCard>
-      <div className="group/card card__container relative h-auto w-auto rounded-xl border border-white/[0.2] bg-black p-6 [transform-style:preserve-3d] hover:shadow-2xl hover:shadow-emerald-500/[0.1] sm:w-[25rem] [&>*]:[transform-style:preserve-3d]">
+      <div
+        className="group/card card__container relative h-auto w-auto rounded-xl border border-white/[0.2] bg-black p-6 [transform-style:preserve-3d] hover:shadow-2xl hover:shadow-emerald-500/[0.1] sm:w-[25rem] [&>*]:[transform-style:preserve-3d]"
+        data-aos={"zoom-in"}
+      >
         <div
           className="card__title w-fit text-xl font-bold text-white transition duration-200 ease-linear"
           style={{
@@ -59,6 +66,7 @@ const AnimatedServiceCard: React.FC<AnimatedServiceCardProps> = ({
               transform:
                 "translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)"
             }}
+            onClick={leftButtonOnClick}
           >
             Read More →
           </button>
@@ -68,6 +76,7 @@ const AnimatedServiceCard: React.FC<AnimatedServiceCardProps> = ({
               transform:
                 "translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)"
             }}
+            onClick={rightButtonOnClick}
           >
             Contact Us
           </button>

@@ -1,4 +1,4 @@
-const Printing = () => {
+const ServicePrinting = () => {
   return (
     <div className="flex h-dvh items-center justify-center bg-black text-white">
       3D Printing
@@ -6,4 +6,4 @@ const Printing = () => {
   );
 };
 
-export default Printing;
+export default ServicePrinting;
