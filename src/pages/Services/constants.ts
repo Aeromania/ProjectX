@@ -1,10 +1,10 @@
 import { ServicesNavRoutes } from "@/components/constants";
 import ServiceImage_1 from "../../assets/images/xlabs_service-1.jpeg";
-import ServiceImage_2 from "../../assets/images/xlabs_service-1.jpeg";
-import ServiceImage_3 from "../../assets/images/xlabs_service-1.jpeg";
+import ServiceImage_2 from "../../assets/images/xlabs_service-2.jpg";
+import ServiceImage_3 from "../../assets/images/xlabs_service-3.png";
 import ServiceImage_4 from "../../assets/images/xlabs_aircraftDesign-4.png";
 import ServiceImage_5 from "../../assets/images/xlabs_aircraftDesign-5.jpeg";
-import ServiceImage_6 from "../../assets/images/xlabs_service-1.jpeg";
+import ServiceImage_6 from "../../assets/images/xlabs_service-6.jpg";
 
 type TservicesInfoArrayType = {
   id: number;
