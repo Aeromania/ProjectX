@@ -1,0 +1,15 @@
+.card__container:hover .card__title {
+  transform: translateZ(50px) !important;
+}
+
+.card__container:hover .card__content {
+  transform: translateZ(60px) !important;
+}
+
+.card__container:hover .card__imageContainer {
+  transform: translateZ(100px) !important;
+}
+
+.card__container:hover .card__button {
+  transform: translateZ(20px) !important;
+}

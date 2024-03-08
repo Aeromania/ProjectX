@@ -1,4 +1,5 @@
 import AnimatedServiceCard from "@/components/Cards/InternshipCard";
+import { servicesInfoArray } from "./constants";
 
 const Services = () => {
   return (
@@ -23,7 +24,14 @@ const Services = () => {
         </div>
       </div>
       <div className="grid grid-cols-3 lg:px-32">
-        <AnimatedServiceCard />
+        {servicesInfoArray.map((cardInfo) => (
+          <AnimatedServiceCard
+            content={cardInfo.content}
+            title={cardInfo.title}
+            image={cardInfo.image}
+            key={cardInfo.title}
+          />
+        ))}
       </div>
     </section>
   );
