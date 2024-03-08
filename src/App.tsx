@@ -17,7 +17,7 @@ import BlogsRoute from "./routes/BlogsRoute";
 import WorkshopUniversityRoutes from "./routes/WorkshopUniversityRoutes";
 import NotFound from "./pages/PageNotFound/NotFound";
 import Footer from "./components/Footer";
-import Services from "./pages/Services/services";
+import Services from "./pages/Services/Services";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
 import AOS from "aos";
 import "aos/dist/aos.css";
