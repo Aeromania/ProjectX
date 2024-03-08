@@ -1,8 +1,10 @@
+import AnimatedServiceCard from "@/components/Cards/InternshipCard";
+
 const Services = () => {
   return (
     <section className="min-h-dvh w-full bg-black text-white">
-      <div className="flex justify-between lg:px-10 lg:py-10">
-        <div className="flex flex-1 flex-col items-center justify-center">
+      <div className="flex w-full justify-between lg:px-14 lg:py-10">
+        <div className="flex flex-1 flex-col justify-center">
           <div>
             <h1 className="font-sans text-white lg:text-7xl lg:font-bold">
               Our <br />
@@ -19,6 +21,9 @@ const Services = () => {
             commitment to excellence.
           </p>
         </div>
+      </div>
+      <div className="grid grid-cols-3 lg:px-32">
+        <AnimatedServiceCard />
       </div>
     </section>
   );
