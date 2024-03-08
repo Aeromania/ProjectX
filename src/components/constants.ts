@@ -16,7 +16,9 @@ export const NavRoutes = {
   CFD_ANALYSIS: "Structure & CFD Analysis",
   PRINTING_SERVICES: "",
   CreateBlogs: "CreateBlogs",
-  EditBlogs: "EditBlogs"
+  EditBlogs: "EditBlogs",
+  SERVICE_PRINTING_3D: "3D PRINTING",
+  STRUCTURAL_ANALYSIS: "Structural Analysis"
 } as const;
 
 export const WorkshopNavRoutes = {

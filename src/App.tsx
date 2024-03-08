@@ -7,20 +7,23 @@ import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Intership from "./pages/Intership";
 import Training from "./pages/Training";
-import CustomDrones from "./pages/CustomDrones";
-import Design from "./pages/Design";
-import Consultation from "./pages/Consultation";
+import CustomDrones from "./pages/Services/CustomDrones";
+import Design from "./pages/Services/Design";
+import Consultation from "./pages/Services/Consultation";
 import { NavRoutes } from "./components/constants";
-import CfdAnalysis from "./pages/CfdAnalysis";
+import CfdAnalysis from "./pages/Services/CfdAnalysis";
 import WorkshopSchoolRoutes from "./routes/WorkshopSchoolRoutes";
 import BlogsRoute from "./routes/BlogsRoute";
 import WorkshopUniversityRoutes from "./routes/WorkshopUniversityRoutes";
 import NotFound from "./pages/PageNotFound/NotFound";
 import Footer from "./components/Footer";
+import Services from "./pages/Services/services";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import useWindowDimensions from "./CustomHooks/hooks";
+import StructuralAnalysis from "./pages/Services/StructuralAnalysis";
+import Printing from "./pages/Services/Printing";
 
 const App: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
@@ -52,6 +55,12 @@ const App: React.FC = (): React.JSX.Element => {
           path={NavRoutes.UNIVERSITY + "/*"}
           element={<WorkshopUniversityRoutes />}
         />
+        <Route path={NavRoutes.SERVICES} element={<Services />} />
+        <Route
+          path={NavRoutes.STRUCTURAL_ANALYSIS}
+          element={<StructuralAnalysis />}
+        />
+        <Route path={NavRoutes.SERVICE_PRINTING_3D} element={<Printing />} />
         <Route path={NavRoutes.INTERNSHIP} element={<Intership />} />
         <Route path={NavRoutes.TRAINING} element={<Training />} />
         <Route path={NavRoutes.CUSTOM_DRONES} element={<CustomDrones />} />

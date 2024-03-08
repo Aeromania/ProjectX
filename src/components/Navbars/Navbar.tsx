@@ -92,16 +92,10 @@ export const Navbar: React.FC = (): React.JSX.Element => {
             routeName={[NavRoutes.INTERNSHIP, NavRoutes.TRAINING]}
             activeRoute={activeRoute}
           />
-          <StaggeredDropDown
-            title={NavRoutes.SERVICES}
-            setActiveRoute={setActiveRoute}
-            routeName={[
-              NavRoutes.CUSTOM_DRONES,
-              NavRoutes.DESIGN,
-              NavRoutes.PROJ_CONSULT,
-              NavRoutes.CFD_ANALYSIS
-            ]}
-            activeRoute={activeRoute}
+          <NavLinks
+            routeName={NavRoutes.SERVICES}
+            isActive={activeRoute === NavRoutes.SERVICES}
+            onClick={() => handleLinkClick(NavRoutes.SERVICES)}
           />
           <Link
             to={NavRoutes.HOME}

@@ -4,7 +4,7 @@ import Thumbnail from "../assets/images/xlabs_thumbnail.png";
 const Home: React.FC = (): React.JSX.Element => {
   return (
     <section className="min-h-dvh bg-black text-white">
-      <div className="w-full">
+      <div className="h-dvh w-full">
         <video
           src={Intro}
           autoPlay={true}
