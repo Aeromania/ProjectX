@@ -3,7 +3,7 @@ import { servicesInfoArray } from "./constants";
 import { useNavigate } from "react-router-dom";
 import { NavRoutes } from "../../components/constants";
 import ServiceTopBackground from "../../assets/images/xlabs_servicesTopBackground.png";
-import ServicesBottomBackground from "../../assets/images/xlabs_servicesBottomBackground.png";
+// import ServicesBottomBackground from "../../assets/images/xlabs_servicesBottomBackground.png";
 
 const Services: React.FC = (): React.JSX.Element => {
   const navigate = useNavigate();
