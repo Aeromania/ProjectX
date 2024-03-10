@@ -8,20 +8,25 @@ import { NavRoutes } from "./constants";
 export type ServiceDescriptionProps = {
   title: string;
   content: string;
+  images: string[];
 };
 
 const ServiceDescriptionPage: React.FC<ServiceDescriptionProps> = ({
   content,
-  title
+  title,
+  images
 }) => {
   const navigate = useNavigate();
   const parts = title.split(" ");
   return (
-    <ImageTrail>
-      <h1 className="font-sans text-6xl" data-aos="fade-down-right">
+    <ImageTrail images={images}>
+      <h1 className="font-sans text-5xl sm:text-6xl" data-aos="fade-down-right">
         {ServiceTitles.COMMON_TITLE}
       </h1>
-      <h3 className="font-sans text-8xl font-bold" data-aos="fade-left">
+      <h3
+        className="font-sans text-6xl font-semibold sm:text-8xl sm:font-bold"
+        data-aos="fade-left"
+      >
         {parts.map((word) => (
           <>
             <span className="uppercase">{word}</span>

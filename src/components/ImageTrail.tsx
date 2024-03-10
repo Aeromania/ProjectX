@@ -1,51 +1,27 @@
 import { useAnimate } from "framer-motion";
 import { ReactNode, useRef } from "react";
 import BackgroundImage from "../assets/images/xlabs_servicesBackground.png";
-import Astronaut from "../assets/images/astronaut.svg";
-import one from "../assets/images/xlabs_3dprinting-3.jpeg";
-import two from "../assets/images/xlabs_aircraftDesign-1.png";
-import three from "../assets/images/xlabs_aircraftDesign-1.png";
-import four from "../assets/images/xlabs_waterRocketryLandingFull.png";
-import five from "../assets/images/xlabs_visionIcon.png";
 import { twMerge } from "tailwind-merge";
 
 export const ImageTrail = ({
   children,
-  className
+  className,
+  images
 }: {
   children?: ReactNode;
   className?: string;
+  images: string[];
 }) => {
   return (
-    <MouseImageTrail
-      renderImageBuffer={50}
-      rotationRange={25}
-      images={[
-        Astronaut,
-        one,
-        two,
-        three,
-        four,
-        five,
-        Astronaut,
-        one,
-        two,
-        three,
-        four,
-        five,
-        Astronaut,
-        one,
-        two
-      ]}
-    >
-      <section className="relative flex h-dvh w-full items-center text-white">
+    <MouseImageTrail renderImageBuffer={50} rotationRange={25} images={images}>
+      <section className="relative flex w-full items-center justify-center text-white lg:h-dvh lg:justify-start">
         <img
           src={BackgroundImage}
           className="absolute top-0 -z-50 h-full w-full object-fill object-center"
         />
         <div
           className={twMerge(
-            "flex h-full flex-col gap-6 lg:w-[75%] lg:pl-[10%] lg:pt-24 xl:w-[65%]",
+            "flex h-full w-[90%] flex-col gap-6 py-16 lg:w-[75%] lg:py-0 lg:pl-[10%] lg:pt-24 xl:w-[65%]",
             className
           )}
         >

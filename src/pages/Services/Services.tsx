@@ -3,6 +3,7 @@ import { servicesInfoArray } from "./constants";
 import { useNavigate } from "react-router-dom";
 import { NavRoutes } from "../../components/constants";
 import ServiceTopBackground from "../../assets/images/xlabs_servicesTopBackground.png";
+import ServicesBottomBackground from "../../assets/images/xlabs_servicesBottomBackground.png";
 
 const Services: React.FC = (): React.JSX.Element => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Services: React.FC = (): React.JSX.Element => {
         className="absolute top-0 -z-50 hidden h-dvh w-full md:block"
       />
       <div className="w-[90%]">
-        <div className="flex w-full flex-col pt-20 md:h-dvh md:flex-row md:justify-between">
+        <div className="flex w-full flex-col pt-20 md:h-dvh md:flex-row md:justify-between md:pt-0">
           <div className="mb-10 flex flex-col justify-center md:mb-0 md:flex-1">
             <div className="flex flex-col items-center justify-center md:block">
               <h1
@@ -47,7 +48,7 @@ const Services: React.FC = (): React.JSX.Element => {
             </p>
           </div>
         </div>
-        <div className="grid py-32 lg:grid-cols-2 lg:py-0 2xl:grid-cols-3">
+        <div className="relative grid py-32 lg:grid-cols-2 lg:py-0 2xl:grid-cols-3">
           {servicesInfoArray.map((cardInfo) => (
             <AnimatedServiceCard
               content={cardInfo.content}
