@@ -4,6 +4,7 @@ import QuadDroneLandingFull from "../../../assets/images/xlabs_quadDroneFull.png
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
 import { quadDroneInfoArray } from "./UniversityCarouselData";
+import CarouselBackground from "../../../assets/images/xlabs_background-6.png";
 
 const QuadDrone: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
@@ -50,7 +51,11 @@ const QuadDrone: React.FC = (): React.JSX.Element => {
           </p>
         </div>
       </div>
-      <div className="relative flex w-full flex-col items-center justify-center bg-[#111827] py-12 sm:py-20">
+      <div className="relative flex w-full flex-col items-center justify-center bg-[#0E0E0E] py-12 sm:py-20 lg:bg-transparent">
+        <img
+          src={CarouselBackground}
+          className="absolute top-0 -z-50 hidden h-full w-full object-fill object-center lg:block"
+        />
         <h1
           className="text-center font-sans text-3xl sm:text-4xl"
           data-aos="fade-down-right"

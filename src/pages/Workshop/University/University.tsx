@@ -8,7 +8,7 @@ import { WorkshopForUniversityRoute } from "../WorkshopRoutesData";
 const University: React.FC = (): React.JSX.Element => {
   const navigate = useNavigate();
   return (
-    <section className="flex min-h-dvh w-full flex-col bg-black text-white">
+    <section className="flex min-h-dvh w-full flex-col text-white">
       <div className="pb-28">
         <div
           className="flex w-full items-center justify-center pt-12 lg:pt-32"

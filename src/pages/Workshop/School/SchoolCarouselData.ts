@@ -102,7 +102,7 @@ export const roboticsInfoArray: TCarouselInfoArrayProps[] = [
     id: 2,
     imageUrl: Robotics_image2,
     title: "Basic Arduino Programming",
-    body: "Understanding the structure of an Arduino sketch. Variables, data types, and basic operations."
+    body: "Understanding the Structure of an Arduino Sketch: Variables, Data Types, Basic Operations, and Control Flow"
   },
   {
     id: 3,

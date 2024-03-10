@@ -4,6 +4,7 @@ import AdditiveManufacturingFull from "../../../assets/images/xlabs_additiveManu
 import { useState, useEffect } from "react";
 import { Carousel } from "@/components/Carousel/Carousel";
 import { additiveManufacturingInfoArray } from "./UniversityCarouselData";
+import carouselBackgroundImage from "../../../assets/images/xlabs_background-1.png";
 
 const AdditiveManufacturing: React.FC = (): React.JSX.Element => {
   const { width } = useWindowDimensions();
@@ -50,7 +51,11 @@ const AdditiveManufacturing: React.FC = (): React.JSX.Element => {
           </p>
         </div>
       </div>
-      <div className="relative flex w-full flex-col items-center justify-center bg-[#111827] py-12 sm:py-20">
+      <div className="relative flex w-full flex-col items-center justify-center bg-[#0E0E0E] py-12 sm:py-20 lg:bg-transparent">
+        <img
+          src={carouselBackgroundImage}
+          className="absolute top-0 -z-50 hidden h-full w-full object-cover object-center lg:block"
+        />
         <h1
           className="text-center font-sans text-3xl sm:text-4xl"
           data-aos="fade-down-right"

@@ -62,7 +62,7 @@ export const Carousel: React.FC<CarouselProps> = ({
                   {carousel.title}
                 </h1>
                 <p
-                  className="w-[95%] text-center font-sans md:w-[75%] md:text-start md:text-xl xl:w-[60%]"
+                  className="w-[95%] text-center font-sans md:text-start md:text-xl lg:w-[75%] xl:w-[60%]"
                   data-aos-offset="0"
                   data-aos-once="false"
                   data-aos="zoom-out"

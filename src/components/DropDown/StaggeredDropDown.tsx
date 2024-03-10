@@ -121,6 +121,7 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
                   setActiveRoute(route);
                   setOpen(false);
                   navigate(route);
+                  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
                 }}
                 activeRoute={activeRoute}
               />
