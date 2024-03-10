@@ -1,8 +1,12 @@
+import ServiceDescriptionPage from "@/components/ServiceDescriptionPage";
+import { ServiceDescriptionsArray } from "./constants";
+
 const CfdAnalysis = () => {
   return (
-    <div className="flex h-dvh items-center justify-center bg-black text-white">
-      Structure & CFD Analysis
-    </div>
+    <ServiceDescriptionPage
+      title={ServiceDescriptionsArray[4].title}
+      content={ServiceDescriptionsArray[5].content}
+    />
   );
 };
 

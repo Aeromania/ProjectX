@@ -1,8 +1,12 @@
-const CustomDrones = () => {
+import ServiceDescriptionPage from "@/components/ServiceDescriptionPage";
+import { ServiceDescriptionsArray } from "./constants";
+
+const CustomDrones: React.FC = () => {
   return (
-    <div className="flex h-dvh items-center justify-center bg-black text-white">
-      Custom Drones
-    </div>
+    <ServiceDescriptionPage
+      title={ServiceDescriptionsArray[0].title}
+      content={ServiceDescriptionsArray[0].content}
+    />
   );
 };
 

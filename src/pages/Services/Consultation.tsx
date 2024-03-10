@@ -1,8 +1,12 @@
+import ServiceDescriptionPage from "@/components/ServiceDescriptionPage";
+import { ServiceDescriptionsArray } from "./constants";
+
 const Consultation = () => {
   return (
-    <div className="flex h-dvh items-center justify-center bg-black text-white">
-      Consultation
-    </div>
+    <ServiceDescriptionPage
+      title={ServiceDescriptionsArray[5].title}
+      content={ServiceDescriptionsArray[5].content}
+    />
   );
 };
 

@@ -10,6 +10,7 @@ type EncryptButtonProps = {
   showIcon?: boolean;
   animationHidden?: boolean;
   customAnimationColor?: string;
+  animation?: string;
 };
 
 const CYCLES_PER_LETTER = 2;
@@ -24,7 +25,8 @@ const EncryptButton: React.FC<EncryptButtonProps> = ({
   title = "Contact Us",
   showIcon = true,
   animationHidden = false,
-  customAnimationColor
+  customAnimationColor,
+  animation
 }): React.JSX.Element => {
   const intervalRef = useRef(null);
   const TARGET_TEXT = title;
@@ -78,6 +80,7 @@ const EncryptButton: React.FC<EncryptButtonProps> = ({
         className
       )}
       onClick={onClick}
+      data-aos={animation && animation}
     >
       <div className="relative z-10 flex items-center justify-center gap-2">
         {showIcon && <FaRegEnvelope />}

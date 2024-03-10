@@ -1,8 +1,12 @@
+import ServiceDescriptionPage from "@/components/ServiceDescriptionPage";
+import { ServiceDescriptionsArray } from "./constants";
+
 const ServicePrinting = () => {
   return (
-    <div className="flex h-dvh items-center justify-center bg-black text-white">
-      3D Printing
-    </div>
+    <ServiceDescriptionPage
+      content={ServiceDescriptionsArray[1].content}
+      title={ServiceDescriptionsArray[1].title}
+    />
   );
 };
 

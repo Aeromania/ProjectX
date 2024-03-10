@@ -1,6 +1,6 @@
 export const NavRoutes = {
   HOME: "Home",
-  INTERNSHIP: "Certificate Internship",
+  INTERNSHIP: "Internship",
   ABOUT_US: "About us",
   WORKSHOP: "Workshop",
   LOGO_URL: "Image",
