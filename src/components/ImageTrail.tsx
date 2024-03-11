@@ -21,7 +21,7 @@ export const ImageTrail = ({
         />
         <div
           className={twMerge(
-            "flex h-full w-[90%] flex-col gap-6 py-16 lg:w-[75%] lg:py-0 lg:pl-[10%] lg:pt-24 xl:w-[65%]",
+            "flex h-full w-[90%] flex-col gap-3 py-16 lg:w-[75%] lg:gap-6 lg:py-0 lg:pl-[10%] lg:pt-24 xl:w-[65%]",
             className
           )}
         >
@@ -140,7 +140,7 @@ const MouseImageTrail = ({
 
       {images.map((img, index) => (
         <img
-          className="pointer-events-none absolute left-0 top-0 h-48 w-auto rounded-xl border-2 border-black bg-neutral-900 object-cover opacity-0"
+          className="pointer-events-none absolute left-0 top-0 !-z-10 h-48 w-auto rounded-xl border-2 border-black bg-neutral-900 object-cover opacity-0"
           src={img}
           alt={`Mouse move image ${index}`}
           key={index}
