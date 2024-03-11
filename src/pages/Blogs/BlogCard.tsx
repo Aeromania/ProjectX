@@ -35,7 +35,7 @@ const BlogCard: React.FC<BlogCardsProps> = ({
       <div className="overflow-hidden">
         <img
           src={thumbnail}
-          className="h-64 w-full rounded-sm object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-125"
+          className="h-64 w-full object-cover object-center transition-transform duration-300 ease-in-out lg:group-hover:scale-125"
         />
       </div>
       <div className="flex items-center justify-between pt-6 text-sm text-[#6941C6]">

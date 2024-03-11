@@ -31,13 +31,22 @@ const BlogsCardWithoutImage: React.FC<BlogCardsProps> = ({
       </div>
       <p className="text-xs text-[#C0C5D0]">by {author}</p>
       <div className="flex items-center justify-between">
-        <h1 className={twMerge("py-3 text-xl font-semibold", titleTextSize)}>
+        <h1
+          className={twMerge(
+            "my-3 text-xl font-semibold max-sm:line-clamp-3 max-sm:overflow-hidden max-sm:text-ellipsis",
+            titleTextSize
+          )}
+          style={{
+            display: "-webkit-box",
+            WebkitBoxOrient: "vertical"
+          }}
+        >
           {title}
         </h1>
         <FaArrowRight className="rotate-[315deg]" size={20} />
       </div>
       <p
-        className="line-clamp-4 overflow-hidden text-ellipsis text-[#C0C5D0]"
+        className="line-clamp-4 overflow-hidden text-ellipsis text-[#C0C5D0] sm:line-clamp-3"
         style={{
           display: "-webkit-box",
           WebkitBoxOrient: "vertical"

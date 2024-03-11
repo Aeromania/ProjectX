@@ -1,11 +1,12 @@
 import { IoIosSearch } from "react-icons/io";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, ChangeEvent } from "react";
 import { twMerge } from "tailwind-merge";
 import BlogCard, { BlogCardsProps } from "./BlogCard";
 import { getAllBlogs } from "@/api/blogs-api";
-import BlogsCardWithoutImage from "./BlogsCardWithoutImage";
 import { Toast } from "@/components/Toast";
 import { AnimatedLoader } from "@/components/Loader/AnimatedLoader";
+import RecentPosts from "./RecentPosts";
+import { IoMdClose } from "react-icons/io";
 
 const Blogs = () => {
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
@@ -16,6 +17,10 @@ const Blogs = () => {
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [blogsInfo, setBlogsInfo] = useState<BlogCardsProps[]>([]);
+  const [searchBarValue, setSearchBarValue] = useState<string>("");
+  const [filteredBlogsInfo, setFilteredBlogsInfo] = useState<BlogCardsProps[]>(
+    []
+  );
   const URL = import.meta.env.VITE_URL;
 
   useEffect(() => {
@@ -55,13 +60,32 @@ const Blogs = () => {
     processBlogsInfo();
   }, []);
 
+  const filterBlogs = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchBarValue(e.target.value);
+    if (e.target.value.trim().length > 0) {
+      const filteredBlogPost = blogsInfo.filter((blog) =>
+        blog.title.toLowerCase().includes(e.target.value.toLowerCase())
+      );
+      setFilteredBlogsInfo(filteredBlogPost);
+    } else {
+      setFilteredBlogsInfo([]);
+    }
+  };
+
   return (
-    <section className="flex min-h-dvh flex-col items-center bg-[#090D1F] text-white">
-      <div className="flex w-[96%] flex-col justify-center py-10 2xl:w-[80%]">
+    <section className="relative flex min-h-dvh flex-col items-center overflow-x-hidden bg-[#090D1F] pb-10 text-white">
+      <div className="flex w-[90%] flex-col justify-center py-10 2xl:w-[80%]">
         {/* Heading */}
-        <div className="mb-16 flex items-center justify-center border-b border-t py-6 tracking-widest">
-          <h1 className="font-sans text-4xl font-bold uppercase sm:text-6xl lg:text-8xl">
-            ProjectX Blogs<span className="font-bold text-yellow-400">.</span>
+        <div
+          className="mb-16 flex items-center justify-center border-b border-t py-6 tracking-widest"
+          style={{
+            borderImage:
+              "linear-gradient(109.6deg, rgb(9, 9, 121) 11.2%, rgb(144, 6, 161) 53.7%, rgb(0, 212, 255) 100.2%)",
+            borderImageSlice: "1"
+          }}
+        >
+          <h1 className="text-center font-sans text-4xl font-bold capitalize sm:text-start sm:text-6xl lg:text-8xl">
+            ProjectX Blogs<span className="font-bold text-sky-500">.</span>
           </h1>
         </div>
         {blogsInfo.length > 0 ? (
@@ -73,78 +97,7 @@ const Blogs = () => {
               </h3>
             </div>
             {/* Recent Blogs */}
-            <div className="">
-              <div className="grid grid-cols-2 gap-6">
-                <div className="col-span-2 row-span-2 lg:col-span-1">
-                  <BlogCard
-                    title={blogsInfo[0]?.title}
-                    summary={blogsInfo[0]?.summary}
-                    createdAt={blogsInfo[0]?.createdAt}
-                    averageReadTime={blogsInfo[0]?.averageReadTime}
-                    thumbnail={URL + blogsInfo[0]?.thumbnail}
-                    author={blogsInfo[0]?.author}
-                    titleTextSize="text-2xl"
-                    lineClamp="line-clamp-6"
-                    className="h-full"
-                  />
-                </div>
-                <div className="group col-span-2 flex cursor-pointer gap-4 overflow-hidden transition-transform duration-200 ease-in-out active:scale-95 lg:col-span-1">
-                  <div className="flex-1 overflow-hidden">
-                    <img
-                      src={URL + blogsInfo[0].thumbnail}
-                      className="h-64 w-full rounded-sm object-cover object-center transition-transform duration-200 ease-in-out group-hover:scale-125"
-                    />
-                  </div>
-                  <BlogsCardWithoutImage
-                    title={blogsInfo[0]?.title}
-                    summary={blogsInfo[0]?.summary}
-                    createdAt={blogsInfo[0]?.createdAt}
-                    averageReadTime={blogsInfo[0]?.averageReadTime}
-                    thumbnail={URL + blogsInfo[0]?.thumbnail}
-                    author={blogsInfo[0]?.author}
-                    className="flex-1"
-                    showReadTime={false}
-                  />
-                </div>
-                <div className="group col-span-2 flex cursor-pointer gap-4 overflow-hidden transition-transform duration-200 ease-in-out active:scale-95 lg:col-span-1">
-                  <div className="flex-1 overflow-hidden">
-                    <img
-                      src={URL + blogsInfo[1].thumbnail}
-                      className="h-64 w-full rounded-sm object-cover object-center transition-transform duration-200 ease-in-out group-hover:scale-125"
-                    />
-                  </div>
-                  <BlogsCardWithoutImage
-                    title={blogsInfo[0]?.title}
-                    summary={blogsInfo[0]?.summary}
-                    createdAt={blogsInfo[0]?.createdAt}
-                    averageReadTime={blogsInfo[0]?.averageReadTime}
-                    thumbnail={URL + blogsInfo[0]?.thumbnail}
-                    author={blogsInfo[0]?.author}
-                    className="flex-1"
-                    showReadTime={false}
-                  />
-                </div>
-                <div className="group col-span-2 flex cursor-pointer gap-4 overflow-hidden transition-transform duration-200 ease-in-out active:scale-95">
-                  <div className="flex-1 overflow-hidden">
-                    <img
-                      src={URL + blogsInfo[2].thumbnail}
-                      className="h-64 w-full rounded-sm object-cover object-center transition-transform duration-200 ease-in-out group-hover:scale-125"
-                    />
-                  </div>
-                  <BlogsCardWithoutImage
-                    title={blogsInfo[0]?.title}
-                    summary={blogsInfo[0]?.summary}
-                    createdAt={blogsInfo[0]?.createdAt}
-                    averageReadTime={blogsInfo[0]?.averageReadTime}
-                    thumbnail={URL + blogsInfo[0]?.thumbnail}
-                    author={blogsInfo[0]?.author}
-                    className="flex-1"
-                    titleTextSize="sm:text-2xl"
-                    showReadTime={false}
-                  />
-                </div>
-              </div>
-            </div>
+            <RecentPosts blogsInfo={blogsInfo} />
             {/* All Blog Posts */}
             <div className="flex items-center justify-between pb-8 pt-16">
               <h3 className="font-sans text-xl font-medium">All blog posts</h3>
@@ -162,43 +115,69 @@ const Blogs = () => {
                   )}
                   placeholder="Search..."
                   ref={searchBox}
+                  onChange={filterBlogs}
+                  value={searchBarValue}
                 />
-                <IoIosSearch
-                  className={twMerge(
-                    "left-2 top-1 cursor-pointer text-xl text-white"
-                  )}
-                  onClick={() => {
-                    if (!showSearchBox) {
-                      console.log("showSearchBox === false");
-                      setShowSearchBox(true);
-                      searchBox.current?.focus();
-                    } else {
-                      console.log("showSearchBox === true");
+                {showSearchBox ? (
+                  <IoMdClose
+                    className="left-2 top-1 cursor-pointer text-xl text-white"
+                    onClick={() => {
                       setShowSearchBox(false);
                       searchBox.current?.blur();
-                    }
-                  }}
-                />
+                    }}
+                  />
+                ) : (
+                  <IoIosSearch
+                    className={twMerge(
+                      "left-2 top-1 cursor-pointer text-xl text-white"
+                    )}
+                    onClick={() => {
+                      setShowSearchBox(true);
+                      searchBox.current?.focus();
+                    }}
+                  />
+                )}
               </div>
             </div>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {blogsInfo.map((blog) => (
-                <BlogCard
-                  key={blog?.title}
-                  title={blog?.title}
-                  summary={blog?.summary}
-                  createdAt={blog?.createdAt}
-                  averageReadTime={blog?.averageReadTime}
-                  thumbnail={URL + blog?.thumbnail}
-                  author={blog?.author}
-                />
-              ))}
+            <div className="relative grid min-h-64 grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {searchBarValue.length > 0 ? (
+                filteredBlogsInfo.length > 0 ? (
+                  filteredBlogsInfo?.map((filteredBlog) => (
+                    <BlogCard
+                      key={filteredBlog?.title}
+                      title={filteredBlog?.title}
+                      summary={filteredBlog?.summary}
+                      createdAt={filteredBlog?.createdAt}
+                      averageReadTime={filteredBlog?.averageReadTime}
+                      thumbnail={URL + filteredBlog?.thumbnail}
+                      author={filteredBlog?.author}
+                    />
+                  ))
+                ) : (
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center text-xl text-white">
+                    No blogs found
+                  </div>
+                )
+              ) : (
+                blogsInfo.map((blog) => (
+                  <BlogCard
+                    key={blog?.title}
+                    title={blog?.title}
+                    summary={blog?.summary}
+                    createdAt={blog?.createdAt}
+                    averageReadTime={blog?.averageReadTime}
+                    thumbnail={URL + blog?.thumbnail}
+                    author={blog?.author}
+                  />
+                ))
+              )}
             </div>
           </>
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-white">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center text-xl text-white">
             Looks like our blogs are taking a little break. Check back soon for
-            new content!
+            new content
+            <span className="font-bold text-yellow-400">.</span>
           </div>
         )}
       </div>
