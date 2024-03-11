@@ -6,7 +6,7 @@ const BlogsCardWithoutImage: React.FC<BlogCardsProps> = ({
   author,
   averageReadTime,
   summary,
-  timestamp,
+  createdAt,
   title,
   className,
   titleTextSize,
@@ -24,7 +24,7 @@ const BlogsCardWithoutImage: React.FC<BlogCardsProps> = ({
           "flex items-center justify-between text-sm text-[#6941C6]"
         )}
       >
-        <p>{timestamp}</p>
+        <p>{createdAt}</p>
         <p className={twMerge(showReadTime ? "" : "hidden sm:inline-block")}>
           {averageReadTime}
         </p>

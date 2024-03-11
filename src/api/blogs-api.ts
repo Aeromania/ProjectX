@@ -8,12 +8,13 @@ export const getAllBlogs = async () => {
       }`
     );
     if (response.status === 200) {
+      console.log(response.data);
       return response.data;
     }
   } catch (error) {
     if (axios.isAxiosError(error)) {
       if (error.response?.status === 404) {
-        return null;
+        return false;
       } else {
         console.log(error);
         return null;

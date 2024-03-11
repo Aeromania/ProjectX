@@ -4,8 +4,8 @@ import { FaArrowRight } from "react-icons/fa6";
 export type BlogCardsProps = {
   title: string;
   summary: string;
-  imageURL: string;
-  timestamp: string;
+  thumbnail: string;
+  createdAt: string;
   averageReadTime: string;
   author: string;
   className?: string;
@@ -16,9 +16,9 @@ export type BlogCardsProps = {
 
 const BlogCard: React.FC<BlogCardsProps> = ({
   averageReadTime,
-  imageURL,
+  thumbnail,
   summary,
-  timestamp,
+  createdAt,
   title,
   className,
   author,
@@ -34,12 +34,12 @@ const BlogCard: React.FC<BlogCardsProps> = ({
     >
       <div className="overflow-hidden">
         <img
-          src={imageURL}
+          src={thumbnail}
           className="h-64 w-full rounded-sm object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-125"
         />
       </div>
       <div className="flex items-center justify-between pt-6 text-sm text-[#6941C6]">
-        <p>{timestamp}</p>
+        <p>{createdAt}</p>
         <p>{averageReadTime}</p>
       </div>
       <p className="text-xs text-[#C0C5D0]">by {author}</p>
