@@ -1,4 +1,4 @@
-import ViewBlog from "@/pages/Blogs/ViewBLog";
+import ViewBlog from "@/pages/Blogs/ViewBlog";
 import { NavRoutes } from "../components/constants";
 import Blogs from "../pages/Blogs/Blogs";
 import CreateBlogs from "../pages/Blogs/CreateBlogs";
