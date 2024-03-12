@@ -41,25 +41,25 @@ const ViewBlog: React.FC = (): React.JSX.Element => {
   }, [id, blogsInfo]);
 
   return (
-    <div className="minh-dvh relative flex justify-center overflow-x-hidden bg-[#090D1F] text-white lg:py-32">
+    <div className="minh-dvh relative flex justify-center overflow-x-hidden bg-[#090D1F] py-16 text-white">
       {blogsInfo?.title ? (
-        <div className="w-[40%]">
+        <div className="w-[90%] lg:w-[60%] xl:w-[45%]">
           <div
-            className="group mb-8 flex w-fit cursor-pointer items-center gap-2 text-[#C0C5D0] active:scale-95"
+            className="group mb-8 hidden w-fit cursor-pointer items-center gap-2 text-[#C0C5D0] active:scale-95 sm:flex"
             onClick={() => navigate("/" + NavRoutes.BLOGS)}
           >
             <FaChevronLeft />{" "}
-            <span className="text-lg transition-transform duration-200 ease-in-out group-hover:font-medium group-active:font-medium">
+            <span className="transition-transform duration-200 ease-in-out group-hover:font-medium group-active:font-medium sm:text-lg">
               Blogs
             </span>
           </div>
           <h1
-            className="text-4xl !leading-[125%] lg:text-5xl lg:font-bold"
+            className="text-3xl font-bold !leading-[125%] sm:text-5xl sm:font-bold"
             aria-label="title"
           >
             {blogsInfo.title}
           </h1>
-          <div className="mb-1 mt-4 flex items-center justify-between text-[#C0C5D0]">
+          <div className="mb-1 mt-4 flex flex-col text-sm text-[#C0C5D0] sm:flex-row sm:items-center sm:justify-between sm:text-base">
             <p>{blogsInfo.author}</p>
             <div className="flex text-[#C0C5D0]">
               <p className="after:px-1 after:text-[#C0C5D0] after:content-['·']">
@@ -69,16 +69,16 @@ const ViewBlog: React.FC = (): React.JSX.Element => {
             </div>
           </div>
           <hr className="mb-8 border-[#C0C5D0]" />
-          <p className="mb-8 font-sans text-2xl !leading-[132%] tracking-wide text-[#C0C5D0]">
+          <p className="mb-8 font-sans text-xl !leading-[132%] tracking-wide text-[#C0C5D0] sm:text-2xl">
             {blogsInfo.summary}
           </p>
           <img
             src={URL + blogsInfo.thumbnail}
-            className="mb-8 max-h-[500px] w-full object-cover object-center"
+            className="mb-8 max-h-[300px] w-full object-cover object-center sm:max-h-[500px]"
           />
           <div
             dangerouslySetInnerHTML={{ __html: blogsInfo.content }}
-            className="text-lg tracking-wide text-[#C0C5D0]"
+            className="tracking-wide text-[#C0C5D0] sm:text-lg"
           />
         </div>
       ) : (

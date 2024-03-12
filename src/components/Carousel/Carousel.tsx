@@ -53,8 +53,8 @@ export const Carousel: React.FC<CarouselProps> = ({
             return (
               <>
                 <h1
-                  className="mb-4 mt-2 text-center font-semibold md:text-2xl"
-                  style={{ fontFamily: "sans-serif" }}
+                  key={carousel.id}
+                  className="mb-4 mt-2 text-center font-sans font-semibold sm:font-bold md:text-2xl"
                   data-aos-offset="0"
                   data-aos-once="false"
                   data-aos="zoom-in"
