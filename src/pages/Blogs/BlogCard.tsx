@@ -12,6 +12,7 @@ export type BlogCardsProps = {
   titleTextSize?: string;
   lineClamp?: string;
   showReadTime?: boolean;
+  onClick?: () => void;
 };
 
 const BlogCard: React.FC<BlogCardsProps> = ({
@@ -23,7 +24,8 @@ const BlogCard: React.FC<BlogCardsProps> = ({
   className,
   author,
   titleTextSize,
-  lineClamp
+  lineClamp,
+  onClick
 }) => {
   return (
     <div
@@ -31,6 +33,7 @@ const BlogCard: React.FC<BlogCardsProps> = ({
         "group cursor-pointer overflow-hidden text-ellipsis whitespace-normal bg-transparent transition-transform duration-200 ease-in-out active:scale-95",
         className
       )}
+      onClick={onClick}
     >
       <div className="overflow-hidden">
         <img

@@ -1,3 +1,4 @@
+import ViewBlog from "@/pages/Blogs/ViewBLog";
 import { NavRoutes } from "../components/constants";
 import Blogs from "../pages/Blogs/Blogs";
 import CreateBlogs from "../pages/Blogs/CreateBlogs";
@@ -10,6 +11,7 @@ const BlogsRoute = () => {
       <Route index element={<Blogs />} />
       <Route path={NavRoutes.CreateBlogs} element={<CreateBlogs />} />
       <Route path={NavRoutes.EditBlogs} element={<EditBlogs />} />
+      <Route path={NavRoutes.ViewBlog} element={<ViewBlog />} />
     </Routes>
   );
 };

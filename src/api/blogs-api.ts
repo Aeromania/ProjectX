@@ -8,7 +8,6 @@ export const getAllBlogs = async () => {
       }`
     );
     if (response.status === 200) {
-      console.log(response.data);
       return response.data;
     }
   } catch (error) {
@@ -22,6 +21,27 @@ export const getAllBlogs = async () => {
     } else {
       console.log(error);
       return null;
+    }
+  }
+};
+
+export const getBlogsById = async (id: string) => {
+  console.log("getBlogsById API hit");
+  try {
+    const response = await axios.get(`${import.meta.env.VITE_URL}blogs/${id}`);
+    if (response.status === 200) {
+      return response.data;
+    }
+    return undefined;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      if (error.response?.status === 400 || error.response?.status === 404) {
+        return undefined;
+      } else {
+        throw error;
+      }
+    } else {
+      throw error;
     }
   }
 };

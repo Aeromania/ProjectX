@@ -95,7 +95,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
         <div className="flex w-full flex-col items-center justify-center lg:w-fit lg:flex-row">
           {/* Left card */}
           <div
-            className="flex h-[100px] w-full items-center justify-center rounded-t-lg border-t border-sky-500 bg-black px-6 shadow-lg shadow-sky-500 sm:w-[400px] lg:h-[400px] lg:w-fit lg:rounded-l-lg lg:rounded-tr-none lg:border-t-0 lg:shadow-sm lg:shadow-sky-500"
+            className="flex h-[100px] w-full items-center justify-center rounded-t-lg border-t border-sky-500 bg-black px-6 shadow-lg shadow-sky-500 sm:w-[400px] lg:h-[330px] lg:w-fit lg:rounded-l-lg lg:rounded-tr-none lg:border-t-0 lg:shadow-sm lg:shadow-sky-500 2xl:h-[400px]"
             data-aos="fade-right"
           >
             <div className="flex h-full w-full flex-row items-center justify-between gap-6 bg-black p-2 lg:h-[80%] lg:flex-col">
@@ -182,9 +182,6 @@ const ContactUs: React.FC = (): React.JSX.Element => {
                 value={formSubject}
               />
               <div className="mt-2 block w-full">
-                {/* <label className="block p-1 text-white">
-                  <span className="cursor-text">Message</span>
-                </label> */}
                 <textarea
                   rows={5}
                   required
@@ -257,7 +254,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
         </div>
         {/* Maps card */}
         <div
-          className="h-[400px] w-full bg-cover bg-center sm:rounded-lg sm:bg-[url(../assets/images/xlabs_map-loader.gif)] sm:pb-3 sm:pl-3 sm:pr-3 sm:pt-3 lg:w-[60%] lg:rounded-l-none lg:rounded-r-lg lg:pl-0 xl:w-[500px]"
+          className="h-[330px] w-full bg-cover bg-center sm:rounded-lg sm:bg-[url(../assets/images/xlabs_map-loader.gif)] sm:pb-3 sm:pl-3 sm:pr-3 sm:pt-3 lg:w-[60%] lg:rounded-l-none lg:rounded-r-lg lg:pl-0 xl:w-[500px] 2xl:h-[400px]"
           data-aos="fade-left"
         >
           <iframe

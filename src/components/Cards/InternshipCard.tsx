@@ -54,7 +54,7 @@ const AnimatedServiceCard: React.FC<AnimatedServiceCardProps> = ({
             height="1000"
             decoding="async"
             data-nimg="1"
-            className="h-60 w-full rounded-xl object-cover transition-transform duration-200 ease-linear group-hover/card:shadow-xl"
+            className="h-60 w-full rounded-xl object-cover transition-transform duration-200 ease-linear group-hover/card:shadow-red-500"
             src={image}
             style={{ color: "transparent" }}
           />

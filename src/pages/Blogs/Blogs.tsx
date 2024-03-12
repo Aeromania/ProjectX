@@ -1,12 +1,26 @@
 import { IoIosSearch } from "react-icons/io";
 import { useState, useRef, useEffect, ChangeEvent } from "react";
 import { twMerge } from "tailwind-merge";
-import BlogCard, { BlogCardsProps } from "./BlogCard";
+import BlogCard from "./BlogCard";
 import { getAllBlogs } from "@/api/blogs-api";
 import { Toast } from "@/components/Toast";
 import { AnimatedLoader } from "@/components/Loader/AnimatedLoader";
 import RecentPosts from "./RecentPosts";
 import { IoMdClose } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+
+export type TBlogsInfo = {
+  adminId: string;
+  title: string;
+  summary: string;
+  thumbnail: string;
+  createdAt: string;
+  averageReadTime: string;
+  author: string;
+  blogId: string;
+  content: string;
+  published: boolean;
+};
 
 const Blogs = () => {
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
@@ -16,11 +30,11 @@ const Blogs = () => {
     undefined
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [blogsInfo, setBlogsInfo] = useState<BlogCardsProps[]>([]);
+  const [blogsInfo, setBlogsInfo] = useState<TBlogsInfo[]>([]);
   const [searchBarValue, setSearchBarValue] = useState<string>("");
-  const [filteredBlogsInfo, setFilteredBlogsInfo] = useState<BlogCardsProps[]>(
-    []
-  );
+  const [filteredBlogsInfo, setFilteredBlogsInfo] = useState<TBlogsInfo[]>([]);
+
+  const navigate = useNavigate();
   const URL = import.meta.env.VITE_URL;
 
   useEffect(() => {
@@ -144,13 +158,21 @@ const Blogs = () => {
                 filteredBlogsInfo.length > 0 ? (
                   filteredBlogsInfo?.map((filteredBlog) => (
                     <BlogCard
-                      key={filteredBlog?.title}
+                      key={filteredBlog?.blogId}
                       title={filteredBlog?.title}
                       summary={filteredBlog?.summary}
                       createdAt={filteredBlog?.createdAt}
                       averageReadTime={filteredBlog?.averageReadTime}
                       thumbnail={URL + filteredBlog?.thumbnail}
                       author={filteredBlog?.author}
+                      onClick={() => {
+                        window.scrollTo({
+                          top: 0,
+                          left: 0,
+                          behavior: "smooth"
+                        });
+                        navigate(filteredBlog?.blogId, { state: filteredBlog });
+                      }}
                     />
                   ))
                 ) : (
@@ -168,6 +190,10 @@ const Blogs = () => {
                     averageReadTime={blog?.averageReadTime}
                     thumbnail={URL + blog?.thumbnail}
                     author={blog?.author}
+                    onClick={() => {
+                      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+                      navigate(blog?.blogId, { state: blog });
+                    }}
                   />
                 ))
               )}

@@ -1,14 +1,18 @@
-import BlogCard, { BlogCardsProps } from "./BlogCard";
+import { useNavigate } from "react-router-dom";
+import BlogCard from "./BlogCard";
 import BlogsCardWithoutImage from "./BlogsCardWithoutImage";
+import { TBlogsInfo } from "./Blogs";
 
 type TRecentPosts = {
-  blogsInfo: BlogCardsProps[];
+  blogsInfo: TBlogsInfo[];
 };
 
 const RecentPosts: React.FC<TRecentPosts> = ({
   blogsInfo
 }): React.JSX.Element => {
   const URL = import.meta.env.VITE_URL;
+
+  const navigate = useNavigate();
 
   return (
     <div className="grid grid-cols-2 gap-6">
@@ -24,11 +28,21 @@ const RecentPosts: React.FC<TRecentPosts> = ({
             titleTextSize="text-2xl"
             lineClamp="line-clamp-6"
             className="h-full"
+            onClick={() => {
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+              navigate(blogsInfo[0]?.blogId, { state: blogsInfo[0] });
+            }}
           />
         </div>
       )}
       {blogsInfo[1] && (
-        <div className="group col-span-2 flex cursor-pointer gap-4 overflow-hidden transition-transform duration-200 ease-in-out active:scale-95 lg:col-span-1">
+        <div
+          className="group col-span-2 flex cursor-pointer gap-4 overflow-hidden transition-transform duration-200 ease-in-out active:scale-95 lg:col-span-1"
+          onClick={() => {
+            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            navigate(blogsInfo[1]?.blogId, { state: blogsInfo[1] });
+          }}
+        >
           <div className="flex-1 overflow-hidden">
             <img
               src={URL + blogsInfo[1].thumbnail}
@@ -48,7 +62,13 @@ const RecentPosts: React.FC<TRecentPosts> = ({
         </div>
       )}
       {blogsInfo[2] && (
-        <div className="group col-span-2 flex cursor-pointer gap-4 overflow-hidden transition-transform duration-200 ease-in-out active:scale-95 lg:col-span-1">
+        <div
+          className="group col-span-2 flex cursor-pointer gap-4 overflow-hidden transition-transform duration-200 ease-in-out active:scale-95 lg:col-span-1"
+          onClick={() => {
+            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            navigate(blogsInfo[2]?.blogId, { state: blogsInfo[2] });
+          }}
+        >
           <div className="flex-1 overflow-hidden">
             <img
               src={URL + blogsInfo[2].thumbnail}
@@ -68,7 +88,13 @@ const RecentPosts: React.FC<TRecentPosts> = ({
         </div>
       )}
       {blogsInfo[3] && (
-        <div className="group col-span-2 flex cursor-pointer gap-4 overflow-hidden transition-transform duration-200 ease-in-out active:scale-95">
+        <div
+          className="group col-span-2 flex cursor-pointer gap-4 overflow-hidden transition-transform duration-200 ease-in-out active:scale-95"
+          onClick={() => {
+            window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            navigate(blogsInfo[3]?.blogId, { state: blogsInfo[3] });
+          }}
+        >
           <div className="flex-1 overflow-hidden">
             <img
               src={URL + blogsInfo[3].thumbnail}
