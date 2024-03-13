@@ -8,6 +8,7 @@ import { AnimatedLoader } from "@/components/Loader/AnimatedLoader";
 import RecentPosts from "./RecentPosts";
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 
 export type TBlogsInfo = {
   adminId: string;
@@ -33,6 +34,34 @@ const Blogs = () => {
   const [blogsInfo, setBlogsInfo] = useState<TBlogsInfo[]>([]);
   const [searchBarValue, setSearchBarValue] = useState<string>("");
   const [filteredBlogsInfo, setFilteredBlogsInfo] = useState<TBlogsInfo[]>([]);
+  const [currentItems, setCurrentItems] = useState<TBlogsInfo[]>([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const [showRecentBlogs, setShowRecentBlogs] = useState<boolean>(true);
+  const itemsPerPage = 6;
+
+  const handlePageClick = (event: { selected: number }) => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    if (event.selected > 0) {
+      setShowRecentBlogs(false);
+    } else {
+      setShowRecentBlogs(true);
+    }
+    const newOffset = (event.selected * itemsPerPage) % blogsInfo.length;
+    setItemOffset(newOffset);
+  };
+
+  const filterBlogs = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchBarValue(e.target.value);
+    if (e.target.value.trim().length > 0) {
+      const filteredBlogPost = blogsInfo.filter((blog) =>
+        blog.title.toLowerCase().includes(e.target.value.toLowerCase())
+      );
+      setFilteredBlogsInfo(filteredBlogPost);
+    } else {
+      setFilteredBlogsInfo([]);
+    }
+  };
 
   const navigate = useNavigate();
   const URL = import.meta.env.VITE_URL;
@@ -74,17 +103,11 @@ const Blogs = () => {
     processBlogsInfo();
   }, []);
 
-  const filterBlogs = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchBarValue(e.target.value);
-    if (e.target.value.trim().length > 0) {
-      const filteredBlogPost = blogsInfo.filter((blog) =>
-        blog.title.toLowerCase().includes(e.target.value.toLowerCase())
-      );
-      setFilteredBlogsInfo(filteredBlogPost);
-    } else {
-      setFilteredBlogsInfo([]);
-    }
-  };
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(blogsInfo.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(blogsInfo?.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, blogsInfo]);
 
   return (
     <section className="relative flex min-h-dvh flex-col items-center overflow-x-hidden bg-[#090D1F] pb-10 text-white">
@@ -102,16 +125,20 @@ const Blogs = () => {
             ProjectX Blogs<span className="font-bold text-sky-500">.</span>
           </h1>
         </div>
-        {blogsInfo.length > 0 ? (
+        {currentItems.length > 0 ? (
           <>
             {/* Recent Blog title*/}
-            <div className="flex items-center justify-between pb-8">
-              <h3 className="font-sans text-xl font-medium">
-                Recent blog posts
-              </h3>
-            </div>
-            {/* Recent Blogs */}
-            <RecentPosts blogsInfo={blogsInfo} />
+            {showRecentBlogs && (
+              <>
+                <div className="flex items-center justify-between pb-8">
+                  <h3 className="font-sans text-xl font-medium">
+                    Recent blog posts
+                  </h3>
+                </div>
+                {/* Recent Blogs */}
+                <RecentPosts blogsInfo={blogsInfo} />
+              </>
+            )}
             {/* All Blog Posts */}
             <div className="flex items-center justify-between pb-8 pt-16">
               <h3 className="font-sans text-xl font-medium">All blog posts</h3>
@@ -181,7 +208,7 @@ const Blogs = () => {
                   </div>
                 )
               ) : (
-                blogsInfo.map((blog) => (
+                currentItems.map((blog) => (
                   <BlogCard
                     key={blog?.title}
                     title={blog?.title}
@@ -198,12 +225,29 @@ const Blogs = () => {
                 ))
               )}
             </div>
+            <hr className="mt-8 lg:mt-16" />
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel="next →"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={3}
+              pageCount={pageCount}
+              previousLabel="← previous"
+              renderOnZeroPageCount={null}
+              pageLinkClassName="hover:text-[#6941C6] transition-all duration-200 ease-in-out bg-transparent py-2 px-4"
+              previousClassName="max-sm:block max-sm:w-full max-sm:text-center disabled:cursor-not-allowed"
+              nextClassName="max-sm:block max-sm:w-full max-sm:text-center"
+              previousLinkClassName="hover:text-[#6941C6] capitalize sm:mr-2 transition-all duration-200 ease-in-out"
+              nextLinkClassName="capitalize hover:text-[#6941C6] sm:ml-2 transition-all duration-200 ease-in-out"
+              activeLinkClassName="bg-[#6941C6] rounded-md flex items-center justify-center hover:text-[#C0C5D0] hover:bg-[#6941c6cc]"
+              containerClassName="mt-4 max-sm:flex-wrap w-full flex items-center justify-center gap-2 text-[#C0C5D0]"
+            />
           </>
         ) : (
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center text-xl text-white">
             Looks like our blogs are taking a little break. Check back soon for
             new content
-            <span className="font-bold text-yellow-400">.</span>
+            <span className="font-bold text-sky-500">.</span>
           </div>
         )}
       </div>
