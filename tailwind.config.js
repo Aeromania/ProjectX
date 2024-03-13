@@ -1,5 +1,6 @@
 import { blackA, mauve, violet, indigo, purple } from "@radix-ui/colors";
 import tailwindcssAnimate from "tailwindcss-animate";
+import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -81,5 +82,16 @@ export default {
       }
     }
   },
-  plugins: [tailwindcssAnimate]
+  plugins: [tailwindcssAnimate, addVariablesForColors]
 };
+
+function addVariablesForColors({ addBase, theme }) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars
+  });
+}

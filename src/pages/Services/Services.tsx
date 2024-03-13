@@ -3,7 +3,8 @@ import { servicesInfoArray } from "./constants";
 import { useNavigate } from "react-router-dom";
 import { NavRoutes } from "../../components/constants";
 import ServiceTopBackground from "../../assets/images/xlabs_servicesTopBackground.png";
-// import ServicesBottomBackground from "../../assets/images/xlabs_servicesBottomBackground.png";
+// import ServicesBottomBackground from "../../assets/images/xlabs_servicesBackground.png";
+import { BackgroundBeams } from "@/components/BackgroundBeams";
 
 const Services: React.FC = (): React.JSX.Element => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Services: React.FC = (): React.JSX.Element => {
   };
 
   return (
-    <section className="relative flex min-h-dvh w-full items-center justify-center overflow-x-hidden text-white">
+    <section className="relative flex min-h-dvh w-full flex-col items-center justify-center overflow-x-hidden text-white">
       <img
         src={ServiceTopBackground}
         className="absolute top-0 -z-50 hidden h-dvh w-full md:block"
@@ -24,14 +25,14 @@ const Services: React.FC = (): React.JSX.Element => {
           <div className="mb-10 flex flex-col justify-center md:mb-0 md:flex-1">
             <div className="flex flex-col items-center justify-center md:block">
               <h1
-                className="text-center font-sans text-7xl text-white md:text-start lg:text-8xl lg:font-bold"
+                className="text-center font-sans text-7xl font-semibold !leading-[85%] text-white sm:font-bold md:text-start lg:text-8xl"
                 data-aos={"fade-down-right"}
               >
                 Our <br className="hidden md:block" />
                 Services
               </h1>
               <h3
-                className="text-center font-sans text-5xl text-white md:text-start lg:font-semibold"
+                className="mt-4 text-center font-sans text-5xl text-white sm:font-medium md:text-start"
                 data-aos={"fade-left"}
               >
                 We Provide <span className="text-sky-500">The Best</span>
@@ -48,7 +49,14 @@ const Services: React.FC = (): React.JSX.Element => {
             </p>
           </div>
         </div>
-        <div className="relative grid py-32 lg:grid-cols-2 lg:py-0 2xl:grid-cols-3">
+      </div>
+      <div className="relative flex w-full justify-center bg-neutral-950 py-32 antialiased">
+        {/* <img
+          src={ServicesBottomBackground}
+          className="absolute top-0 h-full w-full object-fill object-center"
+        /> */}
+        <BackgroundBeams />
+        <div className="grid w-[90%] lg:grid-cols-2 lg:py-0 2xl:grid-cols-3">
           {servicesInfoArray.map((cardInfo) => (
             <AnimatedServiceCard
               content={cardInfo.content}

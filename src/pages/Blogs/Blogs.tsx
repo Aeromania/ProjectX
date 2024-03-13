@@ -121,7 +121,7 @@ const Blogs = () => {
             borderImageSlice: "1"
           }}
         >
-          <h1 className="text-center font-sans text-4xl font-bold capitalize sm:text-start sm:text-6xl lg:text-8xl">
+          <h1 className="bg-gradient-to-b from-white to-neutral-400 bg-clip-text pb-1 text-center font-sans text-4xl font-bold capitalize text-transparent sm:pb-3 sm:text-start sm:text-6xl lg:pb-4 lg:text-8xl">
             ProjectX Blogs<span className="font-bold text-sky-500">.</span>
           </h1>
         </div>
@@ -234,12 +234,12 @@ const Blogs = () => {
               pageCount={pageCount}
               previousLabel="← previous"
               renderOnZeroPageCount={null}
-              pageLinkClassName="hover:text-[#6941C6] transition-all duration-200 ease-in-out bg-transparent py-2 px-4"
+              pageLinkClassName="hover:text-[#6941C6] transition-all duration-200 ease-in-out bg-transparent py-1 px-3 sm:py-2 sm:px-4"
               previousClassName="max-sm:block max-sm:w-full max-sm:text-center disabled:cursor-not-allowed"
               nextClassName="max-sm:block max-sm:w-full max-sm:text-center"
               previousLinkClassName="hover:text-[#6941C6] capitalize sm:mr-2 transition-all duration-200 ease-in-out"
               nextLinkClassName="capitalize hover:text-[#6941C6] sm:ml-2 transition-all duration-200 ease-in-out"
-              activeLinkClassName="bg-[#6941C6] rounded-md flex items-center justify-center hover:text-[#C0C5D0] hover:bg-[#6941c6cc]"
+              activeLinkClassName="!bg-[#6941C6] rounded-md flex items-center justify-center hover:text-[#C0C5D0] hover:!bg-[#6941c6cc]"
               containerClassName="mt-4 max-sm:flex-wrap w-full flex items-center justify-center gap-2 text-[#C0C5D0]"
             />
           </>

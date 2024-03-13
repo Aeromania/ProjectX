@@ -51,7 +51,7 @@ export const Animated3dCard = ({
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
         className={cn(
-          "flex items-center justify-center py-6 lg:py-20",
+          "z-20 flex items-center justify-center py-6 lg:py-20",
           containerClassName
         )}
         style={{
