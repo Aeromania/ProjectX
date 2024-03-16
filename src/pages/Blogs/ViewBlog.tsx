@@ -78,11 +78,11 @@ const ViewBlog: React.FC = (): React.JSX.Element => {
           />
           <div
             dangerouslySetInnerHTML={{ __html: blogsInfo.content }}
-            className="tracking-wide text-[#C0C5D0] sm:text-lg"
+            className="flex w-full flex-col items-center overflow-x-hidden tracking-wide text-[#C0C5D0] sm:text-lg"
           />
         </div>
       ) : (
-        <div className="w-[40%]">
+        <div className="min-h-dvh w-[40%]">
           <div
             className="group mb-8 flex w-fit cursor-pointer items-center gap-2 text-[#C0C5D0] active:scale-95"
             onClick={() => navigate("/" + NavRoutes.BLOGS)}
@@ -92,7 +92,7 @@ const ViewBlog: React.FC = (): React.JSX.Element => {
               Blogs
             </span>
           </div>
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-sans text-2xl text-white">
+          <div className="absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 font-sans text-2xl text-white">
             Blog not found!
           </div>
         </div>

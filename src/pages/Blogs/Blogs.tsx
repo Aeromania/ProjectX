@@ -161,7 +161,7 @@ const Blogs = () => {
                 />
                 {showSearchBox ? (
                   <IoMdClose
-                    className="left-2 top-1 cursor-pointer text-xl text-white"
+                    className="left-2 top-1 cursor-pointer text-2xl text-white"
                     onClick={() => {
                       setShowSearchBox(false);
                       searchBox.current?.blur();
@@ -170,7 +170,7 @@ const Blogs = () => {
                 ) : (
                   <IoIosSearch
                     className={twMerge(
-                      "left-2 top-1 cursor-pointer text-xl text-white"
+                      "left-2 top-1 cursor-pointer text-2xl text-white"
                     )}
                     onClick={() => {
                       setShowSearchBox(true);
