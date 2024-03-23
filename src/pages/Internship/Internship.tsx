@@ -1,64 +1,89 @@
 import { useState, useRef, ChangeEvent, useEffect } from "react";
-import InternshipCard, { TInternshipCardProps } from "./InternshipCard";
+import { useNavigate } from "react-router-dom";
+import InternshipCard from "./InternshipCard";
 import { IoMdClose } from "react-icons/io";
 import { IoIosSearch } from "react-icons/io";
 import { twMerge } from "tailwind-merge";
 
-const Intership: React.FC = (): React.JSX.Element => {
-  const internshipInfoArray: TInternshipCardProps[] = [
+export type TInternshipInfo = {
+  title: string;
+  duration: string;
+  stipend: string;
+  location: string;
+  workPolicy: string;
+  summary: string;
+  formLink?: string;
+};
+
+const Internship: React.FC = (): React.JSX.Element => {
+  const navigate = useNavigate();
+
+  const internshipInfoArray: TInternshipInfo[] = [
     {
       title: "Product Manager",
       duration: "6 months",
       location: "Bangalore",
-      stipend: "10k/month",
+      stipend: "10k/Month",
       summary:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
-      workPolicy: "WFH"
+      workPolicy: "WFH",
+      formLink:
+        "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
     },
     {
       title: "Software Development Manager",
       duration: "6 months",
       location: "Bangalore",
-      stipend: "10k/month",
+      stipend: "10k/Month",
       summary:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
-      workPolicy: "WFO"
+      workPolicy: "WFO",
+      formLink:
+        "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
     },
     {
       title: "Sales Development Manager",
       duration: "6 months",
       location: "Bangalore",
-      stipend: "10k/month",
+      stipend: "10k/Month",
       summary:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
-      workPolicy: "Hybrid"
+      workPolicy: "Hybrid",
+      formLink:
+        "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
     },
     {
       title: "Human Resource Development Manager",
       duration: "6 months",
       location: "Bangalore",
-      stipend: "10k/month",
+      stipend: "10k/Month",
       summary:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
-      workPolicy: "Hybrid"
+      workPolicy: "Hybrid",
+      formLink:
+        "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
     },
     {
       title: "Product Development Manager",
       duration: "6 months",
       location: "Bangalore",
-      stipend: "10k/month",
+      stipend: "10k/Month",
       summary:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
-      workPolicy: "Hybrid"
+      workPolicy: "Hybrid",
+      formLink:
+        "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
     },
     {
       title: "Product Development Manager",
       duration: "6 months",
       location: "Bangalore",
-      stipend: "10k/month",
+      stipend: "10k/Month",
       summary:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
-      workPolicy: "Hybrid"
+      workPolicy: "Hybrid",
+      formLink:
+        "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
     }
   ];
 
@@ -67,11 +92,11 @@ const Intership: React.FC = (): React.JSX.Element => {
   const searchBarContainer = useRef<HTMLDivElement>(null);
   const [searchBarValue, setSearchBarValue] = useState<string>("");
   const [filteredInternshipInfo, setFilteredInternshipInfo] = useState<
-    TInternshipCardProps[]
+    TInternshipInfo[]
   >([]);
   //@ts-expect-error "s"
   const [internshipInfo, setInternshipInfo] =
-    useState<TInternshipCardProps[]>(internshipInfoArray);
+    useState<TInternshipInfo[]>(internshipInfoArray);
 
   useEffect(() => {
     const toggleSearchBarVisibility = (event: MouseEvent) => {
@@ -104,9 +129,11 @@ const Intership: React.FC = (): React.JSX.Element => {
 
   return (
     <section className="flex min-h-dvh w-full flex-col items-center bg-[#090D1F]">
-      <div className="py-28 lg:w-[80%] 2xl:w-[65%]">
+      <div className="w-[95%] py-16 sm:w-[90%] lg:py-28 2xl:w-[70%]">
         <div className="mb-8 flex items-center justify-between text-white">
-          <h3 className="font-sans text-xl font-medium">All Internships</h3>
+          <h3 className="font-sans text-lg font-medium lg:text-xl">
+            All Internships
+          </h3>
           <div
             className="relative flex items-center gap-1"
             ref={searchBarContainer}
@@ -148,48 +175,67 @@ const Intership: React.FC = (): React.JSX.Element => {
         </div>
         <div
           className={twMerge(
-            "grid w-full grid-cols-3 gap-6",
-            searchBarValue.length > 0 && filteredInternshipInfo.length < 1
+            "grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
+            (searchBarValue.length > 0 && filteredInternshipInfo.length < 1) ||
+              internshipInfo.length < 1
               ? "grid-cols-1 place-items-center"
               : ""
           )}
         >
           {searchBarValue.length > 0 ? (
             filteredInternshipInfo.length > 0 ? (
-              filteredInternshipInfo.map((filteredInfo) => (
+              filteredInternshipInfo.map((filteredInfo, index) => (
                 <div className="h-fit rounded-lg border border-input p-6">
                   <InternshipCard
+                    key={index}
                     title={filteredInfo.title}
                     duration={filteredInfo.duration}
                     location={filteredInfo.location}
                     stipend={filteredInfo.stipend}
                     summary={filteredInfo.summary}
                     workPolicy={filteredInfo.workPolicy}
-                    key={filteredInfo.title}
+                    onApply={() => window.open(filteredInfo.formLink, "_blank")}
+                    onReadMore={() =>
+                      navigate(Math.random().toString(), {
+                        state: internshipInfo[0]
+                      })
+                    }
                   />
                 </div>
               ))
             ) : (
               <div className="mt-32 flex w-full items-center justify-center text-white">
                 <h1 className="text-lg">
-                  Internship for that role does not exists!
+                  No internship available for this role!
                 </h1>
               </div>
             )
-          ) : (
-            internshipInfo.map((info) => (
+          ) : internshipInfo.length > 0 ? (
+            internshipInfo.map((info, index) => (
               <div className="h-fit rounded-lg border border-input p-6">
                 <InternshipCard
+                  key={index}
                   title={info.title}
                   duration={info.duration}
                   location={info.location}
                   stipend={info.stipend}
                   summary={info.summary}
                   workPolicy={info.workPolicy}
-                  key={info.title}
+                  onApply={() => window.open(info.formLink, "_blank")}
+                  onReadMore={() =>
+                    navigate(Math.random().toString(), {
+                      state: internshipInfo[0]
+                    })
+                  }
                 />
               </div>
             ))
+          ) : (
+            <div className="mt-32 flex w-full items-center justify-center text-white">
+              <h1 className="text-lg">
+                We are not offering any internships right now. Check back later!
+              </h1>
+            </div>
           )}
         </div>
       </div>
@@ -197,4 +243,4 @@ const Intership: React.FC = (): React.JSX.Element => {
   );
 };
 
-export default Intership;
+export default Internship;

@@ -5,19 +5,15 @@ import { FaRegClock } from "react-icons/fa6";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import { GoLocation } from "react-icons/go";
 import { GoBriefcase } from "react-icons/go";
+import { TInternshipInfo } from "./Internship";
 
-export type TInternshipCardProps = {
-  title: string;
-  duration: string;
-  stipend: string;
-  location: string;
-  workPolicy: "WFH" | "WFO" | "Hybrid";
+export interface IInternshipCardProps extends TInternshipInfo {
   className?: string;
-  summary: string;
-  onClick?: () => void;
-};
+  onReadMore: () => void;
+  onApply: () => void;
+}
 
-const InternshipCard: React.FC<TInternshipCardProps> = ({
+const InternshipCard: React.FC<IInternshipCardProps> = ({
   title,
   duration,
   location,
@@ -25,7 +21,8 @@ const InternshipCard: React.FC<TInternshipCardProps> = ({
   workPolicy,
   className,
   summary,
-  onClick
+  onReadMore,
+  onApply
 }) => {
   const content: { icon: IconType; title: string }[] = [
     {
@@ -51,17 +48,20 @@ const InternshipCard: React.FC<TInternshipCardProps> = ({
         "group overflow-hidden text-ellipsis whitespace-normal bg-transparent transition-transform duration-200 ease-in-out",
         className
       )}
-      onClick={onClick}
     >
       <div className="flex items-center justify-between text-white">
         <h1 className="my-3 line-clamp-1 text-ellipsis text-xl font-semibold">
           {title}
         </h1>
-        <FaArrowRight className="rotate-[315deg]" size={20} />
+        <FaArrowRight
+          className="rotate-[315deg] cursor-pointer active:scale-95"
+          size={20}
+          onClick={onReadMore}
+        />
       </div>
-      <div className="flex flex-wrap items-center justify-between text-sm text-[#6941C6]">
+      <div className="grid w-full grid-cols-2 text-sm text-[#6941C6]">
         {content.map((contents) => (
-          <div className="flex items-center justify-center gap-1 py-[2px]">
+          <div className="flex items-center gap-1 py-[2px]">
             <contents.icon size={14} />
             <p>{contents.title}</p>
           </div>
@@ -77,10 +77,16 @@ const InternshipCard: React.FC<TInternshipCardProps> = ({
         {summary}
       </p>
       <div className="mt-6 flex items-center justify-between text-white">
-        <button className="text-sm hover:font-medium active:scale-95">
+        <button
+          className="text-sm hover:font-medium active:scale-95"
+          onClick={onReadMore}
+        >
           Read more
         </button>
-        <button className="flex items-center justify-center rounded-md border border-input bg-black p-2 px-3 text-center text-sm hover:font-medium active:scale-95">
+        <button
+          className="flex items-center justify-center rounded-md border border-input bg-transparent p-2 px-3 text-center text-sm hover:font-medium"
+          onClick={onApply}
+        >
           Apply Now
         </button>
       </div>

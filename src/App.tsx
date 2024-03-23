@@ -5,7 +5,6 @@ import "./styles/index.css";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
-import Intership from "./pages/Internship/Intership";
 import Training from "./pages/Training";
 import CustomDrones from "./pages/Services/CustomDrones";
 import Design from "./pages/Services/Design";
@@ -13,6 +12,7 @@ import Consultation from "./pages/Services/Consultation";
 import { NavRoutes } from "./components/constants";
 import CfdAnalysis from "./pages/Services/CfdAnalysis";
 import WorkshopSchoolRoutes from "./routes/WorkshopSchoolRoutes";
+import InternshipRoutes from "./routes/InternshipRoutes";
 import BlogsRoute from "./routes/BlogsRoute";
 import WorkshopUniversityRoutes from "./routes/WorkshopUniversityRoutes";
 import NotFound from "./pages/PageNotFound/NotFound";
@@ -54,7 +54,10 @@ const App: React.FC = (): React.JSX.Element => {
           element={<WorkshopUniversityRoutes />}
         />
         <Route path={NavRoutes.SERVICES + "/*"} element={<ServiceRoutes />} />
-        <Route path={NavRoutes.INTERNSHIP} element={<Intership />} />
+        <Route
+          path={NavRoutes.INTERNSHIP + "/*"}
+          element={<InternshipRoutes />}
+        />
         <Route path={NavRoutes.TRAINING} element={<Training />} />
         <Route path={NavRoutes.CUSTOM_DRONES} element={<CustomDrones />} />
         <Route path={NavRoutes.DESIGN} element={<Design />} />

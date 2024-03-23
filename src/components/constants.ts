@@ -42,6 +42,10 @@ export const ServicesNavRoutes = {
   PROJECT_CONSULTATION: "Project Consultation"
 } as const;
 
+export const InternshipNavRoutes = {
+  INTERNSHIP_DES: ":id"
+} as const;
+
 export const STATUS_CODES = {
   OK: 200,
   CREATED: 201,
