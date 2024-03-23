@@ -25,7 +25,7 @@ const Internship: React.FC = (): React.JSX.Element => {
       location: "Bangalore",
       stipend: "10k/Month",
       summary:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
+        " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
       workPolicy: "WFH",
       formLink:
         "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
@@ -98,6 +98,18 @@ const Internship: React.FC = (): React.JSX.Element => {
   const [internshipInfo, setInternshipInfo] =
     useState<TInternshipInfo[]>(internshipInfoArray);
 
+  const filterInternship = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchBarValue(e.target.value);
+    if (e.target.value.trim().length > 0) {
+      const filteredInternshipPosts = internshipInfo.filter((internship) =>
+        internship.title.toLowerCase().includes(e.target.value.toLowerCase())
+      );
+      setFilteredInternshipInfo(filteredInternshipPosts);
+    } else {
+      setFilteredInternshipInfo([]);
+    }
+  };
+
   useEffect(() => {
     const toggleSearchBarVisibility = (event: MouseEvent) => {
       if (
@@ -114,18 +126,6 @@ const Internship: React.FC = (): React.JSX.Element => {
     return () =>
       document.removeEventListener("mousedown", toggleSearchBarVisibility);
   }, []);
-
-  const filterInternship = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchBarValue(e.target.value);
-    if (e.target.value.trim().length > 0) {
-      const filteredInternshipPosts = internshipInfo.filter((internship) =>
-        internship.title.toLowerCase().includes(e.target.value.toLowerCase())
-      );
-      setFilteredInternshipInfo(filteredInternshipPosts);
-    } else {
-      setFilteredInternshipInfo([]);
-    }
-  };
 
   return (
     <section className="flex min-h-dvh w-full flex-col items-center bg-[#090D1F]">
@@ -144,7 +144,7 @@ const Internship: React.FC = (): React.JSX.Element => {
                 "w-0 rounded-sm px-1 text-black outline-none transition-all duration-300 ease-in-out",
                 showSearchBox
                   ? "w-[100px] bg-white focus:ring-2 focus:ring-sky-500 sm:w-[200px]"
-                  : "pointer-events-none border-0 bg-transparent"
+                  : "!pointer-events-none border-0 bg-transparent opacity-0"
               )}
               placeholder="Search..."
               ref={searchBox}
@@ -178,7 +178,7 @@ const Internship: React.FC = (): React.JSX.Element => {
             "grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
             (searchBarValue.length > 0 && filteredInternshipInfo.length < 1) ||
               internshipInfo.length < 1
-              ? "grid-cols-1 place-items-center"
+              ? "flex items-center justify-center"
               : ""
           )}
         >

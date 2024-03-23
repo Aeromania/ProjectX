@@ -86,7 +86,9 @@ const InternshipDescription: React.FC = (): React.JSX.Element => {
                 </h3>
                 <div className="flex items-center gap-1">
                   <gridContent.icon size={12} />
-                  <p className="text-sm font-normal">{gridContent.value}</p>
+                  <p className="text-sm font-normal text-[#C0C5D0]">
+                    {gridContent.value}
+                  </p>
                 </div>
               </div>
             ))}
