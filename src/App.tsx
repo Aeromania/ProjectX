@@ -5,7 +5,7 @@ import "./styles/index.css";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
-import Intership from "./pages/Intership";
+import Intership from "./pages/Internship/Intership";
 import Training from "./pages/Training";
 import CustomDrones from "./pages/Services/CustomDrones";
 import Design from "./pages/Services/Design";

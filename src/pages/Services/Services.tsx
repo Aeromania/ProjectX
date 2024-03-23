@@ -1,4 +1,4 @@
-import AnimatedServiceCard from "@/components/Cards/InternshipCard";
+import AnimatedServiceCard from "@/components/Cards/AnimatedServiceCard";
 import { servicesInfoArray } from "./constants";
 import { useNavigate } from "react-router-dom";
 import { NavRoutes } from "../../components/constants";

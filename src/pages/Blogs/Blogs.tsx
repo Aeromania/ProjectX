@@ -70,7 +70,8 @@ const Blogs = () => {
     const toggleSearchBarVisibility = (event: MouseEvent) => {
       if (
         searchBarContainer.current &&
-        !searchBarContainer.current?.contains(event.target as Node)
+        !searchBarContainer.current?.contains(event.target as Node) &&
+        searchBarValue.length < 1
       ) {
         setShowSearchBox(false);
       }
@@ -165,6 +166,7 @@ const Blogs = () => {
                     onClick={() => {
                       setShowSearchBox(false);
                       searchBox.current?.blur();
+                      setSearchBarValue("");
                     }}
                   />
                 ) : (
