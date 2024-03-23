@@ -69,6 +69,7 @@ const Intership: React.FC = (): React.JSX.Element => {
   const [filteredInternshipInfo, setFilteredInternshipInfo] = useState<
     TInternshipCardProps[]
   >([]);
+  //@ts-expect-error "s"
   const [internshipInfo, setInternshipInfo] =
     useState<TInternshipCardProps[]>(internshipInfoArray);
 
