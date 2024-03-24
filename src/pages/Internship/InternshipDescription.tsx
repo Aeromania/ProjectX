@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { TInternshipInfo } from "./Internship";
 import { FaIndianRupeeSign } from "react-icons/fa6";
@@ -9,6 +9,8 @@ import EncryptButton from "@/components/EncryptButton";
 import { IconType } from "react-icons/lib";
 import { NavRoutes } from "@/components/constants";
 import { FaChevronLeft } from "react-icons/fa6";
+import { getInternshipsById } from "@/api/internship-api";
+import { AnimatedLoader } from "@/components/Loader/AnimatedLoader";
 
 type TGridInternshipContent = {
   subHeading: string;
@@ -18,12 +20,32 @@ type TGridInternshipContent = {
 
 const InternshipDescription: React.FC = (): React.JSX.Element => {
   const { state } = useLocation();
+  const { id } = useParams();
   const [internshipInfo, setInternshipInfo] = useState<TInternshipInfo>();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const populateInternshipInfoById = async (id: string) => {
+    try {
+      setIsLoading(true);
+      const response = await getInternshipsById(id);
+      if (response) {
+        setInternshipInfo(response);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (state) {
       setInternshipInfo(state);
+    } else {
+      if (id) {
+        populateInternshipInfoById(id);
+      }
     }
   }, [state]);
 
@@ -118,18 +140,9 @@ const InternshipDescription: React.FC = (): React.JSX.Element => {
           </button>
         </div>
       )}
+      {isLoading && <AnimatedLoader />}
     </section>
   );
 };
 
 export default InternshipDescription;
-
-/**  
-  title: string;
-  duration: string;
-  stipend: string;
-  location: string;
-  workPolicy: "WFH" | "WFO" | "Hybrid";
-  className?: string;
-  summary: string;
-**/
