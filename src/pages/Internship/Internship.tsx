@@ -114,7 +114,6 @@ const Internship: React.FC = (): React.JSX.Element => {
       }
     } catch (error) {
       console.log("populateInternshipInfo() || ERROR:", error);
-      setToastMessage("Unknown Error occured. Try again later");
     } finally {
       setIsLoading(false);
     }
