@@ -253,7 +253,7 @@ const Blogs = () => {
           </div>
         )}
       </div>
-      <Toast open={toastMessage} setOpen={setToastMessage} />
+      <Toast toastMessage={toastMessage} setToastMessage={setToastMessage} />
       {isLoading && <AnimatedLoader />}
     </section>
   );

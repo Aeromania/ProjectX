@@ -149,7 +149,7 @@ const TextEditor: React.FC<{ buttonTitle: string }> = ({
         />
       </form>
       {isLoading && <AnimatedLoader />}
-      <Toast open={toastMessage} setOpen={setToastMessage} />
+      <Toast toastMessage={toastMessage} setToastMessage={setToastMessage} />
     </>
   );
 };

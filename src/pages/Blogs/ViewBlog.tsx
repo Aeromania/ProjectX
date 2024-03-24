@@ -98,7 +98,7 @@ const ViewBlog: React.FC = (): React.JSX.Element => {
         </div>
       )}
       {isLoading && <AnimatedLoader />}
-      <Toast open={toastMessage} setOpen={setToastMessage} />
+      <Toast toastMessage={toastMessage} setToastMessage={setToastMessage} />
     </div>
   );
 };

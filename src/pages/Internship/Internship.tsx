@@ -4,6 +4,9 @@ import InternshipCard from "./InternshipCard";
 import { IoMdClose } from "react-icons/io";
 import { IoIosSearch } from "react-icons/io";
 import { twMerge } from "tailwind-merge";
+import { getAllInternships } from "@/api/internship-api";
+import { AnimatedLoader } from "@/components/Loader/AnimatedLoader";
+import { Toast } from "@/components/Toast";
 
 export type TInternshipInfo = {
   title: string;
@@ -13,79 +16,80 @@ export type TInternshipInfo = {
   workPolicy: string;
   summary: string;
   formLink?: string;
+  internshipId?: string;
 };
 
 const Internship: React.FC = (): React.JSX.Element => {
   const navigate = useNavigate();
 
-  const internshipInfoArray: TInternshipInfo[] = [
-    {
-      title: "Product Manager",
-      duration: "6 months",
-      location: "Bangalore",
-      stipend: "10k/Month",
-      summary:
-        " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
-      workPolicy: "WFH",
-      formLink:
-        "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
-    },
-    {
-      title: "Software Development Manager",
-      duration: "6 months",
-      location: "Bangalore",
-      stipend: "10k/Month",
-      summary:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
-      workPolicy: "WFO",
-      formLink:
-        "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
-    },
-    {
-      title: "Sales Development Manager",
-      duration: "6 months",
-      location: "Bangalore",
-      stipend: "10k/Month",
-      summary:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
-      workPolicy: "Hybrid",
-      formLink:
-        "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
-    },
-    {
-      title: "Human Resource Development Manager",
-      duration: "6 months",
-      location: "Bangalore",
-      stipend: "10k/Month",
-      summary:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
-      workPolicy: "Hybrid",
-      formLink:
-        "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
-    },
-    {
-      title: "Product Development Manager",
-      duration: "6 months",
-      location: "Bangalore",
-      stipend: "10k/Month",
-      summary:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
-      workPolicy: "Hybrid",
-      formLink:
-        "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
-    },
-    {
-      title: "Product Development Manager",
-      duration: "6 months",
-      location: "Bangalore",
-      stipend: "10k/Month",
-      summary:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
-      workPolicy: "Hybrid",
-      formLink:
-        "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
-    }
-  ];
+  // const internshipInfoArray: TInternshipInfo[] = [
+  //   {
+  //     title: "Product Manager",
+  //     duration: "6 months",
+  //     location: "Bangalore",
+  //     stipend: "10k/Month",
+  //     summary:
+  //       " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
+  //     workPolicy: "WFH",
+  //     formLink:
+  //       "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
+  //   },
+  //   {
+  //     title: "Software Development Manager",
+  //     duration: "6 months",
+  //     location: "Bangalore",
+  //     stipend: "10k/Month",
+  //     summary:
+  //       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
+  //     workPolicy: "WFO",
+  //     formLink:
+  //       "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
+  //   },
+  //   {
+  //     title: "Sales Development Manager",
+  //     duration: "6 months",
+  //     location: "Bangalore",
+  //     stipend: "10k/Month",
+  //     summary:
+  //       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
+  //     workPolicy: "Hybrid",
+  //     formLink:
+  //       "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
+  //   },
+  //   {
+  //     title: "Human Resource Development Manager",
+  //     duration: "6 months",
+  //     location: "Bangalore",
+  //     stipend: "10k/Month",
+  //     summary:
+  //       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
+  //     workPolicy: "Hybrid",
+  //     formLink:
+  //       "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
+  //   },
+  //   {
+  //     title: "Product Development Manager",
+  //     duration: "6 months",
+  //     location: "Bangalore",
+  //     stipend: "10k/Month",
+  //     summary:
+  //       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
+  //     workPolicy: "Hybrid",
+  //     formLink:
+  //       "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
+  //   },
+  //   {
+  //     title: "Product Development Manager",
+  //     duration: "6 months",
+  //     location: "Bangalore",
+  //     stipend: "10k/Month",
+  //     summary:
+  //       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis mollitia enim tenetur error esse officiis porro totam dicta, dolor aliquam possimus laborum quam iure et tempore natus modi consectetur pariatur.",
+  //     workPolicy: "Hybrid",
+  //     formLink:
+  //       "https://docs.google.com/forms/d/e/1FAIpQLScQaJARH6MmGJycLWtnDD1yAFYntEEcJ0HTl94BeW3lbXj9hg/viewform"
+  //   }
+  // ];
 
   const [showSearchBox, setShowSearchBox] = useState<boolean>(false);
   const searchBox = useRef<HTMLInputElement>(null);
@@ -94,9 +98,31 @@ const Internship: React.FC = (): React.JSX.Element => {
   const [filteredInternshipInfo, setFilteredInternshipInfo] = useState<
     TInternshipInfo[]
   >([]);
-  //@ts-expect-error "s"
-  const [internshipInfo, setInternshipInfo] =
-    useState<TInternshipInfo[]>(internshipInfoArray);
+  const [internshipInfo, setInternshipInfo] = useState<TInternshipInfo[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [toastMessage, setToastMessage] = useState<string | undefined>(
+    undefined
+  );
+
+  const populateInternshipInfo = async () => {
+    try {
+      setIsLoading(true);
+      const response = await getAllInternships();
+
+      if (response) {
+        setInternshipInfo(response);
+      }
+    } catch (error) {
+      console.log("populateInternshipInfo() || ERROR:", error);
+      setToastMessage("Unknown Error occured. Try again later");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    populateInternshipInfo();
+  }, []);
 
   const filterInternship = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchBarValue(e.target.value);
@@ -196,8 +222,8 @@ const Internship: React.FC = (): React.JSX.Element => {
                     workPolicy={filteredInfo.workPolicy}
                     onApply={() => window.open(filteredInfo.formLink, "_blank")}
                     onReadMore={() =>
-                      navigate(Math.random().toString(), {
-                        state: internshipInfo[0]
+                      navigate(filteredInfo.internshipId ?? "", {
+                        state: filteredInfo
                       })
                     }
                   />
@@ -223,8 +249,8 @@ const Internship: React.FC = (): React.JSX.Element => {
                   workPolicy={info.workPolicy}
                   onApply={() => window.open(info.formLink, "_blank")}
                   onReadMore={() =>
-                    navigate(Math.random().toString(), {
-                      state: internshipInfo[0]
+                    navigate(info.internshipId ?? "", {
+                      state: info
                     })
                   }
                 />
@@ -239,6 +265,8 @@ const Internship: React.FC = (): React.JSX.Element => {
           )}
         </div>
       </div>
+      {isLoading && <AnimatedLoader />}
+      <Toast toastMessage={toastMessage} setToastMessage={setToastMessage} />
     </section>
   );
 };

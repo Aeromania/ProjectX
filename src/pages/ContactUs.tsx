@@ -16,7 +16,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
   const [isTermsAccepted, setIsTermsAccepted] = useState<boolean>(false);
   const [isDefaultEmailCheckCleared, setIsDefaultEmailCheckCleared] =
     useState<boolean>(false);
-  const [showAlert, setShowAlert] = useState<string | undefined>();
+  const [toastMessage, setToastMessage] = useState<string | undefined>();
   const [errorMessageDisplayStyle, setErrorMessageDisplayStyle] =
     useState<string>("hidden");
   const [errorMessageTimeout, setErrorMessageTimeout] =
@@ -60,7 +60,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
         body
       );
       if (response.status == STATUS_CODES.OK) {
-        setShowAlert("Your message was sent successfully");
+        setToastMessage("Your message was sent successfully");
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         setFormName("");
         setFormEmail("");
@@ -73,16 +73,16 @@ const ContactUs: React.FC = (): React.JSX.Element => {
       const knownError = error as Error | AxiosError;
       if (axios.isAxiosError(knownError)) {
         if (knownError.code === AXIOS_ERROR_CODE.NETWORK_ERROR) {
-          setShowAlert("Server down. Please try again later!");
+          setToastMessage("Server down. Please try again later!");
         } else if (
           knownError.response?.status === STATUS_CODES.TOO_MANY_REQUESTS
         ) {
-          setShowAlert(knownError.response.data.msg);
+          setToastMessage(knownError.response.data.msg);
         } else {
-          setShowAlert("Server Error. Please try again later!");
+          setToastMessage("Server Error. Please try again later!");
         }
       } else {
-        setShowAlert("Failed to send request. Please try again later!");
+        setToastMessage("Failed to send request. Please try again later!");
       }
     } finally {
       setIsLoading(false);
@@ -266,7 +266,7 @@ const ContactUs: React.FC = (): React.JSX.Element => {
           ></iframe>
         </div>
       </div>
-      <Toast open={showAlert} setOpen={setShowAlert} />
+      <Toast toastMessage={toastMessage} setToastMessage={setToastMessage} />
       {isLoading && <AnimatedLoader />}
     </div>
   );
