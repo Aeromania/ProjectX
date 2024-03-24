@@ -21,7 +21,7 @@ const Services: React.FC = (): React.JSX.Element => {
         className="absolute top-0 -z-50 hidden h-dvh w-full md:block"
       />
       <div className="w-[90%]">
-        <div className="flex w-full flex-col pt-20 md:h-dvh md:flex-row md:justify-between md:pt-0">
+        <div className="flex w-full flex-col py-20 md:h-dvh md:flex-row md:justify-between md:pt-0">
           <div className="mb-10 flex flex-col justify-center md:mb-0 md:flex-1">
             <div className="flex flex-col items-center justify-center md:block">
               <h1
@@ -32,7 +32,7 @@ const Services: React.FC = (): React.JSX.Element => {
                 Services
               </h1>
               <h3
-                className="mt-4 text-center font-sans text-5xl text-white sm:font-medium md:text-start"
+                className="mt-4 text-center font-sans text-4xl text-white sm:font-medium md:text-start"
                 data-aos={"fade-left"}
               >
                 We Provide <span className="text-sky-500">The Best</span>
@@ -50,7 +50,7 @@ const Services: React.FC = (): React.JSX.Element => {
           </div>
         </div>
       </div>
-      <div className="relative flex w-full justify-center bg-neutral-950 py-32 antialiased">
+      <div className="relative flex w-full justify-center bg-neutral-950 py-16 antialiased lg:py-32">
         {/* <img
           src={ServicesBottomBackground}
           className="absolute top-0 h-full w-full object-fill object-center"

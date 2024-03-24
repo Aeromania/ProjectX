@@ -188,18 +188,18 @@ const AboutUs: React.FC = (): React.JSX.Element => {
         <div className="m-0 mx-6 flex h-full flex-col items-center justify-center md:mx-0 md:flex-row md:gap-6">
           {infoCards.map((info) => (
             <div
-              className="card group relative z-10 my-8 h-[80%] cursor-pointer overflow-y-hidden rounded-[10px] border border-[#ffffff26] bg-none px-6 py-[50px] text-center text-[#0d7586] transition-all duration-100 ease-in hover:text-black md:mx-5 md:my-0 lg:mx-0 xl:h-[70%]"
+              className="card group relative z-10 my-8 h-[80%] cursor-pointer overflow-y-hidden rounded-[10px] border border-[#ffffff26] bg-none px-6 py-[50px] text-center text-[#0d7586] transition-all duration-100 ease-in md:mx-5 md:my-0 md:hover:text-black lg:mx-0 xl:h-[70%]"
               style={{ width: "calc(34% - 20px)" }}
               key={info.id}
               data-aos={info.animation}
               data-aos-once={true}
             >
-              <div className="flex w-full  flex-col items-center justify-center transition-all duration-300 ease-in group-hover:scale-105">
+              <div className="flex w-full  flex-col items-center justify-center transition-all duration-300 ease-in md:group-hover:scale-105">
                 <img
                   src={info.icon}
-                  className="h-24 w-32 transition-all duration-300 ease-in group-hover:brightness-0"
+                  className="h-24 w-32 transition-all duration-300 ease-in md:group-hover:brightness-0"
                 />
-                <div className="mb-8 mt-[10px] text-2xl font-medium text-[#ffffff] transition-all duration-200 ease-in group-hover:text-black">
+                <div className="mb-8 mt-[10px] text-2xl font-medium text-[#ffffff] transition-all duration-200 ease-in md:group-hover:text-black">
                   {info.title}
                 </div>
                 <p className="lg:text-base xl:text-lg ">{info.description}</p>
@@ -208,15 +208,15 @@ const AboutUs: React.FC = (): React.JSX.Element => {
           ))}
         </div>
       </section>
-      <section className="flex min-h-dvh w-full flex-col items-center bg-black">
+      <section className="my-16 flex min-h-dvh w-full flex-col items-center bg-black">
         <div
-          className="team__header mb-4 mt-16 w-[80%] text-center text-5xl text-white sm:text-6xl md:mt-24 md:text-left"
+          className="team__header mb-4 w-[80%] text-center text-5xl text-white sm:text-6xl md:text-left"
           data-aos="fade-down-right"
           data-aos-once={true}
         >
           Team Leaders
         </div>
-        <div className="team__section grid h-full w-full place-items-center gap-4 md:grid-cols-2 md:py-20 lg:p-20 xl:grid-cols-3 2xl:w-[80%]">
+        <div className="team__section grid h-full w-full place-items-center gap-4 md:grid-cols-2 md:pt-20 lg:pt-20 xl:grid-cols-3 2xl:w-[80%]">
           {employeeInfo.map((employee, index) => (
             <EmployeeInfoCard
               key={index}

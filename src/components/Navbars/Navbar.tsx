@@ -14,6 +14,7 @@ export const Navbar: React.FC = (): React.JSX.Element => {
   const [isNavMenuVisible, setIsNavMenuVisible] = useState<boolean>(false);
   const handleLinkClick = (routeName: string) => {
     setActiveRoute(routeName);
+    setIsNavMenuVisible(false);
   };
   const { scrollYProgress } = useScroll();
   const navMenuRef = useRef<HTMLDivElement>(null);

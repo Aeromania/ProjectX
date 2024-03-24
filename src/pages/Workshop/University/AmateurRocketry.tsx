@@ -22,7 +22,7 @@ const AmateurRocketry: React.FC = (): React.JSX.Element => {
           <img
             src={landingImage}
             alt="Amateur Rocketry"
-            className="mt-8 w-full rounded-sm lg:absolute lg:right-10 lg:top-[5%] lg:h-[90%] lg:w-[65%] lg:rounded-none"
+            className="mt-8 h-[250px] w-full rounded-sm object-cover lg:absolute lg:right-10 lg:top-[5%] lg:h-[90%] lg:w-[65%] lg:rounded-none"
             data-aos="zoom-in"
           />
           <h1

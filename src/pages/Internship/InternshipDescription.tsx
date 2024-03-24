@@ -116,7 +116,7 @@ const InternshipDescription: React.FC = (): React.JSX.Element => {
             ))}
           </div>
           <div className="py-6">
-            <p>{internshipInfo.summary}</p>
+            <div dangerouslySetInnerHTML={{ __html: internshipInfo.summary }} />
           </div>
           <div className="mt-6 flex w-full items-center justify-center">
             <EncryptButton

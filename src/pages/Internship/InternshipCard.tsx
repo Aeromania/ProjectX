@@ -68,13 +68,13 @@ const InternshipCard: React.FC<IInternshipCardProps> = ({
         ))}
       </div>
       <p
-        className="line-clamp-1 overflow-hidden text-ellipsis text-[#C0C5D0]"
+        className="mt-3 line-clamp-1 overflow-hidden text-ellipsis text-[#C0C5D0]"
         style={{
           display: "-webkit-box",
           WebkitBoxOrient: "vertical"
         }}
       >
-        {summary}
+        <div dangerouslySetInnerHTML={{ __html: summary }} />
       </p>
       <div className="mt-6 flex items-center justify-between text-white">
         <button

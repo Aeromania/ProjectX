@@ -54,7 +54,7 @@ export const Carousel: React.FC<CarouselProps> = ({
               <>
                 <h1
                   key={carousel.id}
-                  className="mb-4 mt-2 text-center font-sans font-semibold sm:font-bold md:text-2xl"
+                  className="mb-4 mt-2 text-center font-sans font-semibold sm:font-bold md:text-3xl"
                   data-aos-offset="0"
                   data-aos-once="false"
                   data-aos="zoom-in"

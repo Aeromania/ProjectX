@@ -153,7 +153,7 @@ const Internship: React.FC = (): React.JSX.Element => {
   }, []);
 
   return (
-    <section className="flex min-h-dvh w-full flex-col items-center bg-[#090D1F]">
+    <section className="flex w-full flex-col items-center bg-[#090D1F] lg:min-h-dvh">
       <div className="w-[95%] py-16 sm:w-[90%] lg:py-28 2xl:w-[70%]">
         <div className="mb-8 flex items-center justify-between text-white">
           <h3 className="font-sans text-lg font-medium lg:text-xl">
