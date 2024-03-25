@@ -22,8 +22,7 @@ type staggeredDropDownProps = {
 const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
   title,
   routeName,
-  setActiveRoute,
-  activeRoute
+  setActiveRoute
 }): React.JSX.Element => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -123,7 +122,6 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
                   navigate(route);
                   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
                 }}
-                activeRoute={activeRoute}
               />
             ))}
           </motion.ul>
@@ -144,10 +142,8 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
                 checkIsActive={checkIsActive}
                 iconVariants={iconVariants}
                 isIpad={isIpad}
-                className={twMerge(
-                  "ml-8 py-1",
-                  activeRoute == route ? "text-sky-600" : ""
-                )}
+                route={route}
+                className={twMerge("ml-8 py-1")}
               />
             ))}
           </motion.div>
@@ -159,15 +155,11 @@ const StaggeredDropDown: React.FC<staggeredDropDownProps> = ({
   );
 };
 
-const Option = ({
-  text,
-  onClick,
-  activeRoute
-}: {
-  text: string;
-  onClick: () => void;
-  activeRoute: string | null;
-}) => {
+const Option = ({ text, onClick }: { text: string; onClick: () => void }) => {
+  const currentPath = decodeURIComponent(window.location.pathname);
+
+  const [isActive, setIsActive] = useState<boolean>(false);
+
   const itemVariants = {
     open: {
       opacity: 1,
@@ -184,13 +176,26 @@ const Option = ({
       }
     }
   };
+
+  useEffect(() => {
+    const parts = currentPath.split("/");
+    const firstPath = parts[parts.length - 1].toString();
+    const secondPath =
+      parts.length > 1 ? parts[parts.length - 2].toString() : null;
+    if (text.toString() === firstPath || text.toString() === secondPath) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  }, [currentPath]);
+
   return (
     <motion.li
       variants={itemVariants}
       onClick={onClick}
       className={twMerge(
         "flex w-full cursor-pointer items-center gap-2 whitespace-nowrap text-sm font-normal transition-colors hover:bg-sky-600 hover:text-white md:text-white",
-        activeRoute == text ? "md:text-sky-600" : ""
+        isActive ? "md:text-sky-600" : ""
       )}
     >
       <span className="px-4 py-2">{text}</span>

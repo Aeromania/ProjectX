@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
+import { NavRoutes, WorkshopNavRoutes } from "../constants";
 
 type WorkshopNavbarProps = {
   routeName: string;
@@ -13,16 +14,23 @@ export const WorkshopNavlinks: React.FC<WorkshopNavbarProps> = ({
   className,
   onClick
 }): React.JSX.Element => {
-  const [isThisActiveRoute, setIsThisActiveRoute] = useState<boolean>(false);
+  const [isActive, setIsActive] = useState<boolean>(false);
   const currentPath = decodeURIComponent(window.location.pathname);
 
   useEffect(() => {
+    console.log("routeName", routeName);
     const parts = currentPath.split("/");
 
-    if (routeName.toString() === parts[parts.length - 1].toString()) {
-      setIsThisActiveRoute(true);
+    if (
+      routeName.toString() === parts[parts.length - 1].toString() ||
+      (routeName.toString() === WorkshopNavRoutes.ADDITIVE_MANUFACTURING &&
+        parts[parts.length - 1].toString() === NavRoutes.UNIVERSITY) ||
+      (routeName.toString() === WorkshopNavRoutes.PRINTING_3D &&
+        parts[parts.length - 1].toString() === NavRoutes.HIGH_SCHOOL)
+    ) {
+      setIsActive(true);
     } else {
-      setIsThisActiveRoute(false);
+      setIsActive(false);
     }
   }, [currentPath]);
 
@@ -32,7 +40,7 @@ export const WorkshopNavlinks: React.FC<WorkshopNavbarProps> = ({
         to={routeName}
         className={twMerge(
           "text-2xl text-white transition-colors duration-200 ease-in-out hover:text-sky-500 active:scale-90 xl:text-3xl",
-          isThisActiveRoute ? "text-sky-500" : "",
+          isActive ? "text-sky-500" : "",
           className
         )}
         onClick={onClick}

@@ -5,7 +5,6 @@ import "./styles/index.css";
 import Home from "./pages/Home/Home";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
-import Training from "./pages/Training";
 import CustomDrones from "./pages/Services/CustomDrones";
 import Design from "./pages/Services/Design";
 import Consultation from "./pages/Services/Consultation";
@@ -58,7 +57,6 @@ const App: React.FC = (): React.JSX.Element => {
           path={NavRoutes.INTERNSHIP + "/*"}
           element={<InternshipRoutes />}
         />
-        <Route path={NavRoutes.TRAINING} element={<Training />} />
         <Route path={NavRoutes.CUSTOM_DRONES} element={<CustomDrones />} />
         <Route path={NavRoutes.DESIGN} element={<Design />} />
         <Route path={NavRoutes.PROJ_CONSULT} element={<Consultation />} />

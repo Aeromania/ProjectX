@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { TNavLinksProps } from "../types";
 import { twMerge } from "tailwind-merge";
 import { Link } from "react-router-dom";
 
 export const NavLinks: React.FC<TNavLinksProps> = ({
   routeName,
-  isActive,
   onClick,
   className
 }): React.JSX.Element => {
   const renderRouteName = String(routeName);
+
+  const [isActiveRoute, setIsActiveRoute] = useState<boolean>(false);
+  const currentPath = decodeURIComponent(window.location.pathname);
+
+  useEffect(() => {
+    const parts = currentPath.split("/");
+    if (routeName.toString() === parts[parts.length - 1].toString()) {
+      setIsActiveRoute(true);
+    } else {
+      setIsActiveRoute(false);
+    }
+  }, [currentPath]);
+
   const checkIsActive = () => {
-    return isActive ? "scale-x-1" : "scale-x-0";
+    return isActiveRoute ? "scale-x-1" : "scale-x-0";
   };
+
   return (
     <Link
       className={twMerge(

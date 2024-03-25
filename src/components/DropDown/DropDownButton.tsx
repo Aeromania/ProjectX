@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
@@ -13,6 +13,7 @@ type DropDownButtonProps = {
   checkIsActive: () => boolean;
   isIpad: boolean;
   className?: string;
+  route?: string;
   iconVariants: {
     open: IconVariantValueProps;
     closed: IconVariantValueProps;
@@ -25,15 +26,43 @@ const DropDownButton: React.FC<DropDownButtonProps> = ({
   onClick,
   iconVariants,
   isIpad,
-  className
+  className,
+  route
 }): React.JSX.Element => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const currentPath = decodeURIComponent(window.location.pathname);
+
+  useEffect(() => {
+    const parts = currentPath.split("/");
+    const firstPath = parts[parts.length - 1].toString();
+    const secondPath =
+      parts.length > 1 ? parts[parts.length - 2].toString() : null;
+    console.log(
+      "firstPath,",
+      firstPath,
+      "\n\nsecondPath:",
+      secondPath,
+      "\n\nroute:",
+      route
+    );
+    if (
+      route &&
+      (route.toString() === firstPath || route.toString() === secondPath)
+    ) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  }, [currentPath]);
+
   return (
     <>
       <button
         onClick={onClick}
         className={twMerge(
           "group flex items-center gap-2 rounded-md bg-transparent text-white transition-colors lg:py-0 lg:text-white",
-          className
+          className,
+          isActive ? "text-sky-600" : ""
         )}
       >
         <span className="font-sans text-base font-normal">

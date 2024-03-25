@@ -3,7 +3,6 @@ import { NavRoutes, WorkshopNavRoutes } from "./constants";
 export type TNavLinksProps = {
   routeName: typeOfNavRoutes;
   className?: string;
-  isActive: boolean;
   onClick: () => void;
 };
 

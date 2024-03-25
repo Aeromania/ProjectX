@@ -89,12 +89,10 @@ export const Navbar: React.FC = (): React.JSX.Element => {
           />
           <NavLinks
             routeName={NavRoutes.INTERNSHIP}
-            isActive={activeRoute === NavRoutes.INTERNSHIP}
             onClick={() => handleLinkClick(NavRoutes.INTERNSHIP)}
           />
           <NavLinks
             routeName={NavRoutes.SERVICES}
-            isActive={activeRoute === NavRoutes.SERVICES}
             onClick={() => handleLinkClick(NavRoutes.SERVICES)}
           />
           <Link
@@ -112,23 +110,19 @@ export const Navbar: React.FC = (): React.JSX.Element => {
           </Link>
           <NavLinks
             routeName={NavRoutes.HOME}
-            isActive={activeRoute === NavRoutes.HOME}
             onClick={() => handleLinkClick(NavRoutes.HOME)}
             className="lg:hidden"
           />
           <NavLinks
             routeName={NavRoutes.BLOGS}
-            isActive={activeRoute === NavRoutes.BLOGS}
             onClick={() => handleLinkClick(NavRoutes.BLOGS)}
           />
           <NavLinks
             routeName={NavRoutes.ABOUT_US}
-            isActive={activeRoute === NavRoutes.ABOUT_US}
             onClick={() => handleLinkClick(NavRoutes.ABOUT_US)}
           />
           <NavLinks
             routeName={NavRoutes.CONTACT_US}
-            isActive={activeRoute === NavRoutes.CONTACT_US}
             onClick={() => handleLinkClick(NavRoutes.CONTACT_US)}
           />
         </div>
