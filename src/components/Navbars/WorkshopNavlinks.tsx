@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 import { NavRoutes, WorkshopNavRoutes } from "../constants";
 
@@ -15,7 +15,7 @@ export const WorkshopNavlinks: React.FC<WorkshopNavbarProps> = ({
   onClick
 }): React.JSX.Element => {
   const [isActive, setIsActive] = useState<boolean>(false);
-  const currentPath = decodeURIComponent(window.location.pathname);
+  const currentPath = decodeURIComponent(useLocation().pathname);
 
   useEffect(() => {
     console.log("routeName", routeName);

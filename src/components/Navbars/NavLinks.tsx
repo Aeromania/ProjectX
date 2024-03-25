@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { TNavLinksProps } from "../types";
 import { twMerge } from "tailwind-merge";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { NavRoutes } from "@/components/constants";
 
 export const NavLinks: React.FC<TNavLinksProps> = ({
   routeName,
@@ -11,11 +12,21 @@ export const NavLinks: React.FC<TNavLinksProps> = ({
   const renderRouteName = String(routeName);
 
   const [isActiveRoute, setIsActiveRoute] = useState<boolean>(false);
-  const currentPath = decodeURIComponent(window.location.pathname);
+  const currentPath = decodeURIComponent(useLocation().pathname);
 
   useEffect(() => {
+    console.log("currentPath", currentPath);
     const parts = currentPath.split("/");
-    if (routeName.toString() === parts[parts.length - 1].toString()) {
+    console.log("parts", parts);
+    const secondPath =
+      parts.length > 1 ? parts[parts.length - 2].toString() : null;
+    if (
+      routeName.toString() === parts[parts.length - 1].toString() ||
+      (routeName.toString() === NavRoutes.SERVICES &&
+        routeName.toString() === secondPath) ||
+      (routeName.toString() === NavRoutes.BLOGS &&
+        routeName.toString() === secondPath)
+    ) {
       setIsActiveRoute(true);
     } else {
       setIsActiveRoute(false);
