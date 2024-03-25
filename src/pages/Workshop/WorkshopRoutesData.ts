@@ -14,5 +14,6 @@ export const WorkshopForUniversityRoute: typeOfWorkshopNavRoutes[] = [
   WorkshopNavRoutes.AMATEUR_ROCKETRY,
   WorkshopNavRoutes.AIRCRAFT_DESIGN,
   WorkshopNavRoutes.QUAD_DRONE,
-  WorkshopNavRoutes.RC_PLANE
+  WorkshopNavRoutes.RC_PLANE,
+  WorkshopNavRoutes.COMPOSITES
 ];

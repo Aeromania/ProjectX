@@ -57,7 +57,6 @@ export const WorkshopNavbar: React.FC<WorkshopNavbarProps> = ({
           </div>
           {NavRoutes.map((routeName, index) => (
             <WorkshopNavlinks
-              isActive={isActive == routeName}
               routeName={routeName}
               onClick={() => {
                 setIsActive(routeName);

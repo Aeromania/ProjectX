@@ -23,7 +23,7 @@ const ModelRocketry: React.FC = (): React.JSX.Element => {
           <img
             src={landingImage}
             alt="3D Printer"
-            className="mt-8 h-[250px] w-full rounded-md object-cover lg:absolute lg:right-10 lg:top-[5%] lg:h-[90%] lg:max-h-fit lg:w-[65%] lg:rounded-none"
+            className="mt-8 h-[300px] w-full rounded-md object-cover lg:absolute lg:right-10 lg:top-[5%] lg:h-[90%] lg:max-h-fit lg:w-[65%] lg:rounded-none"
             data-aos="zoom-in"
           />
           <h1

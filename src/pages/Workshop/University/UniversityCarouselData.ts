@@ -21,6 +21,12 @@ import RcPlane_image1 from "../../../assets/images/xlabs_rcplane-1.jpeg";
 import RcPlane_image2 from "../../../assets/images/xlabs_rcplane-2.jpeg";
 import RcPlane_image3 from "../../../assets/images/xlabs_rcplane-3.jpeg";
 import RcPlane_image4 from "../../../assets/images/xlabs_rcplane-4.jpeg";
+import Composite_image1 from "../../../assets/images/xlabs_composite-1.jpeg";
+import Composite_image2 from "../../../assets/images/xlabs_composite-2.jpeg";
+import Composite_image3 from "../../../assets/images/xlabs_composite-3.jpeg";
+import Composite_image4 from "../../../assets/images/xlabs_composite-4.jpeg";
+import Composite_image5 from "../../../assets/images/xlabs_composite-5.jpeg";
+import Composite_image6 from "../../../assets/images/xlabs_composite-6.jpg";
 
 export const additiveManufacturingInfoArray: TCarouselInfoArrayProps[] = [
   {
@@ -172,5 +178,44 @@ export const RCPlaneInfoArray: TCarouselInfoArrayProps[] = [
     imageUrl: quadDrone_image2,
     title: "Flight Training",
     body: "Under the guidance of experienced instructors, participants will have the opportunity to fly their newly built R/C planes. They will learn the basics of R/C piloting, including takeoff, landing, and maneuvering techniques. Safety protocols and guidelines will be emphasized throughout the flight training process."
+  }
+];
+
+export const CompositeInfoArray: TCarouselInfoArrayProps[] = [
+  {
+    id: 1,
+    title: "Introduction to Composites",
+    imageUrl: Composite_image1,
+    body: "In this workshop, participants will delve into the fascinating world of composites. Composites are materials made from two or more constituent materials with significantly different physical or chemical properties. We'll explore the wide range of applications for composites across industries such as aerospace, automotive, marine, construction, and more."
+  },
+  {
+    id: 2,
+    title: "Demo of Hand Layup Process",
+    imageUrl: Composite_image2,
+    body: "Get hands-on experience with the traditional hand layup process, where layers of reinforcing fibers are manually laid onto a mold and then infused with resin. Witness firsthand the techniques used to ensure proper fiber orientation and resin distribution for optimal strength and performance."
+  },
+  {
+    id: 3,
+    title: "Demo of Vacuum Bagging",
+    imageUrl: Composite_image3,
+    body: "Learn about vacuum bagging, a method used to consolidate composite materials by applying vacuum pressure to remove air and excess resin from the laminate. See how vacuum bagging enhances the quality and uniformity of composite parts, resulting in stronger and lighter structures."
+  },
+  {
+    id: 4,
+    title: "Practical on Hand Layup Process",
+    imageUrl: Composite_image4,
+    body: "Put your newfound knowledge into practice with a practical session on the hand layup process. Work with our experienced instructors to lay up composite materials onto a mold, apply resin, and properly consolidate the laminate for a finished product."
+  },
+  {
+    id: 5,
+    title: "Resin Infusion",
+    imageUrl: Composite_image5,
+    body: "Discover the resin infusion process, where resin is drawn into dry fiber reinforcements under vacuum, resulting in void-free, high-strength composite parts. Gain insight into the equipment, materials, and techniques involved in resin infusion for producing complex and lightweight structures."
+  },
+  {
+    id: 6,
+    title: "Cutting and Postprocessing",
+    imageUrl: Composite_image6,
+    body: "Learn essential techniques for cutting and post-processing composite parts to meet specific design requirements. Explore methods for trimming, sanding, drilling, and finishing composite components to achieve desired dimensions, surface quality, and aesthetics."
   }
 ];

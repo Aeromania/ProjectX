@@ -6,22 +6,29 @@ import { twMerge } from "tailwind-merge";
 export const ImageTrail = ({
   children,
   className,
-  images
+  images,
+  containerClassName
 }: {
   children?: ReactNode;
   className?: string;
   images: string[];
+  containerClassName?: string;
 }) => {
   return (
     <MouseImageTrail renderImageBuffer={50} rotationRange={25} images={images}>
-      <section className="relative flex w-full items-center justify-center text-white lg:h-dvh lg:justify-start">
+      <section
+        className={twMerge(
+          "relative flex w-full justify-center text-white sm:py-16 lg:min-h-dvh lg:justify-start lg:py-0",
+          containerClassName
+        )}
+      >
         <img
           src={BackgroundImage}
           className="absolute top-0 -z-50 h-full w-full object-fill object-center"
         />
         <div
           className={twMerge(
-            "flex h-full w-[90%] flex-col gap-3 py-16 lg:w-[75%] lg:gap-6 lg:py-0 lg:pl-[10%] lg:pt-24 xl:w-[65%]",
+            "flex h-full w-[90%] flex-col py-16 lg:w-[75%] lg:py-32 lg:pl-[10%] xl:w-[65%]",
             className
           )}
         >
@@ -140,7 +147,7 @@ const MouseImageTrail = ({
 
       {images.map((img, index) => (
         <img
-          className="pointer-events-none absolute left-0 top-0 !-z-10 h-48 w-auto rounded-xl border-2 border-black bg-neutral-900 object-cover opacity-0"
+          className="pointer-events-none absolute left-0 top-0 !-z-10 hidden h-48 w-auto rounded-xl border-2 border-black bg-neutral-900 object-cover opacity-0 lg:block"
           src={img}
           alt={`Mouse move image ${index}`}
           key={index}

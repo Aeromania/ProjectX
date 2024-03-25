@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbars/Navbar";
 import "./styles/index.css";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Training from "./pages/Training";

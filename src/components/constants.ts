@@ -30,7 +30,8 @@ export const WorkshopNavRoutes = {
   AMATEUR_ROCKETRY: "AMATEUR ROCKETRY",
   AIRCRAFT_DESIGN: "AIRCRAFT DESIGN",
   QUAD_DRONE: "DRONE (QUAD)",
-  RC_PLANE: "R C PLANE"
+  RC_PLANE: "R C PLANE",
+  COMPOSITES: "COMPOSITES"
 } as const;
 
 export const ServicesNavRoutes = {

@@ -7,6 +7,7 @@ import AmateurRocketry from "@/pages/Workshop/University/AmateurRocketry";
 import AircraftDesign from "@/pages/Workshop/University/AircraftDesign";
 import QuadDrone from "@/pages/Workshop/University/QuadDrone";
 import RcPlane from "@/pages/Workshop/University/RcPlane";
+import Composites from "@/pages/Workshop/University/Composites";
 
 const WorkshopUniversityRoutes = () => {
   return (
@@ -27,6 +28,7 @@ const WorkshopUniversityRoutes = () => {
         />
         <Route path={WorkshopNavRoutes.QUAD_DRONE} element={<QuadDrone />} />
         <Route path={WorkshopNavRoutes.RC_PLANE} element={<RcPlane />} />
+        <Route path={WorkshopNavRoutes.COMPOSITES} element={<Composites />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
