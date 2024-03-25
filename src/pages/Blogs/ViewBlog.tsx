@@ -78,7 +78,7 @@ const ViewBlog: React.FC = (): React.JSX.Element => {
           />
           <div
             dangerouslySetInnerHTML={{ __html: blogsInfo.content }}
-            className="flex w-full flex-col items-center overflow-x-hidden tracking-wide text-[#C0C5D0] sm:text-lg"
+            className="blog__content flex w-full flex-col items-center overflow-x-hidden tracking-wide text-[#C0C5D0] sm:text-lg"
           />
         </div>
       ) : (

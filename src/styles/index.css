@@ -248,6 +248,15 @@ html::-webkit-scrollbar-thumb {
   border: none !important;
 }
 
+.ql-syntax {
+  text-wrap: wrap !important;
+}
+
+.blog__content a {
+  color: rgb(14 165 233) !important;
+  text-decoration: underline !important;
+}
+
 /* Media queries */
 
 @media (max-width: 1023px) {
