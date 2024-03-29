@@ -29,7 +29,7 @@ export const printing3dInfoArray: TCarouselInfoArrayProps[] = [
   {
     id: 1,
     imageUrl: Printing3d_image1,
-    title: "Introduction to 3D Printing:",
+    title: "Introduction to 3D Printing",
     body: "Explore the evolution and impact of 3D printing technology across diverse industries. Dive into the variety of 3D printers, materials, and processes that shape the world of additive manufacturing"
   },
   {
