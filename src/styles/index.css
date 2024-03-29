@@ -1,0 +1,315 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Scrollbar Styles */
+
+html::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: #000;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #0ea5e9;
+}
+
+.card::before {
+  content: "";
+  right: 0;
+  left: unset;
+  top: 0;
+  height: 100%;
+  width: 0;
+  position: absolute;
+  background-color: #ffffff;
+  transition: all 300ms ease-in-out 0s;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.card:hover::before {
+  right: unset;
+  left: 0;
+  width: 100%;
+}
+
+/* Team section */
+
+.team__section .photo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.team__section .photo .teamImg__container {
+  width: 288px;
+  height: 250px;
+  overflow: hidden;
+}
+
+.team__section .photo img {
+  object-fit: cover;
+  filter: grayscale(100%) contrast(120%);
+  box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
+  display: block;
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-radius: 8px;
+  height: 100%;
+  width: 100%;
+}
+
+.team__section .teamCards__container:hover img {
+  filter: grayscale(0) contrast(1);
+  transform: scale(1.1);
+}
+
+.team__section .photo .glow-wrap {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.team__section .photo .glow {
+  display: block;
+  position: absolute;
+  width: 40%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2);
+  top: 0;
+  filter: blur(100px);
+  transform: rotate(45deg) translate(-450%, 0);
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.team__section .teamCards__container:hover .glow {
+  transform: rotate(45deg) translate(450%, 0);
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* Socials */
+
+.socials__ul {
+  display: flex;
+  align-items: center;
+}
+
+.socials__ul .socials__list {
+  list-style: none;
+}
+
+.socials__ul .socials__list .socials__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 63px;
+  background: #1f2937;
+  border-radius: 50%;
+  border: 1px solid #0077b5;
+  font-size: 30px;
+  color: #666;
+  transition: 0.5s;
+}
+
+.socials__ul .socials__list .socials__link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #0077b5;
+  transition: 0.5s;
+  transform: scale(0.9);
+  z-index: -1;
+}
+
+.socials__ul .socials__list .socials__link:hover::before {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #262626;
+}
+
+.socials__ul .socials__list .socials__link:hover {
+  color: #0077b5;
+  box-shadow: 0 0 10px #0077b5;
+  text-shadow: 0 0 5px #0077b5;
+}
+
+/* Blogs */
+
+.ql-toolbar.ql-snow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f3f3;
+  position: sticky !important;
+  top: 0;
+  z-index: 2;
+  padding: 14px !important;
+  border: 1px solid white !important;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  flex-wrap: wrap;
+}
+
+.ql-editor {
+  min-height: 500px !important;
+  border: 1px solid white !important;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.ql-container.ql-snow {
+  border: none !important;
+}
+
+.ql-syntax {
+  text-wrap: wrap !important;
+}
+
+.blog__content a {
+  color: rgb(14 165 233) !important;
+  text-decoration: underline !important;
+}
+
+.internship__content a {
+  color: rgb(14 165 233) !important;
+  text-decoration: underline !important;
+}
+
+/* Media queries */
+
+@media (max-width: 1023px) {
+  .card {
+    width: calc(50% - 10px) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 80% !important;
+  }
+  .card::before {
+    display: none !important;
+  }
+  .team__section .photo img {
+    filter: grayscale(0) contrast(1);
+  }
+  .team__section .teamCards__container:hover img {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 370px) {
+  .card {
+    width: 100% !important;
+  }
+
+  .team__header {
+    font-size: 2.25rem;
+    line-height: 1;
+  }
+  .team__section .photo img {
+    width: 100%;
+    height: 100%;
+  }
+  .team__section .photo .teamImg__container {
+    width: 100%;
+    height: 220px;
+  }
+  .team__section .teamCards__container {
+    height: fit-content;
+    width: 90%;
+  }
+  .footer__items {
+    place-items: start !important;
+  }
+  .footer__links {
+    font-size: 14px;
+  }
+}
