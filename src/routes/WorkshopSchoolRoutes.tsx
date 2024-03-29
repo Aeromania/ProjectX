@@ -8,7 +8,7 @@ import WaterRocketry from "../pages/Workshop/School/WaterRocketry";
 import { Route, Routes } from "react-router-dom";
 import NotFound from "@/pages/PageNotFound/NotFound";
 
-const WorkshopSchoolRoutes = () => {
+const WorkshopSchoolRoutes: React.FC = (): React.JSX.Element => {
   return (
     <Routes>
       <Route path="/" element={<School />}>

@@ -9,7 +9,7 @@ import QuadDrone from "@/pages/Workshop/University/QuadDrone";
 import RcPlane from "@/pages/Workshop/University/RcPlane";
 import Composites from "@/pages/Workshop/University/Composites";
 
-const WorkshopUniversityRoutes = () => {
+const WorkshopUniversityRoutes: React.FC = (): React.JSX.Element => {
   return (
     <Routes>
       <Route path="/" element={<University />}>

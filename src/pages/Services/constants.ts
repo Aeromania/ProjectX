@@ -46,6 +46,7 @@ import ConsultationImage4 from "../../assets/images/xlabs_services-consultation-
 import ConsultationImage5 from "../../assets/images/xlabs_services-consultation-5.jpeg";
 import ConsultationImage6 from "../../assets/images/xlabs_services-consultation-6.jpg";
 import ConsultationImage7 from "../../assets/images/xlabs_services-consultation-7.jpg";
+import { TOptionsType } from "./SelectMenu/SelectMenu";
 
 export const ServiceTitles = {
   COMMON_TITLE: "WE ARE HERE TO MAKE",
@@ -194,4 +195,21 @@ export const servicesInfoArray: TservicesInfoArrayType[] = [
     image: ServiceImage_6,
     leftButtonNavigateTo: ServicesNavRoutes.PROJECT_CONSULTATION
   }
+];
+
+export const FDMPrintSelectMenuOptions: TOptionsType[] = [
+  { value: "ABS ", label: "ABS" },
+  { value: "PLA", label: "PLA" },
+  { value: "PETG", label: "PETG" },
+  { value: "PA6CF", label: "PA6CF" },
+  { value: "TPU", label: "TPU" },
+  { value: "Nylon", label: "Nylon" },
+  { value: "ASA", label: "ASA" }
+];
+
+export const SLAPrintSelectMenuOptions: TOptionsType[] = [
+  { value: "Standard resin grey", label: "Standard resin grey" },
+  { value: "Clear resin. Moq-200cc", label: "Clear resin. Moq-200cc" },
+  { value: "Dental resin. Moq-200cc", label: "Dental resin. Moq-200cc" },
+  { value: "Though resin. moQ-200cc", label: "Though resin. moQ-200cc" }
 ];

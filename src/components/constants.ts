@@ -40,7 +40,8 @@ export const ServicesNavRoutes = {
   DESIGN_FABRICATION: "Design And Fabrication",
   STRUCTURAL_ANALYSIS: "Structural Analysis",
   CFD_ANALYSIS: "CFD Analysis",
-  PROJECT_CONSULTATION: "Project Consultation"
+  PROJECT_CONSULTATION: "Project Consultation",
+  PRINTING3D_CONTACT_FORM: "3D Printing Form"
 } as const;
 
 export const InternshipNavRoutes = {

@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { CustomInput } from "./CustomInput";
+import { CustomInput } from "../CustomInput";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";

@@ -49,7 +49,7 @@ const ServiceDescriptionPage: React.FC<ServiceDescriptionProps> = ({
             <FaArrowLeft
               onClick={() => {
                 window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-                navigate("/" + NavRoutes.INTERNSHIP);
+                navigate("/" + NavRoutes.SERVICES);
               }}
               size={20}
             />

@@ -8,6 +8,7 @@ import Services from "@/pages/Services/Services";
 import StructuralAnalysis from "@/pages/Services/StructuralAnalysis";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "../pages/PageNotFound/NotFound";
+import Printing3dQuoteForm from "@/pages/Services/Printing3dQuoteForm";
 
 const ServiceRoutes = () => {
   return (
@@ -27,6 +28,10 @@ const ServiceRoutes = () => {
       <Route
         path={ServicesNavRoutes.PROJECT_CONSULTATION}
         element={<Consultation />}
+      />
+      <Route
+        path={ServicesNavRoutes.PRINTING3D_CONTACT_FORM}
+        element={<Printing3dQuoteForm />}
       />
       <Route path={"*"} element={<NotFound />} />
     </Routes>

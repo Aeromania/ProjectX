@@ -22,14 +22,16 @@ const Home: React.FC = (): React.JSX.Element => {
   return (
     <>
       <section className="h-fit w-full bg-black text-white">
-        <video
-          src={Intro}
-          autoPlay={true}
-          loop={true}
-          muted
-          poster={Thumbnail}
-          className="h-full w-full"
-        />
+        <div className="flex h-[85vh] w-full justify-center sm:block lg:h-fit lg:w-fit">
+          <video
+            src={Intro}
+            autoPlay={true}
+            loop={true}
+            muted
+            poster={Thumbnail}
+            className="h-full w-full object-fill"
+          />
+        </div>
       </section>
       <div className="h-dvh">
         <ServiceDescriptionPage
